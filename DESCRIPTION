@@ -28,7 +28,8 @@ Imports:
     glue,
     memoise,
     countrycode (>= 1.2.0),
-    lifecycle
+    lifecycle,
+    hoardr
 Suggests:
     roxygen2,
     knitr,
@@ -36,6 +37,6 @@ Suggests:
     testthat,
     covr,
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 X-schema.org-applicationCategory: Data Access
 X-schema.org-keywords: geoboundaries, boundaries, gis, map, geographic, data, spatial, dataset
