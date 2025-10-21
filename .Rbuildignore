@@ -45,3 +45,4 @@ _dev\.R$
 ^LICENSE\.md$
 ^data\-raw/*
 ^inst/*
+^CRAN/
