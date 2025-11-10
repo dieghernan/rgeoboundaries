@@ -2,11 +2,11 @@
 % Please edit documentation in R/rgeoboundaries-package.R
 \docType{package}
 \name{rgeoboundaries-package}
-\alias{rgeoboundaries-package}
 \alias{rgeoboundaries}
-\title{rgeoboundaries}
+\alias{rgeoboundaries-package}
+\title{rgeoboundaries: A Client to geoBoundaries, a Political Administrative Boundaries Dataset}
 \description{
-R client to access geoBoundaries API
+Client the access data from the geoBoundaries API who provides country political administrative boundaries dataset.
 }
 \seealso{
 Useful links:
@@ -17,6 +17,18 @@ Useful links:
 
 }
 \author{
-\email{mail@ahmadoudicko.com}
+\strong{Maintainer}: Daniel Runfola \email{team@geoboundaries.org} [contributor]
+
+Authors:
+\itemize{
+  \item Ahmadou Dicko \email{mail@ahmadoudicko.com}
 }
-\keyword{package}
+
+Other contributors:
+\itemize{
+  \item Andy South \email{southandy@gmail.com} [contributor]
+  \item Rohith Reddy Mandala \email{rohithreddy.m4@gmail.com} [contributor]
+}
+
+}
+\keyword{internal}

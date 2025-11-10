@@ -46,3 +46,4 @@ _dev\.R$
 ^data\-raw/*
 ^inst/*
 ^CRAN/
+^\.github$
