@@ -109,12 +109,12 @@ your own path using <code>gb_set_cache(path)</code></p>
 <span class="r-in"><span><span class="co">## change the default cache directory</span></span></span>
 <span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">gb_set_cache</span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:/Users/RUNNER~1/AppData/Local/Cache/R/C:/Users/RUNNER~1/AppData/Local/Temp/RtmpYBemig"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:/Users/RUNNER~1/AppData/Local/Cache/R/C:/Users/RUNNER~1/AppData/Local/Temp/RtmpmkYIo5"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## print current cache directory</span></span></span>
 <span class="r-in"><span><span class="fu">gb_get_cache</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> You don't have a cache directory, please create it with `gb_get_cache(create = TRUE)`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:/Users/RUNNER~1/AppData/Local/Cache/R/C:/Users/RUNNER~1/AppData/Local/Temp/RtmpYBemig"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:/Users/RUNNER~1/AppData/Local/Cache/R/C:/Users/RUNNER~1/AppData/Local/Temp/RtmpmkYIo5"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## List available files in the current cache directory</span></span></span>
 <span class="r-in"><span><span class="fu">gb_list_cache</span><span class="op">(</span><span class="op">)</span></span></span>
@@ -123,7 +123,7 @@ your own path using <code>gb_set_cache(path)</code></p>
 <span class="r-in"><span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fu">gb_list_cache</span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co">## get the first file</span></span></span>
 <span class="r-in"><span><span class="fu">gb_delete_from_cache</span><span class="op">(</span><span class="va">l</span><span class="op">)</span> <span class="co">## delete it</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> These files don't exist or can't be found: </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span>      C:/Users/RUNNER~1/AppData/Local/Cache/R/C:/Users/RUNNER~1/AppData/Local/Temp/RtmpYBemig/NA</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>      C:/Users/RUNNER~1/AppData/Local/Cache/R/C:/Users/RUNNER~1/AppData/Local/Temp/RtmpmkYIo5/NA</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gb_clear_cache</span><span class="op">(</span><span class="op">)</span> <span class="co">## delete all cached files</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
