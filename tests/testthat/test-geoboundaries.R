@@ -36,3 +36,40 @@ test_that("adm_lvl can be an integer between 0 and 5", {
   p2 <- geoboundaries("benin", adm_lvl = "adm0")
   expect_equal(p1, p2)
 })
+
+test_that("Deprecations", {
+  expect_snapshot(r <- geoboundaries("benin",
+    adm_lvl = 0, type = "simplified",
+    version = "4"
+  ))
+  expect_snapshot(r <- gb_adm0("benin",
+    type = "simplified",
+    version = "4"
+  ))
+  expect_snapshot(r <- gb_adm1("benin",
+    type = "simplified",
+    version = "4"
+  ))
+  expect_snapshot(r <- gb_adm2("benin",
+    type = "simplified",
+    version = "4"
+  ))
+  expect_snapshot(r <- gb_adm3("benin",
+    type = "simplified",
+    version = "4"
+  ))
+  expect_snapshot(r <- gb_adm4("austria",
+    type = "simplified",
+    version = "4"
+  ))
+})
+
+test_that("CGAZ", {
+  p <- gb_adm0(country = NULL)
+  expect_s3_class(p, "sf")
+  expect_gt(nrow(p), 100)
+  expect_true(all(sf::st_geometry_type(p) == "MULTIPOLYGON"))
+
+  # Messages
+  expect_snapshot(pp <- geoboundaries("Andorra", type = "cgaz"))
+})

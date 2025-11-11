@@ -6,7 +6,7 @@ test_that("Test cache online", {
   testdir <- expect_silent(gb_set_cache(
     file.path(tmp, "testthat_cache")
   ))
-
+  usethis::use_test("geoboundaries")
   expect_identical(gb_get_cache(create = TRUE), testdir)
   expect_true(dir.exists(testdir))
   cat(1:10000L, file = file.path(testdir, "foo.txt"))
