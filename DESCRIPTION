@@ -29,6 +29,7 @@ Imports:
     memoise,
     countrycode (>= 1.2.0),
     lifecycle,
+    tools,
     hoardr
 Suggests:
     roxygen2,

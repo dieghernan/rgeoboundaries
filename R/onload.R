@@ -1,9 +1,12 @@
 gb_cache <- NULL
 
 
+
 .onLoad <- function(libname, pkgname) {
   x <- hoardr::hoard()
-  x$cache_path_set("gb_cache")
+  pth <- tools::R_user_dir("rgeoboundaries", which = "cache")
+  pth <- path.expand(pth)
+  x$cache_path_set(full_path = pth)
   gb_cache <<- x
   make_gb_cache_dir(gb_cache)
   invisible(NULL)
