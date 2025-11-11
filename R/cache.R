@@ -39,7 +39,8 @@ NULL
 #' @return the cache directory
 #' @export
 gb_set_cache <- function(path) {
-  gb_cache$cache_path_set(path)
+  path <- path.expand(path)
+  gb_cache$cache_path_set(full_path = path)
 }
 
 #' Displays the full path to the cache directory
