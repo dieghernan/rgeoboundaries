@@ -1,10 +1,9 @@
 gb_cache <- NULL
 
 
-
 .onLoad <- function(libname, pkgname) {
   x <- hoardr::hoard()
-  pth <- tools::R_user_dir("rgeoboundaries", which = "cache")
+  pth <- tempdir()
   pth <- path.expand(pth)
   x$cache_path_set(full_path = pth)
   gb_cache <<- x
@@ -17,11 +16,16 @@ make_gb_cache_dir <- function(cache) {
   dir <- cache$cache_path_get()
   if (!dir.exists(dir) && interactive()) {
     ok <- ask_permission(
-      paste0("rgeoboundaries want to save the downloaded data in the cache directory:\n\n",
-             dir, "\n\n",
-             "It allows you to easily re-use files you downloaded. Create this directory?"))
-    if (!ok)
+      paste0(
+        "rgeoboundaries want to save the downloaded data in the cache directory:\n\n",
+        dir,
+        "\n\n",
+        "It allows you to easily re-use files you downloaded. Create this directory?"
+      )
+    )
+    if (!ok) {
       return(invisible(NULL))
+    }
     cache$mkdir()
   }
 }

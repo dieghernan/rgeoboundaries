@@ -38,30 +38,14 @@ test_that("adm_lvl can be an integer between 0 and 5", {
 })
 
 test_that("Deprecations", {
-  expect_snapshot(r <- geoboundaries("benin",
-    adm_lvl = 0, type = "simplified",
-    version = "4"
-  ))
-  expect_snapshot(r <- gb_adm0("benin",
-    type = "simplified",
-    version = "4"
-  ))
-  expect_snapshot(r <- gb_adm1("benin",
-    type = "simplified",
-    version = "4"
-  ))
-  expect_snapshot(r <- gb_adm2("benin",
-    type = "simplified",
-    version = "4"
-  ))
-  expect_snapshot(r <- gb_adm3("benin",
-    type = "simplified",
-    version = "4"
-  ))
-  expect_snapshot(r <- gb_adm4("austria",
-    type = "simplified",
-    version = "4"
-  ))
+  expect_snapshot(
+    r <- geoboundaries("benin", adm_lvl = 0, type = "simplified", version = "4")
+  )
+  expect_snapshot(r <- gb_adm0("benin", type = "simplified", version = "4"))
+  expect_snapshot(r <- gb_adm1("benin", type = "simplified", version = "4"))
+  expect_snapshot(r <- gb_adm2("benin", type = "simplified", version = "4"))
+  expect_snapshot(r <- gb_adm3("benin", type = "simplified", version = "4"))
+  expect_snapshot(r <- gb_adm4("austria", type = "simplified", version = "4"))
 })
 
 test_that("CGAZ", {
