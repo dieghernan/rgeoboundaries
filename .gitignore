@@ -23,3 +23,6 @@ README_cache/*
 
 #
 data-raw/*
+rgeoboundaries.Rcheck/
+rgeoboundaries*.tar.gz
+rgeoboundaries*.tgz

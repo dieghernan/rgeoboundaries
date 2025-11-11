@@ -47,3 +47,6 @@ _dev\.R$
 ^inst/*
 ^CRAN/
 ^\.github$
+^rgeoboundaries\.Rcheck$
+^rgeoboundaries.*\.tar\.gz$
+^rgeoboundaries.*\.tgz$
