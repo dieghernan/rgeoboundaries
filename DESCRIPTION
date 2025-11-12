@@ -1,6 +1,5 @@
 Package: rgeoboundaries
-Title: A Client to geoBoundaries, a Political Administrative Boundaries
-    Dataset
+Title: A Client for the 'geoBoundaries' Administrative Boundaries Dataset
 Version: 1.9.9.9000
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre"),
@@ -14,8 +13,10 @@ Authors@R: c(
     person("Rohith Reddy", "Mandala", , "rohithreddy.m4@gmail.com", role = "ctb"),
     person("William and Mary geoLab", role = "cph")
   )
-Description: Client the access data from the geoBoundaries API who
-    provides country political administrative boundaries dataset.
+Description: Access data from the 'geoBoundaries' API
+    <https://www.geoboundaries.org/api.html>, which provides country-level
+    political and administrative boundary datasets. See Runfola, D. et al.
+    (2020) <doi:10.1371/journal.pone.0231866>.
 License: MIT + file LICENSE
 URL: https://github.com/wmgeolab/rgeoboundaries
 BugReports: https://github.com/wmgeolab/rgeoboundaries/issues
@@ -36,6 +37,8 @@ Suggests:
     rmarkdown,
     roxygen2,
     testthat
+Copyright: Attribution required. See file COPYRIGHTS for specific
+    provisions.
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

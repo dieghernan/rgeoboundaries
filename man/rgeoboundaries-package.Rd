@@ -4,11 +4,11 @@
 \name{rgeoboundaries-package}
 \alias{rgeoboundaries}
 \alias{rgeoboundaries-package}
-\title{rgeoboundaries: A Client to geoBoundaries, a Political Administrative Boundaries Dataset}
+\title{rgeoboundaries: A Client for the 'geoBoundaries' Administrative Boundaries Dataset}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Client the access data from the geoBoundaries API who provides country political administrative boundaries dataset.
+Access data from the 'geoBoundaries' API \url{https://www.geoboundaries.org/api.html}, which provides country-level political and administrative boundary datasets. See Runfola, D. et al. (2020) \doi{10.1371/journal.pone.0231866}.
 }
 \seealso{
 Useful links:

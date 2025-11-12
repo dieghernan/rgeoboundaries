@@ -57,4 +57,3 @@ issue](https://code-review.tidyverse.org/issues/) for more advice.
 
 -   We use [testthat](https://cran.r-project.org/package=testthat) for unit
     tests. Contributions with test cases included are easier to accept.
-
