@@ -9,11 +9,11 @@
 \alias{gb_delete_from_cache}
 \title{Caching geoBoundaries downloaded files}
 \usage{
-gb_set_cache(path)
+gb_set_cache(path, overwrite = FALSE, install = FALSE, quiet = FALSE)
 
-gb_get_cache(create = FALSE)
+gb_get_cache(create = deprecated())
 
-gb_clear_cache(force = FALSE)
+gb_clear_cache(force = TRUE, clear_config = FALSE, quiet = FALSE)
 
 gb_list_cache(full_path = FALSE)
 

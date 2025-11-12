@@ -25,8 +25,8 @@ Depends:
 Imports:
     countrycode (>= 1.2.0),
     crul (>= 1.4.0),
+    cli,
     glue,
-    hoardr,
     jsonlite,
     lifecycle,
     memoise,
@@ -36,7 +36,7 @@ Suggests:
     knitr,
     rmarkdown,
     roxygen2,
-    testthat
+    testthat (>= 3.0.0)
 Copyright: Attribution required. See file COPYRIGHTS for specific
     provisions.
 Encoding: UTF-8
@@ -45,3 +45,4 @@ RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: Data Access
 X-schema.org-keywords: geoboundaries, boundaries, gis, map, geographic,
     data, spatial, dataset
+Config/testthat/edition: 3
