@@ -7,32 +7,42 @@ output: github_document
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  message = FALSE,
+  warning = FALSE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
-  dev = "svg"
+  dpi = 150,
+  out.width = "100%"
 )
 ```
 
-# rgeoboundaries <img src="man/figures/hex-rgeoboundaries.png" align="right" height="139" />
+# rgeoboundaries <img src="man/figures/logo.png" align="right" height="138"/>
 
 <!-- badges: start -->
 
-[![GitLab CI Build Status](https://gitlab.com/dickoa/rgeoboundaries/badges/master/pipeline.svg)](https://gitlab.com/dickoa/rgeoboundaries/pipelines)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/gitlab/dickoa/rgeoboundaries?branch=master&svg=true)](https://ci.appveyor.com/project/dickoa/rgeoboundaries)
-[![Codecov Code Coverage](https://codecov.io/gl/dickoa/rgeoboundaries/branch/master/graph/badge.svg)](https://codecov.io/gl/dickoa/rgeoboundaries)
-[![CRAN status](https://www.r-pkg.org/badges/version/rgeoboundaries)](https://cran.r-project.org/package=rgeoboundaries)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-`rgeoboundaries` is an R client for the [geoBoundaries API](https://www.geoboundaries.org/), providing country political administrative boundaries.
+[![GitLab CI Build
+Status](https://gitlab.com/dickoa/rgeoboundaries/badges/master/pipeline.svg)](https://gitlab.com/dickoa/rgeoboundaries/pipelines)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/gitlab/dickoa/rgeoboundaries?branch=master&svg=true)](https://ci.appveyor.com/project/dickoa/rgeoboundaries)
+[![Codecov Code
+Coverage](https://codecov.io/gl/dickoa/rgeoboundaries/branch/master/graph/badge.svg)](https://codecov.io/gl/dickoa/rgeoboundaries)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rgeoboundaries)](https://cran.r-project.org/package=rgeoboundaries)
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <!-- badges: end -->
 
+`rgeoboundaries` is an R client for the [geoBoundaries
+API](https://www.geoboundaries.org/), providing country political administrative
+boundaries.
+
 ## Installation
 
-You can install the development version of rgeoboundaries using the `remotes` package:
+You can install the development version of rgeoboundaries using the `remotes`
+package:
 
-``` {r, eval = FALSE}
+```{r, eval = FALSE}
 # install.packages("remotes")
 remotes::install_gitlab("dickoa/rgeoboundaries")
 remotes::install_github("wmgeolab/rgeoboundaries")
@@ -40,28 +50,30 @@ remotes::install_github("wmgeolab/rgeoboundaries")
 
 ## Access administrative boundaries using rgeoboundaries
 
-This is a basic example which shows you how get Mali and Senegal boundaries and plot it
+This is a basic example which shows you how get Mali and Senegal boundaries and
+plot it
 
-```{r plot, cache = TRUE}
+```{r plot}
 library(rgeoboundaries)
 library(sf)
 mli_sen <- gb_adm0(c("mali", "senegal"), type = "sscgs")
 plot(st_geometry(mli_sen))
 ```
 
-We can also get the first administrative division of all countries in the world and use ISO3 code too
+We can also get the first administrative division of all countries in the world
+and use ISO3 code too
 
-```{r plot_egy, cache = TRUE}
+```{r plot_egy}
 egy <- gb_adm1("EGY")
 plot(st_geometry(egy),
      col = rgb(red = 1, green = 0, blue = 0, alpha = 0.5),
      axes = TRUE, graticule = TRUE)
 ```
 
-In order to access the global administrative zones, you just need to skip the country argument (i.e set it to `NULL`) or specify `type = "CGAZ"`.
+In order to access the global administrative zones, you just need to skip the
+country argument (i.e set it to `NULL`) or specify `type = "CGAZ"`.
 
-
-```{r plot_world, cache = TRUE}
+```{r plot_world}
 world <- gb_adm1()
 world_lambert <- st_transform(world, "+proj=laea +x_0=0 +y_0=0 +lon_0=0 +lat_0=0")
 par(bty = "n")
@@ -78,6 +90,10 @@ knitr::kable(gb_metadata(c("mali", "senegal"), "adm1"))
 
 ## How to to cite
 
-If you are using this package in your analysis, please cite the original `geoBoundaries` work:
+If you are using this package in your analysis, please cite the original
+`geoBoundaries` work:
 
-> Runfola D, Anderson A, Baier H, Crittenden M, Dowker E, Fuhrig S, et al. (2020) geoBoundaries: A global database of political administrative boundaries. PLoS ONE 15(4): e0231866. https://doi.org/10.1371/journal.pone.0231866
+> Runfola D, Anderson A, Baier H, Crittenden M, Dowker E, Fuhrig S, et al.
+> (2020) geoBoundaries: A global database of political administrative
+> boundaries. PLoS ONE 15(4): e0231866.
+> <https://doi.org/10.1371/journal.pone.0231866>

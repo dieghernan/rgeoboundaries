@@ -2,11 +2,13 @@
 % Please edit documentation in R/rgeoboundaries-package.R
 \docType{package}
 \name{rgeoboundaries-package}
-\alias{rgeoboundaries-package}
 \alias{rgeoboundaries}
-\title{rgeoboundaries}
+\alias{rgeoboundaries-package}
+\title{rgeoboundaries: A Client to geoBoundaries, a Political Administrative Boundaries Dataset}
 \description{
-R client to access geoBoundaries API
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Client the access data from the geoBoundaries API who provides country political administrative boundaries dataset.
 }
 \seealso{
 Useful links:
@@ -17,6 +19,20 @@ Useful links:
 
 }
 \author{
-\email{mail@ahmadoudicko.com}
+\strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID})
+
+Authors:
+\itemize{
+  \item Ahmadou Dicko \email{mail@ahmadoudicko.com} (\href{https://orcid.org/0000-0002-9654-7582}{ORCID})
 }
-\keyword{package}
+
+Other contributors:
+\itemize{
+  \item Andy South \email{southandy@gmail.com} (\href{https://orcid.org/0000-0003-4051-6135}{ORCID}) [contributor]
+  \item Daniel Runfola \email{team@geoboundaries.org} (\href{https://orcid.org/0000-0001-5356-4676}{ORCID}) [contributor]
+  \item Rohith Reddy Mandala \email{rohithreddy.m4@gmail.com} [contributor]
+  \item William and Mary geoLab [copyright holder]
+}
+
+}
+\keyword{internal}
