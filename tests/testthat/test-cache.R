@@ -75,5 +75,5 @@ test_that("Delete cache", {
 })
 
 test_that("Deprecations", {
-  expect_snapshot(gb_get_cache(create = TRUE))
+  expect_snapshot(p <- gb_get_cache(create = TRUE))
 })
