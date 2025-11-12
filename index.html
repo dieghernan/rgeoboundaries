@@ -13,6 +13,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="A Client to geoBoundaries, a Political Administrative Boundaries Dataset">
 <meta property="og:description" content="Client the access data from the geoBoundaries API who provides country political administrative boundaries dataset.">
+<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rgeoboundaries</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.9.9.9000</span>
       </span>
     </div>
 
@@ -41,6 +42,9 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -63,18 +67,19 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="rgeoboundaries-">rgeoboundaries <img src="reference/figures/hex-rgeoboundaries.png" align="right" height="139"><a class="anchor" aria-label="anchor" href="#rgeoboundaries-"></a>
+<div class="page-header"><h1 id="rgeoboundaries-">rgeoboundaries <img src="reference/figures/logo.png" align="right" height="138"><a class="anchor" aria-label="anchor" href="#rgeoboundaries-"></a>
 </h1></div>
 <!-- badges: start -->
 
-
 <!-- badges: end -->
+<p><code>rgeoboundaries</code> is an R client for the <a href="https://www.geoboundaries.org/" class="external-link">geoBoundaries API</a>, providing country political administrative boundaries.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of rgeoboundaries using the <code>remotes</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_gitlab</span><span class="op">(</span><span class="st">"dickoa/rgeoboundaries"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"wmgeolab/rgeoboundaries"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -86,14 +91,14 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
 <span><span class="va">mli_sen</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geoboundaries.html">gb_adm0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mali"</span>, <span class="st">"senegal"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"sscgs"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">mli_sen</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot-1.svg" width="100%"></p>
+<p><img src="reference/figures/README-plot-1.png" width="100%"></p>
 <p>We can also get the first administrative division of all countries in the world and use ISO3 code too</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">egy</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geoboundaries.html">gb_adm1</a></span><span class="op">(</span><span class="st">"EGY"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">egy</span><span class="op">)</span>,</span>
 <span>     col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html" class="external-link">rgb</a></span><span class="op">(</span>red <span class="op">=</span> <span class="fl">1</span>, green <span class="op">=</span> <span class="fl">0</span>, blue <span class="op">=</span> <span class="fl">0</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
 <span>     axes <span class="op">=</span> <span class="cn">TRUE</span>, graticule <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot_egy-1.svg" width="100%"></p>
+<p><img src="reference/figures/README-plot_egy-1.png" width="100%"></p>
 <p>In order to access the global administrative zones, you just need to skip the country argument (i.e set it to <code>NULL</code>) or specify <code>type = "CGAZ"</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">world</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/geoboundaries.html">gb_adm1</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -102,75 +107,151 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="va">world_lambert</span><span class="op">)</span>,</span>
 <span>     col <span class="op">=</span> <span class="st">"#E39d57"</span>,</span>
 <span>     graticule <span class="op">=</span> <span class="cn">TRUE</span>, lwd <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot_world-1.svg" width="100%"></p>
+<p><img src="reference/figures/README-plot_world-1.png" width="100%"></p>
 <p>Finally, metadata for each country and administrative level are also available.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="reference/gb_metadata.html">gb_metadata</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mali"</span>, <span class="st">"senegal"</span><span class="op">)</span>, <span class="st">"adm1"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
-<col width="2%">
-<col width="1%">
-<col width="1%">
-<col width="1%">
-<col width="11%">
-<col width="12%">
-<col width="6%">
-<col width="4%">
-<col width="12%">
-<col width="12%">
-<col width="1%">
-<col width="10%">
-<col width="10%">
-<col width="10%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
+<col width="3%">
 </colgroup>
 <thead><tr class="header">
+<th align="left"></th>
 <th align="left">boundaryID</th>
+<th align="left">boundaryName</th>
 <th align="left">boundaryISO</th>
-<th align="left">boundaryYear</th>
+<th align="left">boundaryYearRepresented</th>
 <th align="left">boundaryType</th>
-<th align="left">boundarySource.1</th>
-<th align="left">boundarySource.2</th>
+<th align="left">boundaryCanonical</th>
+<th align="left">boundarySource</th>
 <th align="left">boundaryLicense</th>
 <th align="left">licenseDetail</th>
 <th align="left">licenseSource</th>
 <th align="left">boundarySourceURL</th>
-<th align="left">boundaryUpdate</th>
-<th align="left">downloadURL</th>
+<th align="left">sourceDataUpdateDate</th>
+<th align="left">buildDate</th>
+<th align="left">Continent</th>
+<th align="left">UNSDG-region</th>
+<th align="left">UNSDG-subregion</th>
+<th align="left">worldBankIncomeGroup</th>
+<th align="left">admUnitCount</th>
+<th align="left">meanVertices</th>
+<th align="left">minVertices</th>
+<th align="left">maxVertices</th>
+<th align="left">meanPerimeterLengthKM</th>
+<th align="left">minPerimeterLengthKM</th>
+<th align="left">maxPerimeterLengthKM</th>
+<th align="left">meanAreaSqKM</th>
+<th align="left">minAreaSqKM</th>
+<th align="left">maxAreaSqKM</th>
+<th align="left">staticDownloadLink</th>
 <th align="left">gjDownloadURL</th>
+<th align="left">tjDownloadURL</th>
 <th align="left">imagePreview</th>
+<th align="left">simplifiedGeometryGeoJSON</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">MLI-ADM1-3_0_0-G348</td>
+<td align="left">2</td>
+<td align="left">MLI-ADM1-92416918</td>
+<td align="left">Mali</td>
 <td align="left">MLI</td>
-<td align="left">2015.0</td>
+<td align="left">2021</td>
 <td align="left">ADM1</td>
-<td align="left">DNCT - Direction Nationale des ColelctivitÃ©s Territorielles, DNP - Direction Nationale de la Population</td>
-<td align="left">United Nations Office for the Coordination of Humanitarian Affairs, Mali</td>
+<td align="left">Region or Capital District</td>
+<td align="left">DNCT - Direction Nationale des Collectivités Territoriales, United Nations Office for the Coordination of Humanitarian Affairs, Mali</td>
 <td align="left">Creative Commons Attribution 4.0 International (CC BY 4.0)</td>
-<td align="left">Noted in metadata tab</td>
-<td align="left"><a href="https://data.humdata.org/dataset/mali-admin-boundaries-level-1-2-and-3-including-2017-population-desagregated-by-sexe" class="external-link uri">https://data.humdata.org/dataset/mali-admin-boundaries-level-1-2-and-3-including-2017-population-desagregated-by-sexe</a></td>
-<td align="left"><a href="https://data.humdata.org/dataset/mali-admin-boundaries-level-1-2-and-3-including-2017-population-desagregated-by-sexe" class="external-link uri">https://data.humdata.org/dataset/mali-admin-boundaries-level-1-2-and-3-including-2017-population-desagregated-by-sexe</a></td>
-<td align="left">2020-05-25</td>
-<td align="left"><a href="https://geoboundaries.org/data/geoBoundaries-3_0_0/MLI/ADM1/geoBoundaries-3_0_0-MLI-ADM1-all.zip" class="external-link uri">https://geoboundaries.org/data/geoBoundaries-3_0_0/MLI/ADM1/geoBoundaries-3_0_0-MLI-ADM1-all.zip</a></td>
-<td align="left"><a href="https://geoboundaries.org/data/geoBoundaries-3_0_0/MLI/ADM1/geoBoundaries-3_0_0-MLI-ADM1.geojson" class="external-link uri">https://geoboundaries.org/data/geoBoundaries-3_0_0/MLI/ADM1/geoBoundaries-3_0_0-MLI-ADM1.geojson</a></td>
-<td align="left"><a href="https://geoboundaries.org/data/geoBoundaries-3_0_0/MLI/ADM1/geoBoundariesPreview-3_0_0-MLI-ADM1.png" class="external-link uri">https://geoboundaries.org/data/geoBoundaries-3_0_0/MLI/ADM1/geoBoundariesPreview-3_0_0-MLI-ADM1.png</a></td>
+<td align="left">nan</td>
+<td align="left">data.humdata.org/dataset/administrative-boundaries-cod-mli</td>
+<td align="left">data.humdata.org/dataset/administrative-boundaries-cod-mli</td>
+<td align="left">Thu Jan 19 07:31:04 2023</td>
+<td align="left">Dec 12, 2023</td>
+<td align="left">Africa</td>
+<td align="left">Sub-Saharan Africa</td>
+<td align="left">Western Africa</td>
+<td align="left">Low-income Countries</td>
+<td align="left">9</td>
+<td align="left">1333.0</td>
+<td align="left">342</td>
+<td align="left">3414</td>
+<td align="left">2058.908469995114</td>
+<td align="left">83.68262922173119</td>
+<td align="left">3760.358176000396</td>
+<td align="left">139367.46925829045</td>
+<td align="left">245.6744280437728</td>
+<td align="left">499273.8882641518</td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1-all.zip" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1-all.zip</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1.geojson" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1.geojson</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1.topojson" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1.topojson</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1-PREVIEW.png" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1-PREVIEW.png</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1_simplified.geojson" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1_simplified.geojson</a></td>
 </tr>
 <tr class="even">
-<td align="left">SEN-ADM1-3_0_0-G486</td>
+<td align="left">6</td>
+<td align="left">SEN-ADM1-71046170</td>
+<td align="left">Senegal</td>
 <td align="left">SEN</td>
-<td align="left">2017.0</td>
+<td align="left">2019</td>
 <td align="left">ADM1</td>
-<td align="left">Government of Senegal</td>
-<td align="left">United Nations Office for the Coordination of Humanitarian Affairs Regional Office for West and Central Africa (ROWCA)</td>
-<td align="left">Other - Humanitarian</td>
-<td align="left">Humanitarian use only - Noted in metadata tab</td>
-<td align="left"><a href="https://data.humdata.org/dataset/senegal-administrative-boundaries" class="external-link uri">https://data.humdata.org/dataset/senegal-administrative-boundaries</a></td>
-<td align="left"><a href="https://data.humdata.org/dataset/senegal-administrative-boundaries" class="external-link uri">https://data.humdata.org/dataset/senegal-administrative-boundaries</a></td>
-<td align="left">2020-05-25</td>
-<td align="left"><a href="https://geoboundaries.org/data/geoBoundaries-3_0_0/SEN/ADM1/geoBoundaries-3_0_0-SEN-ADM1-all.zip" class="external-link uri">https://geoboundaries.org/data/geoBoundaries-3_0_0/SEN/ADM1/geoBoundaries-3_0_0-SEN-ADM1-all.zip</a></td>
-<td align="left"><a href="https://geoboundaries.org/data/geoBoundaries-3_0_0/SEN/ADM1/geoBoundaries-3_0_0-SEN-ADM1.geojson" class="external-link uri">https://geoboundaries.org/data/geoBoundaries-3_0_0/SEN/ADM1/geoBoundaries-3_0_0-SEN-ADM1.geojson</a></td>
-<td align="left"><a href="https://geoboundaries.org/data/geoBoundaries-3_0_0/SEN/ADM1/geoBoundariesPreview-3_0_0-SEN-ADM1.png" class="external-link uri">https://geoboundaries.org/data/geoBoundaries-3_0_0/SEN/ADM1/geoBoundariesPreview-3_0_0-SEN-ADM1.png</a></td>
+<td align="left">region</td>
+<td align="left">Government of Senegal, OCHA ROWCA</td>
+<td align="left">Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)</td>
+<td align="left">nan</td>
+<td align="left">data.humdata.org/dataset/senegal-administrative-boundaries</td>
+<td align="left">data.humdata.org/dataset/senegal-administrative-boundaries</td>
+<td align="left">Thu Jan 19 07:31:04 2023</td>
+<td align="left">Dec 12, 2023</td>
+<td align="left">Africa</td>
+<td align="left">Sub-Saharan Africa</td>
+<td align="left">Western Africa</td>
+<td align="left">Low-income Countries</td>
+<td align="left">14</td>
+<td align="left">1785.0</td>
+<td align="left">627</td>
+<td align="left">6052</td>
+<td align="left">659.6438524808731</td>
+<td align="left">166.34887893257255</td>
+<td align="left">1457.2982019784088</td>
+<td align="left">14049.370925483614</td>
+<td align="left">544.0479780089397</td>
+<td align="left">42624.70879887685</td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1-all.zip" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1-all.zip</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1.geojson" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1.geojson</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1.topojson" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1.topojson</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1-PREVIEW.png" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1-PREVIEW.png</a></td>
+<td align="left"><a href="https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1_simplified.geojson" class="external-link uri">https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1_simplified.geojson</a></td>
 </tr>
 </tbody>
 </table>
@@ -204,6 +285,12 @@
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
@@ -215,8 +302,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Ahmadou Dicko <br><small class="roles"> Author </small>   </li>
-<li>Daniel Runfola <br><small class="roles"> Contributor, maintainer </small>   </li>
+<li>Diego Hernangómez <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8457-4658" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Ahmadou Dicko <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9654-7582" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -224,6 +311,10 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://gitlab.com/dickoa/rgeoboundaries/pipelines" class="external-link"><img src="https://gitlab.com/dickoa/rgeoboundaries/badges/master/pipeline.svg" alt="GitLab CI Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/dickoa/rgeoboundaries" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/gitlab/dickoa/rgeoboundaries?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://codecov.io/gl/dickoa/rgeoboundaries" class="external-link"><img src="https://codecov.io/gl/dickoa/rgeoboundaries/branch/master/graph/badge.svg" alt="Codecov Code Coverage"></a></li>
+<li><a href="https://cran.r-project.org/package=rgeoboundaries" class="external-link"><img src="https://www.r-pkg.org/badges/version/rgeoboundaries" alt="CRAN status"></a></li>
 <li><a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
 </ul>
 </div>
@@ -234,7 +325,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Ahmadou Dicko, Daniel Runfola.</p>
+<p>Developed by Diego Hernangómez, Ahmadou Dicko.</p>
 </div>
 
 <div class="pkgdown">
