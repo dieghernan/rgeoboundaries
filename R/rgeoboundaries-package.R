@@ -2,5 +2,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom lifecycle deprecated deprecate_warn is_present
 ## usethis namespace: end
 NULL
