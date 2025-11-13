@@ -49,28 +49,46 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="rgeoboundaries-development-version">rgeoboundaries (development version)<a class="anchor" aria-label="anchor" href="#rgeoboundaries-development-version"></a></h2>
-<ul><li>Improvement of overall package meta data:
-<ul><li>Review and update of <code>DESCRIPTION</code> file.
-<ul><li>New maintainer: <a href="https://github.com/dieghernan/" class="external-link">Diego Hernangomez</a>.</li>
-<li>Added William and Mary geoLab as copyright holder (<code>"cph"</code>).</li>
-<li>Review <code>Title</code> and <code>Description</code>, adding proper links and citations.</li>
+<ul><li>Review of cache management:
+<ul><li>By default the cache directory is under <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>. You can change it:
+<ul><li>Temporary cache (single <strong>R</strong> session): <code>gb_set_cache(path)</code>.</li>
+<li>Persistent cache across <strong>R</strong> sessions: <code>gb_set_cache(path, install = TRUE)</code>.</li>
 </ul></li>
-<li>New files:
+<li>Redesigned cache management functions:
 <ul><li>
-<code>inst/CITATION</code> using the <code>bibentry</code> extracted from <a href="https://doi.org/10.1371/journal.pone.0231866" class="external-link uri">https://doi.org/10.1371/journal.pone.0231866</a>.</li>
+<code><a href="../reference/gb_cache.html">gb_set_cache()</a></code>: configure where files are stored.</li>
+<li>
+<code><a href="../reference/gb_cache.html">gb_get_cache()</a></code>: retrieve the active cache directory.</li>
+<li>
+<code><a href="../reference/gb_cache.html">gb_list_cache()</a></code>: list files in the cache.</li>
+<li>
+<code><a href="../reference/gb_cache.html">gb_clear_cache()</a></code>: remove all cached files (optionally removing the installed config).</li>
+<li>
+<code><a href="../reference/gb_cache.html">gb_delete_from_cache()</a></code>: remove one or more specific cached files.</li>
+</ul></li>
+</ul></li>
+<li>Improved package metadata:
+<ul><li>Updated <code>DESCRIPTION</code>.
+<ul><li>New maintainer: Diego Hernangomez (<a href="https://github.com/dieghernan/" class="external-link uri">https://github.com/dieghernan/</a>).</li>
+<li>Added William and Mary geoLab as copyright holder.</li>
+<li>Revised <code>Title</code> and <code>Description</code> with clearer links and citations.</li>
+</ul></li>
+<li>New files added:
+<ul><li>
+<code>inst/CITATION</code> (<code><a href="https://rdrr.io/r/utils/bibentry.html" class="external-link">bibentry()</a></code> from <a href="https://doi.org/10.1371/journal.pone.0231866" class="external-link uri">https://doi.org/10.1371/journal.pone.0231866</a>).</li>
 <li><code>inst/COPYRIGHTS</code></li>
 <li><code>inst/REFERENCES.bib</code></li>
 </ul></li>
 </ul></li>
-<li>New package infrastructure:
-<ul><li>Add checks thanks to GitHub Actions.</li>
-<li>Overall clean-up of legacy files in the repo.</li>
-<li>Logo re-design.</li>
+<li>Project infrastructure and clean-up:
+<ul><li>Added CI checks via GitHub Actions.</li>
+<li>Removed legacy files and cleaned repository layout.</li>
+<li>Redesigned logo.</li>
 </ul></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.3" id="rgeoboundaries-13">rgeoboundaries 1.3<small>2024-03-12</small><a class="anchor" aria-label="anchor" href="#rgeoboundaries-13"></a></h2>
-<ul><li>CRAN submission..</li>
+<ul><li>CRAN submission.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.2.9" id="rgeoboundaries-129">rgeoboundaries 1.2.9<small>2023-12-08</small><a class="anchor" aria-label="anchor" href="#rgeoboundaries-129"></a></h2>
