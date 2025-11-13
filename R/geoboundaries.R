@@ -2,12 +2,13 @@
 #' @noRd
 .read_gb <- function(path, quiet = TRUE) {
   if (length(path) >= 2) {
-      l <- lapply(seq_along(path), function(i)
-        st_read(path[i], quiet = quiet))
-      res <- do.call(rbind, l)
+    l <- lapply(seq_along(path), function(i) {
+      st_read(path[i], quiet = quiet)
+    })
+    res <- do.call(rbind, l)
   } else {
-      res <- st_read(path, quiet = quiet)
-      res <- sf::st_cast(res, "MULTIPOLYGON")
+    res <- st_read(path, quiet = quiet)
+    res <- sf::st_cast(res, "MULTIPOLYGON")
   }
   res
 }
@@ -21,7 +22,6 @@ read_gb <- memoise(.read_gb)
 #' Access country boundaries at a specified administrative level
 #'
 #' @importFrom tools file_path_as_absolute
-#' @importFrom lifecycle deprecated deprecate_warn is_present
 #'
 #' @rdname geoboundaries
 #' @param country characher; a vector of country names or country ISO3. If NULL all countries will be used
@@ -69,179 +69,222 @@ read_gb <- memoise(.read_gb)
 #' @return a `sf` object
 #'
 #' @export
-geoboundaries <- function(country = NULL,
-                          adm_lvl = "adm0",
-                          type = c("unsimplified", "simplified",
-                                   "UNSIMPLIFIED", "SIMPLIFIED",
-                                   "HPSCU", "HPSCGS", "SSCGS", "SSCU", "CGAZ",
-                                   "hpscu", "hpscgs", "sscgs", "sscu", "cgaz"),
-                          release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
-                          quiet = TRUE,
-                          overwrite = FALSE,
-                          version = deprecated()) {
-
+geoboundaries <- function(
+  country = NULL,
+  adm_lvl = "adm0",
+  type = c(
+    "unsimplified",
+    "simplified",
+    "UNSIMPLIFIED",
+    "SIMPLIFIED",
+    "HPSCU",
+    "HPSCGS",
+    "SSCGS",
+    "SSCU",
+    "CGAZ",
+    "hpscu",
+    "hpscgs",
+    "sscgs",
+    "sscu",
+    "cgaz"
+  ),
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+) {
   if (lifecycle::is_present(version)) {
-    lifecycle::deprecate_warn("0.5",
-                              "rgeoboundaries::geoboundaries(version = )")
+    lifecycle::deprecate_warn(
+      "0.5",
+      "rgeoboundaries::geoboundaries(version = )"
+    )
   }
 
   type <- match.arg(type)
   type <- tolower(type)
 
-  type <- switch(type,
-                 hpscu = "unsimplified",
-                 hpscgs = "unsimplified",
-                 sscu = "simplified",
-                 sscgs = "simplified",
-                 cgaz = "cgaz",
-                 simplified = "simplified",
-                 unsimplified = "unsimplified")
+  type <- switch(
+    type,
+    hpscu = "unsimplified",
+    hpscgs = "unsimplified",
+    sscu = "simplified",
+    sscgs = "simplified",
+    cgaz = "cgaz",
+    simplified = "simplified",
+    unsimplified = "unsimplified"
+  )
 
   if (type == "cgaz" & !is.null(country)) {
-    warning("'cgaz' type not needed, just use `geoboundaries` or `gb_adm` without `country`",
-            call. = FALSE)
+    warning(
+      "'cgaz' type not needed, just use `geoboundaries` or `gb_adm` without `country`",
+      call. = FALSE
+    )
     country <- NULL
   }
 
   release_type <- match.arg(release_type)
 
   if (is.null(country)) {
-    path <- get_cgaz_shp_link(adm_lvl,
-                              quiet = quiet,
-                              force = overwrite)
+    path <- get_cgaz_shp_link(adm_lvl, quiet = quiet, force = overwrite)
     path <- file.path("/vsizip", path)
-    res <- read_gb(path,
-                   quiet = quiet)
+    res <- read_gb(path, quiet = quiet)
   } else {
-    df <- get_adm_shp_link(country = country,
-                           adm_lvl = adm_lvl,
-                           type = type,
-                           release_type = release_type,
-                           force = overwrite)
+    df <- get_adm_shp_link(
+      country = country,
+      adm_lvl = adm_lvl,
+      type = type,
+      release_type = release_type,
+      force = overwrite
+    )
     path <- file.path("/vsizip", df$path)
     res <- read_gb(path, quiet = quiet)
-    res <- merge(res,
-                 df[,c("shapeGroup", "shapeType", "shapeCanonical")],
-                 by = c("shapeGroup", "shapeType"))
+    res <- merge(
+      res,
+      df[, c("shapeGroup", "shapeType", "shapeCanonical")],
+      by = c("shapeGroup", "shapeType")
+    )
   }
   res
 }
 
 #' @rdname geoboundaries
 #' @export
-gb_adm0 <- function(country = NULL, type = NULL, release_type = NULL,
-                    quiet = TRUE,
-                    overwrite = FALSE,
-                    version = deprecated()) {
-
+gb_adm0 <- function(
+  country = NULL,
+  type = NULL,
+  release_type = NULL,
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+) {
   if (lifecycle::is_present(version)) {
-    lifecycle::deprecate_warn("0.5",
-                              "rgeoboundaries::gb_adm0(version = )")
+    lifecycle::deprecate_warn("0.5", "rgeoboundaries::gb_adm0(version = )")
   }
 
-  geoboundaries(country = country,
-                adm_lvl = "adm0",
-                type = type,
-                release_type = release_type,
-                quiet = quiet,
-                overwrite = overwrite)
+  geoboundaries(
+    country = country,
+    adm_lvl = "adm0",
+    type = type,
+    release_type = release_type,
+    quiet = quiet,
+    overwrite = overwrite
+  )
 }
 
 #' @rdname geoboundaries
 #' @export
-gb_adm1 <- function(country = NULL, type = NULL, release_type = NULL,
-                    quiet = TRUE,
-                    overwrite = FALSE,
-                    version = deprecated()) {
-
+gb_adm1 <- function(
+  country = NULL,
+  type = NULL,
+  release_type = NULL,
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+) {
   if (lifecycle::is_present(version)) {
-    lifecycle::deprecate_warn("0.5",
-                              "rgeoboundaries::gb_adm1(version = )")
+    lifecycle::deprecate_warn("0.5", "rgeoboundaries::gb_adm1(version = )")
   }
 
-  geoboundaries(country = country,
-                adm_lvl = "adm1",
-                type = type,
-                release_type = release_type,
-                quiet = quiet,
-                overwrite = overwrite)
+  geoboundaries(
+    country = country,
+    adm_lvl = "adm1",
+    type = type,
+    release_type = release_type,
+    quiet = quiet,
+    overwrite = overwrite
+  )
 }
 
 #' @rdname geoboundaries
 #' @export
-gb_adm2 <- function(country = NULL, type = NULL,
-                    release_type = NULL,
-                    quiet = TRUE,
-                    version = deprecated()) {
-
+gb_adm2 <- function(
+  country = NULL,
+  type = NULL,
+  release_type = NULL,
+  quiet = TRUE,
+  version = deprecated()
+) {
   if (lifecycle::is_present(version)) {
-    lifecycle::deprecate_warn("0.5",
-                              "rgeoboundaries::gb_adm2(version = )")
+    lifecycle::deprecate_warn("0.5", "rgeoboundaries::gb_adm2(version = )")
   }
 
-  geoboundaries(country = country,
-                adm_lvl = "adm2",
-                type = type,
-                release_type = release_type,
-                quiet = quiet)
+  geoboundaries(
+    country = country,
+    adm_lvl = "adm2",
+    type = type,
+    release_type = release_type,
+    quiet = quiet
+  )
 }
 
 #' @rdname geoboundaries
 #' @export
-gb_adm3 <- function(country = NULL, type = NULL, release_type = NULL,
-                    quiet = TRUE,
-                    overwrite = FALSE,
-                    version = deprecated()) {
-
+gb_adm3 <- function(
+  country = NULL,
+  type = NULL,
+  release_type = NULL,
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+) {
   if (lifecycle::is_present(version)) {
-    lifecycle::deprecate_warn("0.5",
-                              "rgeoboundaries::gb_adm3(version = )")
+    lifecycle::deprecate_warn("0.5", "rgeoboundaries::gb_adm3(version = )")
   }
 
-  geoboundaries(country = country,
-                adm_lvl = "adm3",
-                type = type,
-                release_type = release_type,
-                quiet = quiet,
-                overwrite = overwrite)
+  geoboundaries(
+    country = country,
+    adm_lvl = "adm3",
+    type = type,
+    release_type = release_type,
+    quiet = quiet,
+    overwrite = overwrite
+  )
 }
 
 #' @rdname geoboundaries
 #' @export
-gb_adm4 <- function(country = NULL, type = NULL, release_type = NULL,
-                    quiet = TRUE,
-                    overwrite = FALSE,
-                    version = deprecated()) {
-
+gb_adm4 <- function(
+  country = NULL,
+  type = NULL,
+  release_type = NULL,
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+) {
   if (lifecycle::is_present(version)) {
-    lifecycle::deprecate_warn("0.5",
-                              "rgeoboundaries::gb_adm4(version = )")
+    lifecycle::deprecate_warn("0.5", "rgeoboundaries::gb_adm4(version = )")
   }
 
-  geoboundaries(country = country,
-                adm_lvl = "adm4",
-                type = type,
-                release_type = release_type,
-                quiet = quiet,
-                overwrite = overwrite)
+  geoboundaries(
+    country = country,
+    adm_lvl = "adm4",
+    type = type,
+    release_type = release_type,
+    quiet = quiet,
+    overwrite = overwrite
+  )
 }
 
 #' @rdname geoboundaries
 #' @export
-gb_adm5 <- function(country = NULL, type = NULL, release_type = NULL,
-                    quiet = TRUE,
-                    overwrite = FALSE,
-                    version = deprecated()) {
-
+gb_adm5 <- function(
+  country = NULL,
+  type = NULL,
+  release_type = NULL,
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+) {
   if (lifecycle::is_present(version)) {
-    lifecycle::deprecate_warn("0.5",
-                              "rgeoboundaries::gb_adm5(version = )")
+    lifecycle::deprecate_warn("0.5", "rgeoboundaries::gb_adm5(version = )")
   }
 
-  geoboundaries(country = country,
-                adm_lvl = "adm5",
-                type = type,
-                release_type = release_type,
-                quiet = quiet,
-                overwrite = overwrite)
+  geoboundaries(
+    country = country,
+    adm_lvl = "adm5",
+    type = type,
+    release_type = release_type,
+    quiet = quiet,
+    overwrite = overwrite
+  )
 }
