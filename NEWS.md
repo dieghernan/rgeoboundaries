@@ -1,23 +1,37 @@
 # rgeoboundaries (development version)
 
--   Improvement of overall package meta data:
-    -   Review and update of `DESCRIPTION` file.
-        -   New maintainer: [Diego Hernangomez](https://github.com/dieghernan/).
-        -   Added William and Mary geoLab as copyright holder (`"cph"`).
-        -   Review `Title` and `Description`, adding proper links and citations.
-    -   New files:
-        -   `inst/CITATION` using the `bibentry` extracted from
-            <https://doi.org/10.1371/journal.pone.0231866>.
+-   Review of cache management:
+    -   By default the cache directory is under `base::tempdir()`. You can
+        change it:
+        -   Temporary cache (single **R** session): `gb_set_cache(path)`.
+        -   Persistent cache across **R** sessions:
+            `gb_set_cache(path, install = TRUE)`.
+    -   Redesigned cache management functions:
+        -   `gb_set_cache()`: configure where files are stored.
+        -   `gb_get_cache()`: retrieve the active cache directory.
+        -   `gb_list_cache()`: list files in the cache.
+        -   `gb_clear_cache()`: remove all cached files (optionally removing the
+            installed config).
+        -   `gb_delete_from_cache()`: remove one or more specific cached files.
+-   Improved package metadata:
+    -   Updated `DESCRIPTION`.
+        -   New maintainer: Diego Hernangomez
+            (<https://github.com/dieghernan/>).
+        -   Added William and Mary geoLab as copyright holder.
+        -   Revised `Title` and `Description` with clearer links and citations.
+    -   New files added:
+        -   `inst/CITATION` (`bibentry()` from
+            <https://doi.org/10.1371/journal.pone.0231866>).
         -   `inst/COPYRIGHTS`
         -   `inst/REFERENCES.bib`
--   New package infrastructure:
-    -   Add checks thanks to GitHub Actions.
-    -   Overall clean-up of legacy files in the repo.
-    -   Logo re-design.
+-   Project infrastructure and clean-up:
+    -   Added CI checks via GitHub Actions.
+    -   Removed legacy files and cleaned repository layout.
+    -   Redesigned logo.
 
 # rgeoboundaries 1.3
 
--   CRAN submission..
+-   CRAN submission.
 
 # rgeoboundaries 1.2.9
 

@@ -87,8 +87,11 @@ configuration file under \code{tools::R_user_dir("rgeoboundaries", "config")}.
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
 install).
+\item Modify the cache for a single session setting
+\code{gb_set_cache(path)}.
 \item For reproducible workflows, install a persistent cache with
-\code{gb_set_cache(path, install = TRUE)}.
+\code{gb_set_cache(path, install = TRUE)} that would be kept across \strong{R}
+sessions.
 }
 }
 

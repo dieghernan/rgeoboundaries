@@ -26,8 +26,11 @@
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
 #'   install).
+#' - Modify the cache for a single session setting
+#'   `gb_set_cache(path)`.
 #' - For reproducible workflows, install a persistent cache with
-#'   `gb_set_cache(path, install = TRUE)`.
+#'   `gb_set_cache(path, install = TRUE)` that would be kept across **R**
+#'   sessions.
 #'
 #' @rdname gb_cache
 #' @name gb_cache
