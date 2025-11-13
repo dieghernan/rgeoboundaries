@@ -8,7 +8,7 @@
 #'
 #' The primary functions are:
 #' - `gb_set_cache()`: configure where files will be stored (temporary by
-#'   default)
+#'    default)
 #' - `gb_get_cache()`: get the active cache directory path
 #' - `gb_list_cache()`: list files present in the cache
 #' - `gb_clear_cache()`: remove all cached files (and optionally the
@@ -23,6 +23,7 @@
 #' configuration file under `tools::R_user_dir("rgeoboundaries", "config")`.
 #'
 #' @section Caching strategies:
+#'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
 #'   install).
 #' - For reproducible workflows, install a persistent cache with
@@ -35,7 +36,7 @@
 #'   empty, a temporary directory inside [base::tempdir()] is used.
 #' @param install logical. If `TRUE`, write the chosen path to the package
 #'   configuration directory so it is used in future sessions. Defaults to
-#'   FALSE. If path is omitted or is the [tempdir()], install is forced to
+#'   `FALSE`. If path is omitted or is the [tempdir()], install is forced to
 #'   `FALSE`.
 #' @param overwrite logical. If `TRUE` and `install = TRUE`, overwrite any
 #'   existing installed cache path. Defaults to `FALSE`.
@@ -44,10 +45,10 @@
 #'
 #' @return
 #' - `gb_set_cache()`: (invisibly) returns the cache directory path (character)
-#'   that was set.
+#'    that was set.
 #' - `gb_get_cache()`: returns the active cache directory path (character).
 #' - `gb_list_cache()`: returns a character vector with cached file names or
-#'   full paths depending on the `full_path` argument.
+#'    full paths depending on the `full_path` argument.
 #' - `gb_clear_cache()` and `gb_delete_from_cache()`: Called for their side
 #'    effects.
 #'
@@ -220,7 +221,7 @@ gb_get_cache <- function(create = deprecated()) {
 
 #' @rdname gb_cache
 #' @param full_path logical, if `TRUE` returns the full path all the cached
-#'   files. If `FALSE` just the base names is provided.
+#'    files. If `FALSE` just the base names is provided.
 #' @export
 gb_list_cache <- function(full_path = FALSE) {
   list.files(gb_get_cache(), full.names = full_path)
@@ -229,7 +230,7 @@ gb_list_cache <- function(full_path = FALSE) {
 
 #' @rdname gb_cache
 #' @inheritParams base::unlink
-#' @param clear_config  logical. If `TRUE`, will delete the configuration
+#' @param clear_config logical. If `TRUE`, will delete the configuration
 #'   folder of \pkg{\pkg{rgeoboundaries}}.
 #' @export
 gb_clear_cache <- function(force = TRUE, clear_config = FALSE, quiet = FALSE) {

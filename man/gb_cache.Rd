@@ -25,7 +25,7 @@ empty, a temporary directory inside \code{\link[base:tempfile]{base::tempdir()}}
 
 \item{install}{logical. If \code{TRUE}, write the chosen path to the package
 configuration directory so it is used in future sessions. Defaults to
-FALSE. If path is omitted or is the \code{\link[=tempdir]{tempdir()}}, install is forced to
+\code{FALSE}. If path is omitted or is the \code{\link[=tempdir]{tempdir()}}, install is forced to
 \code{FALSE}.}
 
 \item{overwrite}{logical. If \code{TRUE} and \code{install = TRUE}, overwrite any
