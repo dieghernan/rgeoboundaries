@@ -13,6 +13,7 @@
         -   `gb_clear_cache()`: remove all cached files (optionally removing the
             installed config).
         -   `gb_delete_from_cache()`: remove one or more specific cached files.
+-   Review and improve package testing and coverage.
 -   Improved package metadata:
     -   Updated `DESCRIPTION`.
         -   New maintainer: Diego Hernangomez
