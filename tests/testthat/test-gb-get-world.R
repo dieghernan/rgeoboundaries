@@ -6,7 +6,7 @@ test_that("sf output", {
     wrld <- gb_get_world()
   )
 
-  expect_all_true(sf::st_geometry_type(wrld) == "MULTIPOLYGON")
+  expect_true(all(sf::st_geometry_type(wrld) == "MULTIPOLYGON"))
   expect_true(sf::st_is_longlat(wrld))
   expect_s3_class(wrld, "sf")
   expect_gt(nrow(wrld), 150)
