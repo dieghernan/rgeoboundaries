@@ -165,8 +165,9 @@ rgbnd_dev_meta_query <- function(url) {
   up <- tb$sourceDataUpdateDate
   up <- trimws(gsub("Mon|Tue|Wed|Thu|Fri|Sat|Sun", "", up))
   mabb <- month.abb
-  mnum <- sprintf("%02d", seq_len(length(mabb)))
-  iter <- seq_len(length(mabb))
+  iter <- seq_along(mabb)
+  mnum <- sprintf("%02d", iter)
+
   for (i in iter) {
     up <- gsub(mabb[i], mnum[i], up)
   }
