@@ -16,19 +16,19 @@
       `gb_metadata()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_metadata()` instead.
 
----
+# gb_max_adm_lvl: Single country
 
     Code
-      db_old <- gb_max_adm_lvl(release_type = "gbHumanitarian")
+      db_old <- gb_max_adm_lvl(country = "Spain")
     Condition
       Warning:
       `gb_max_adm_lvl()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_max_adm_lvl()` instead.
 
-# gb_max_adm_lvl: Single country
+# gb_max_adm_lvl: All countries, NULL is ALL
 
     Code
-      db_old <- gb_max_adm_lvl(country = "Spain")
+      db_old <- gb_max_adm_lvl(release_type = "gbHumanitarian")
     Condition
       Warning:
       `gb_max_adm_lvl()` was deprecated in rgeoboundaries 2.0.0.

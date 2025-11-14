@@ -37,7 +37,7 @@ gb_get_max_adm_lvl <- function(
 ) {
   release_type <- match.arg(release_type)
   country <- rgbnd_dev_country2iso(country)
-  df <- gb_metadata(
+  df <- gb_get_metadata(
     country = country,
     adm_lvl = "all",
     release_type = release_type

@@ -17,13 +17,3 @@ test_that("Assert admin levels", {
     error = TRUE
   )
 })
-
-
-test_that("gb_max_lvl", {
-  md <- gb_max_adm_lvl(country = "Andorra")
-  expect_identical(md, c("Andorra" = 1L))
-
-  md_aus <- gb_max_adm_lvl(country = "Austria")
-
-  expect_identical(md_aus, c("Austria" = 4L))
-})

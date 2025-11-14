@@ -32,7 +32,7 @@ test_that("gb_max_adm_lvl: Single country", {
   expect_identical(db_old, db_new)
 })
 
-test_that("gb_metadata: All countries, NULL is ALL", {
+test_that("gb_max_adm_lvl: All countries, NULL is ALL", {
   skip_on_cran()
   skip_if_offline()
 
