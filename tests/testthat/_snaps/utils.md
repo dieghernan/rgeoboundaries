@@ -13,7 +13,7 @@
     Condition
       Error in `assert_adm_lvl()`:
       ! Not a valid `adm_lvl` level code ("10").
-      Accepted values are "adm1", "adm2", "adm3", "adm4", "adm5", "1", "2", "3", "4", and "5".
+      Accepted values are "all", "adm0", "adm1", "adm2", "adm3", "adm4", "adm5", "0", "1", "2", "3", "4", and "5".
 
 # Utils names
 

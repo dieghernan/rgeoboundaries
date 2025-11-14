@@ -28,22 +28,6 @@ country_to_iso3 <- function(country) {
   }
 }
 
-#' @noRd
-assert_adm_lvl <- function(adm_lvl, dict = paste0("adm", 0:5)) {
-  if (length(adm_lvl) >= 2) {
-    stop("You can't mix different administrative levels!")
-  }
-  cond <- tolower(adm_lvl) %in% dict
-  if (!cond) {
-    stop(
-      paste(
-        "Not a valid ADMIN level code! Use",
-        paste(dict, collapse = ", "),
-      ),
-      call. = FALSE
-    )
-  }
-}
 
 #' @noRd
 create_query <- function(x) {
@@ -149,34 +133,6 @@ xget <- function(urls) {
 #' @noRd
 gb_meta <- memoise(.gb_meta)
 
-#' Get the highest administrative level available for a given country
-#'
-#' Get the highest administrative level available for a given country
-#'
-#' @importFrom countrycode countrycode
-#'
-#' @param country characher; a vector of country names or iso3 country codes.
-#' @param release_type character; This is one of gbOpen, gbHumanitarian, or gbAuthoritative.
-#' For most users, we suggest using gbOpen, as it is CC-BY 4.0 compliant, and can be used
-#' for most purposes so long as attribution is provided. gbHumanitarian files are
-#' mirrored from UN OCHA, but may have less open licensure. gbAuthoritative files are
-#' mirrored from UN SALB, and cannot be used for commerical purposes,
-#' but are verified through in-country processes. Default to gbOpen.
-#' @return a data.frame with the country names and corresponding highest administrative level
-#' @export
-gb_max_adm_lvl <- function(
-  country = NULL,
-  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative")
-) {
-  release_type <- match.arg(release_type)
-  ord <- country_to_iso3(country)
-  df <- gb_meta(country = country, adm_lvl = "all", release_type = release_type)
-  res <- tapply(df$boundaryType, df$boundaryISO, max)
-  res <- res[toupper(ord)]
-  res <- as.integer(gsub("[^0-5]", "", res))
-  names(res) <- country
-  res
-}
 
 #' Get download link for the zip with data for a country, administrative level, type of data and version
 #'
@@ -219,15 +175,14 @@ get_adm_shp_link <- function(
 
   destfiles <- file.path(temp_dir, basename(urls))
   if (!all(file.exists(destfiles)) | isTRUE(force)) {
-    sys_timeout <- getOption('timeout')
+    sys_timeout <- getOption("timeout")
     options(timeout = 600) # Set custom timeout duration
     lapply(seq_along(urls), \(i) {
       download.file(urls[i], destfile = destfiles[i], quiet = quiet)
     })
     options(timeout = sys_timeout)
   }
-  files <- switch(
-    type,
+  files <- switch(type,
     unsimplified = gsub("-all.zip$", ".shp", basename(destfiles)),
     simplified = gsub("-all.zip$", "_simplified.shp", basename(destfiles))
   )
@@ -250,8 +205,7 @@ get_cgaz_shp_link <- function(adm_lvl = "adm0", quiet = TRUE, force = FALSE) {
 
   adm_lvl <- tolower(adm_lvl)
   base_url <- "https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/"
-  url_root <- switch(
-    adm_lvl,
+  url_root <- switch(adm_lvl,
     adm0 = paste0(base_url, "geoBoundariesCGAZ_ADM0.zip"),
     adm1 = paste0(base_url, "geoBoundariesCGAZ_ADM1.zip"),
     adm2 = paste0(base_url, "geoBoundariesCGAZ_ADM2.zip")
@@ -265,16 +219,10 @@ get_cgaz_shp_link <- function(adm_lvl = "adm0", quiet = TRUE, force = FALSE) {
   urls <- url_root
   destfiles <- file.path(temp_dir, basename(urls))
   if (!all(file.exists(destfiles)) | isTRUE(force)) {
-    sys_timeout <- getOption('timeout')
+    sys_timeout <- getOption("timeout")
     options(timeout = 600) # Set custom timeout duration
     download.file(urls, destfile = destfiles, quiet = quiet)
     options(timeout = sys_timeout)
   }
   path.expand(destfiles)
-}
-
-#' @noRd
-ask_permission <- function(msg, default = TRUE) {
-  ok <- utils::askYesNo(msg, default = default)
-  isTRUE(ok)
 }

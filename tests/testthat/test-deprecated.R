@@ -1,4 +1,4 @@
-test_that("Single country", {
+test_that("gb_metadata: Single country", {
   skip_on_cran()
   skip_if_offline()
 
@@ -7,7 +7,7 @@ test_that("Single country", {
   expect_identical(db_old, db_new)
 })
 
-test_that("All countries, NULL is ALL", {
+test_that("gb_metadata: All countries, NULL is ALL", {
   skip_on_cran()
   skip_if_offline()
 
@@ -18,6 +18,30 @@ test_that("All countries, NULL is ALL", {
   db_new <- gb_get_metadata(
     country = "ALL",
     adm_lvl = 1,
+    release_type = "gbHumanitarian"
+  )
+  expect_identical(db_old, db_new)
+})
+
+test_that("gb_max_adm_lvl: Single country", {
+  skip_on_cran()
+  skip_if_offline()
+
+  expect_snapshot(db_old <- gb_max_adm_lvl(country = "Spain"))
+  db_new <- gb_get_max_adm_lvl(country = "Spain")
+  expect_identical(db_old, db_new)
+})
+
+test_that("gb_metadata: All countries, NULL is ALL", {
+  skip_on_cran()
+  skip_if_offline()
+
+  # All for specific release type
+  expect_snapshot(
+    db_old <- gb_max_adm_lvl(release_type = "gbHumanitarian")
+  )
+  db_new <- gb_get_max_adm_lvl(
+    country = "ALL",
     release_type = "gbHumanitarian"
   )
   expect_identical(db_old, db_new)

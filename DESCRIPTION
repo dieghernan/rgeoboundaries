@@ -32,8 +32,10 @@ Imports:
     jsonlite,
     lifecycle,
     memoise,
-    sf (>= 1.0.0)
+    sf (>= 1.0.0),
+    utils
 Suggests:
+    ggplot2,
     testthat (>= 3.0.0),
     tibble
 Config/testthat/edition: 3

@@ -1,6 +1,6 @@
 assert_adm_lvl <- function(
   adm_lvl,
-  dict = c(paste0("adm", seq_len(5)), seq_len(5))
+  dict = c("all", paste0("adm", 0:5), 0:5)
 ) {
   if (length(adm_lvl) > 1) {
     cli::cli_abort(
@@ -74,4 +74,59 @@ rgbnd_dev_country2iso <- function(names, out = "iso3c") {
   }
 
   outnames2
+}
+
+rgbnd_dev_sf_helper <- function(data_sf) {
+  # From sf/read.R - https://github.com/r-spatial/sf/blob/master/R/read.R
+  set_utf8 <- function(x) {
+    n <- names(x)
+    Encoding(n) <- "UTF-8"
+    to_utf8 <- function(x) {
+      if (is.character(x)) {
+        Encoding(x) <- "UTF-8"
+      }
+      x
+    }
+    structure(lapply(x, to_utf8), names = n)
+  }
+  # end
+
+  # To UTF-8
+  names <- names(data_sf)
+  g <- sf::st_geometry(data_sf)
+  # Everything as MULTIPOLYGON
+
+  geomtype <- sf::st_geometry_type(g)
+  # nocov start
+  if (any(geomtype == "POLYGON")) {
+    g <- sf::st_cast(g, "MULTIPOLYGON")
+  }
+  # nocov end
+
+  which_geom <- which(vapply(
+    data_sf,
+    function(f) {
+      inherits(f, "sfc")
+    },
+    TRUE
+  ))
+
+  nm <- names(which_geom)
+
+  data_utf8 <- as.data.frame(
+    set_utf8(sf::st_drop_geometry(data_sf)),
+    stringsAsFactors = FALSE
+  )
+  data_utf8 <- dplyr::as_tibble(data_utf8)
+
+  # Regenerate with right encoding
+  data_sf <- sf::st_as_sf(data_utf8, g)
+
+  # Rename geometry to original value
+  newnames <- names(data_sf)
+  newnames[newnames == "g"] <- nm
+  colnames(data_sf) <- newnames
+  data_sf <- sf::st_set_geometry(data_sf, nm)
+
+  data_sf
 }

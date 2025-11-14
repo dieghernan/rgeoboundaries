@@ -22,7 +22,7 @@ names or ISO3 country codes. See also \code{\link[countrycode:countrycode]{count
 available boundaries) or the ADM level (\code{"adm0"} is the country boundary,
 \code{"adm1"} is the first level of sub national boundaries, \code{"adm2"} is the
 second level and so on. Upper case version (\code{"ADM1"}) and the number of
-the level (\verb{1,2,3}) and also accepted.}
+the level (\verb{1, 2, 3, 4, 5}) and also accepted.}
 
 \item{release_type}{One of \code{"gbOpen"}, \code{"gbHumanitarian"},
 \code{"gbAuthoritative"}. For most users, we suggest using \code{"gbOpen"}
@@ -111,5 +111,9 @@ library(dplyr)
 gb_get_metadata(adm_lvl = "ADM4") \%>\%
   glimpse()
 \dontshow{\}) # examplesIf}
+}
+\seealso{
+Other metadata functions: 
+\code{\link{gb_get_max_adm_lvl}()}
 }
 \concept{metadata functions}

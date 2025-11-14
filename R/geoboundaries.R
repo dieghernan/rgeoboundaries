@@ -103,8 +103,7 @@ geoboundaries <- function(
   type <- match.arg(type)
   type <- tolower(type)
 
-  type <- switch(
-    type,
+  type <- switch(type,
     hpscu = "unsimplified",
     hpscgs = "unsimplified",
     sscu = "simplified",

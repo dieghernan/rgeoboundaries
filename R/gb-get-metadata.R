@@ -7,23 +7,7 @@
 #'
 #' @family metadata functions
 #'
-#' @param country A character vector of country codes. It could be either
-#'   `"all"` (that would return the data for all countries), a vector of country
-#'   names or ISO3 country codes. See also [countrycode::countrycode()].
-#' @param adm_lvl Type of boundary Accepted values are `"all"` (all
-#'   available boundaries) or the ADM level (`"adm0"` is the country boundary,
-#'   `"adm1"` is the first level of sub national boundaries, `"adm2"` is the
-#'   second level and so on. Upper case version (`"ADM1"`) and the number of
-#'   the level (`1,2,3`) and also accepted.
-#' @param release_type One of `"gbOpen"`, `"gbHumanitarian"`,
-#'   `"gbAuthoritative"`. For most users, we suggest using `"gbOpen"`
-#'   (the default), as it is CC-BY 4.0 compliant and can be used for most
-#'   purposes so long as attribution is provided:
-#'  - `"gbHumanitarian"` files are mirrored from
-#'    [UN OCHA](https://www.unocha.org/), but may have less open licensure.
-#'  - `"gbAuthoritative"` files are mirrored from
-#'    [UN SALB](https://salb.un.org/en), and cannot  be used for commercial
-#'    purposes, but are verified through in-country processes.
+#' @inheritParams gb_get
 #'
 #' @return
 #' A tibble with class [`tbl_df`][tibble::tbl_df-class] with columns:
@@ -106,10 +90,7 @@ gb_get_metadata <- function(
 ) {
   # Prepare inputs
   release_type <- match.arg(release_type)
-  adm_lvl <- assert_adm_lvl(
-    adm_lvl,
-    dict = c("all", paste0("adm", 0:5), 0:5)
-  )
+  adm_lvl <- assert_adm_lvl(adm_lvl)
 
   country <- rgbnd_dev_country2iso(country)
 

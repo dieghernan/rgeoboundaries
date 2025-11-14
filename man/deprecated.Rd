@@ -3,11 +3,17 @@
 \name{deprecated}
 \alias{deprecated}
 \alias{gb_metadata}
+\alias{gb_max_adm_lvl}
 \title{Deprecated and renamed functions in \pkg{rgeoboundaries} 2.0.0}
 \usage{
 gb_metadata(
   country = NULL,
   adm_lvl = "all",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative")
+)
+
+gb_max_adm_lvl(
+  country = NULL,
   release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative")
 )
 }
@@ -20,7 +26,7 @@ names or ISO3 country codes. See also \code{\link[countrycode:countrycode]{count
 available boundaries) or the ADM level (\code{"adm0"} is the country boundary,
 \code{"adm1"} is the first level of sub national boundaries, \code{"adm2"} is the
 second level and so on. Upper case version (\code{"ADM1"}) and the number of
-the level (\verb{1,2,3}) and also accepted.}
+the level (\verb{1, 2, 3, 4, 5}) and also accepted.}
 
 \item{release_type}{One of \code{"gbOpen"}, \code{"gbHumanitarian"},
 \code{"gbAuthoritative"}. For most users, we suggest using \code{"gbOpen"}
@@ -34,6 +40,10 @@ purposes so long as attribution is provided:
 purposes, but are verified through in-country processes.
 }}
 }
+\value{
+These functions are re-directed to their replacement, providing the same
+output.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
@@ -41,8 +51,17 @@ purposes, but are verified through in-country processes.
 every function has a \code{object_verb()} naming scheme and avoiding magical
 defaults.
 \itemize{
-\item \code{gb_metadata()} -> \code{gb_get_metadata()}
+\item \code{gb_metadata()} -> \code{\link[=gb_get_metadata]{gb_get_metadata()}}
+\item \code{gb_max_adm_lvl()} -> \code{\link[=gb_get_max_adm_lvl]{gb_get_max_adm_lvl()}}
 }
+
+These functions are likely to be removed in the future.
+}
+\examples{
+\dontshow{if (httr2::is_online()) withAutoprint(\{ # examplesIf}
+# Show deprecation messages
+gb_metadata()
+\dontshow{\}) # examplesIf}
 }
 \references{
 rOpenSci, Anderson B, Chamberlain S, DeCicco L, Gustavsen J, Krystalli A,

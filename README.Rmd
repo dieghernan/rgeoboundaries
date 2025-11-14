@@ -66,8 +66,9 @@ and use ISO3 code too
 ```{r plot_egy}
 egy <- gb_adm1("EGY")
 plot(st_geometry(egy),
-     col = rgb(red = 1, green = 0, blue = 0, alpha = 0.5),
-     axes = TRUE, graticule = TRUE)
+  col = rgb(red = 1, green = 0, blue = 0, alpha = 0.5),
+  axes = TRUE, graticule = TRUE
+)
 ```
 
 In order to access the global administrative zones, you just need to skip the
@@ -78,8 +79,9 @@ world <- gb_adm1()
 world_lambert <- st_transform(world, "+proj=laea +x_0=0 +y_0=0 +lon_0=0 +lat_0=0")
 par(bty = "n")
 plot(st_geometry(world_lambert),
-     col = "#E39d57",
-     graticule = TRUE, lwd = 0.3)
+  col = "#E39d57",
+  graticule = TRUE, lwd = 0.3
+)
 ```
 
 Finally, metadata for each country and administrative level are also available.

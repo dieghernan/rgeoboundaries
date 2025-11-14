@@ -32,6 +32,8 @@
 #' - For reproducible workflows, install a persistent cache with
 #'   `gb_set_cache(path, install = TRUE)` that would be kept across **R**
 #'   sessions.
+#' - For caching specific files, use the `path` argument in the
+#'   corresponding function. See [gb_get()].
 #'
 #' @rdname gb_cache
 #' @name gb_cache
@@ -44,8 +46,7 @@
 #'   `FALSE`.
 #' @param overwrite logical. If `TRUE` and `install = TRUE`, overwrite any
 #'   existing installed cache path. Defaults to `FALSE`.
-#' @param quiet logical. If `TRUE` suppresses informational messages. Defaults
-#'   to `FALSE`.
+#' @inheritParams gb_get
 #'
 #' @return
 #' - `gb_set_cache()`: (invisibly) returns the cache directory path (character)

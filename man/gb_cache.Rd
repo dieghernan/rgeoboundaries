@@ -31,8 +31,7 @@ configuration directory so it is used in future sessions. Defaults to
 \item{overwrite}{logical. If \code{TRUE} and \code{install = TRUE}, overwrite any
 existing installed cache path. Defaults to \code{FALSE}.}
 
-\item{quiet}{logical. If \code{TRUE} suppresses informational messages. Defaults
-to \code{FALSE}.}
+\item{quiet}{logical. If \code{TRUE} suppresses informational messages.}
 
 \item{create}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}.}
 
@@ -92,6 +91,8 @@ install).
 \item For reproducible workflows, install a persistent cache with
 \code{gb_set_cache(path, install = TRUE)} that would be kept across \strong{R}
 sessions.
+\item For caching specific files, use the \code{path} argument in the
+corresponding function. See \code{\link[=gb_get]{gb_get()}}.
 }
 }
 
