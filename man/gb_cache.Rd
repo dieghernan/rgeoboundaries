@@ -67,12 +67,12 @@ the whole cache.
 The primary functions are:
 \itemize{
 \item \code{gb_set_cache()}: configure where files will be stored (temporary by
-default)
-\item \code{gb_get_cache()}: get the active cache directory path
-\item \code{gb_list_cache()}: list files present in the cache
+default).
+\item \code{gb_get_cache()}: get the active cache directory path.
+\item \code{gb_list_cache()}: list files present in the cache.
 \item \code{gb_clear_cache()}: remove all cached files (and optionally the
-installed config)
-\item \code{gb_delete_from_cache()}: remove one or more specific cached files
+installed config).
+\item \code{gb_delete_from_cache()}: remove one or more specific cached files.
 }
 }
 \details{
@@ -135,3 +135,4 @@ identical(my_cache, gb_get_cache())
 \seealso{
 \code{\link[tools:userdir]{tools::R_user_dir()}}, \code{\link[base:tempfile]{base::tempdir()}}
 }
+\concept{cache utilities}

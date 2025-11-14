@@ -23,20 +23,20 @@ BugReports: https://github.com/wmgeolab/rgeoboundaries/issues
 Depends:
     R (>= 4.1)
 Imports:
+    cli,
     countrycode (>= 1.2.0),
     crul (>= 1.4.0),
-    cli,
+    dplyr,
     glue,
+    httr2,
     jsonlite,
     lifecycle,
     memoise,
     sf (>= 1.0.0)
 Suggests:
-    covr,
-    knitr,
-    rmarkdown,
-    roxygen2,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tibble
+Config/testthat/edition: 3
 Copyright: Attribution required. See file COPYRIGHTS for specific
     provisions.
 Encoding: UTF-8
@@ -45,4 +45,3 @@ RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: Data Access
 X-schema.org-keywords: geoboundaries, boundaries, gis, map, geographic,
     data, spatial, dataset
-Config/testthat/edition: 3

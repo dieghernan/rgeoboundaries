@@ -1,5 +1,18 @@
 # rgeoboundaries (development version)
 
+## Breaking changes
+
+The API has been completely reviewed to provide more clarity on functions naming
+and to facilitate internal maintenance. Most old functions [has been
+deprecated](https://lifecycle.r-lib.org/articles/stages.html#deprecated) and it
+would warn when used, providing advice on the replacement function. Internally,
+the calls to these functions would be redirected to the corresponding
+replacement. Renamed functions:
+
+-   `gb_metadata()` -\> `gb_get_metadata()`.
+
+## Other changes
+
 -   Review of cache management:
     -   By default the cache directory is under `base::tempdir()`. You can
         change it:

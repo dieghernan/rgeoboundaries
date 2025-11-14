@@ -8,13 +8,14 @@
 #'
 #' The primary functions are:
 #' - `gb_set_cache()`: configure where files will be stored (temporary by
-#'    default)
-#' - `gb_get_cache()`: get the active cache directory path
-#' - `gb_list_cache()`: list files present in the cache
+#'    default).
+#' - `gb_get_cache()`: get the active cache directory path.
+#' - `gb_list_cache()`: list files present in the cache.
 #' - `gb_clear_cache()`: remove all cached files (and optionally the
-#'    installed config)
-#' - `gb_delete_from_cache()`: remove one or more specific cached files
+#'    installed config).
+#' - `gb_delete_from_cache()`: remove one or more specific cached files.
 #'
+#' @family cache utilities
 #' @details
 #' By default, when no cache `path` is set the package uses a folder inside
 #' [base::tempdir()] (so files are temporary and are removed when the R session
