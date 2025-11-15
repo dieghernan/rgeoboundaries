@@ -240,7 +240,7 @@
   },
   "applicationCategory": "DataAccess",
   "keywords": ["geoboundaries", "boundaries", "gis", "map", "geographic", "data", "spatial", "dataset"],
-  "fileSize": "280.107KB",
+  "fileSize": "280.62KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -361,5 +361,6 @@
   ],
   "releaseNotes": "https://github.com/wmgeolab/rgeoboundaries/blob/main/NEWS.md",
   "readme": "https://github.com/wmgeolab/rgeoboundaries/blob/master/README.md",
+  "contIntegration": ["https://github.com/dieghernan/rgeoboundaries/actions/workflows/check-full.yaml", "https://github.com/dieghernan/rgeoboundaries/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/dieghernan/rgeoboundaries"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }

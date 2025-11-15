@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/dieghernan/rgeoboundaries/actions/workflows/check-full.yaml/badge.svg)](https://github.com/dieghernan/rgeoboundaries/actions/workflows/check-full.yaml)
+[![R-hub](https://github.com/dieghernan/rgeoboundaries/actions/workflows/rhub.yaml/badge.svg)](https://github.com/dieghernan/rgeoboundaries/actions/workflows/rhub.yaml)
+[![codecov](https://codecov.io/gh/dieghernan/rgeoboundaries/graph/badge.svg)](https://app.codecov.io/gh/dieghernan/rgeoboundaries)
+[![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/rgeoboundaries/badge)](https://www.codefactor.io/repository/github/dieghernan/rgeoboundaries)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -142,20 +146,14 @@ details.
   your research or project, a citation and acknowledgement is greatly
   appreciated.
 
-## Citation
+## How to cite
 
 If you are using this package in your analysis, please cite the original
 geoBoundaries work:
 
-<p>
-
-Runfola D, Anderson A, Baier H, Crittenden M, Dowker E, Fuhrig S,
-Goodman S, Grimsley G, Layko R, Melville G, Mulder M, Oberman R,
-Panganiban J, Peck A, Seitz L, Shea S, Slevin H, Youngerman R, Hobbs L
-(2020). “geoBoundaries: A global database of political administrative
-boundaries.” <em>PLoS ONE</em>, <b>15</b>(4), 1-9.
-<a href="https://doi.org/10.1371/journal.pone.0231866">doi:10.1371/journal.pone.0231866</a>.
-</p>
+> Runfola, D. et al. (2020) geoBoundaries: A global database of
+> political administrative boundaries. *PLoS ONE* 15(4): e0231866.
+> <https://doi.org/10.1371/journal.pone.0231866>
 
 A BibTeX entry for LaTeX users:
 

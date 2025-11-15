@@ -11,7 +11,7 @@
 \alias{gb_adm5}
 \alias{gb_metadata}
 \alias{gb_max_adm_lvl}
-\title{Deprecated and renamed functions in \CRANpkg{rgeoboundaries} 2.0.0}
+\title{Deprecated and renamed functions in \pkg{rgeoboundaries}}
 \usage{
 geoboundaries(
   country = NULL,
