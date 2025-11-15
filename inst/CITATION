@@ -1,6 +1,6 @@
 bibentry(
   "Article",
-  header = "Please cite also:",
+  key = "10.1371/journal.pone.0231866",
   doi = "10.1371/journal.pone.0231866",
   author = c(
     person(
