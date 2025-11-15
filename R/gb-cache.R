@@ -8,13 +8,14 @@
 #'
 #' The primary functions are:
 #' - `gb_set_cache()`: configure where files will be stored (temporary by
-#'    default)
-#' - `gb_get_cache()`: get the active cache directory path
-#' - `gb_list_cache()`: list files present in the cache
+#'    default).
+#' - `gb_get_cache()`: get the active cache directory path.
+#' - `gb_list_cache()`: list files present in the cache.
 #' - `gb_clear_cache()`: remove all cached files (and optionally the
-#'    installed config)
-#' - `gb_delete_from_cache()`: remove one or more specific cached files
+#'    installed config).
+#' - `gb_delete_from_cache()`: remove one or more specific cached files.
 #'
+#' @family cache utilities
 #' @details
 #' By default, when no cache `path` is set the package uses a folder inside
 #' [base::tempdir()] (so files are temporary and are removed when the R session
@@ -31,6 +32,8 @@
 #' - For reproducible workflows, install a persistent cache with
 #'   `gb_set_cache(path, install = TRUE)` that would be kept across **R**
 #'   sessions.
+#' - For caching specific files, use the `path` argument in the
+#'   corresponding function. See [gb_get()].
 #'
 #' @rdname gb_cache
 #' @name gb_cache
@@ -43,8 +46,7 @@
 #'   `FALSE`.
 #' @param overwrite logical. If `TRUE` and `install = TRUE`, overwrite any
 #'   existing installed cache path. Defaults to `FALSE`.
-#' @param quiet logical. If `TRUE` suppresses informational messages. Defaults
-#'   to `FALSE`.
+#' @inheritParams gb_get
 #'
 #' @return
 #' - `gb_set_cache()`: (invisibly) returns the cache directory path (character)

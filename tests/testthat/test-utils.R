@@ -1,11 +1,3 @@
-test_that("Convert country codes", {
-  esp <- country_to_iso3("Spain")
-  expect_identical(esp, "ESP")
-  expect_identical(country_to_iso3("kosovo"), "XKX")
-  country_to_iso3(c("Spain", "Kosovo"))
-  expect_snapshot(country_to_iso3(c("Spain", "Kosovo", "Murcia")), error = TRUE)
-})
-
 test_that("Assert admin levels", {
   expect_snapshot(
     assert_adm_lvl(1:2),
@@ -16,26 +8,89 @@ test_that("Assert admin levels", {
     assert_adm_lvl(adm_lvl = 10),
     error = TRUE
   )
+
+  expect_identical(
+    assert_adm_lvl(1),
+    "ADM1"
+  )
+
+  expect_identical(
+    assert_adm_lvl("adm5"),
+    "ADM5"
+  )
+
+  expect_identical(
+    assert_adm_lvl("all", dict = "all"),
+    "ALL"
+  )
+
+  # Ignore case, this feature is not documented
+  expect_identical(
+    assert_adm_lvl("ADM5"),
+    "ADM5"
+  )
+  expect_identical(
+    assert_adm_lvl("ALL", dict = "all"),
+    "ALL"
+  )
+
+  # Test integers
+  vec_integers <- vapply(0:5, assert_adm_lvl, FUN.VALUE = character(1))
+  expect_identical(
+    vec_integers,
+    paste0("ADM", 0:5)
+  )
 })
 
-test_that("gb_metadata", {
-  md <- gb_metadata(country = "Spain", adm_lvl = 1)
-  expect_s3_class(md, "data.frame")
+test_that("Utils names", {
+  skip_on_cran()
 
-  md2 <- gb_metadata(country = c("Spain", "Germany"), adm_lvl = 1)
-  expect_s3_class(md2, "data.frame")
-  expect_gt(nrow(md2), nrow(md))
-
-  md_sev <- gb_metadata(country = "Spain", adm_lvl = "ALL")
-  expect_s3_class(md_sev, "data.frame")
-  expect_gt(nrow(md_sev), nrow(md))
+  expect_snapshot(rgbnd_dev_country2iso(c("Espagne", "United Kingdom")))
+  expect_error(rgbnd_dev_country2iso("UA"))
+  expect_snapshot(rgbnd_dev_country2iso(
+    c("ESP", "POR", "RTA", "USA")
+  ))
+  expect_snapshot(rgbnd_dev_country2iso(c("ESP", "Alemania")))
 })
 
-test_that("gb_max_lvl", {
-  md <- gb_max_adm_lvl(country = "Andorra")
-  expect_identical(md, c("Andorra" = 1L))
+test_that("Problematic names", {
+  expect_snapshot(rgbnd_dev_country2iso(c("Espagne", "Antartica")))
+  expect_snapshot(rgbnd_dev_country2iso(c("spain", "antartica")))
 
-  md_aus <- gb_max_adm_lvl(country = "Austria")
+  # Special case for Kosovo
+  expect_snapshot(rgbnd_dev_country2iso(c("Spain", "Kosovo", "Antartica")))
+  expect_snapshot(rgbnd_dev_country2iso(c("ESP", "XKX", "DEU")))
+  expect_snapshot(
+    rgbnd_dev_country2iso(c("Spain", "Rea", "Kosovo", "Antartica", "Murcua"))
+  )
 
-  expect_identical(md_aus, c("Austria" = 4L))
+  expect_snapshot(
+    rgbnd_dev_country2iso("Kosovo")
+  )
+  expect_snapshot(
+    rgbnd_dev_country2iso("XKX")
+  )
+  full <- rgbnd_dev_country2iso(c("Antarctica", "Kosovo"))
+  expect_identical(full, c("ATA", "XKX"))
+})
+
+test_that("Test full name conversion", {
+  skip_on_cran()
+  skip_if_offline()
+  aa <- rgbnd_dev_country2iso(c("all", "ESP"))
+  bb <- rgbnd_dev_country2iso(c("ALL", "Italy"))
+  expect_identical(aa, "ALL")
+  expect_identical(aa, bb)
+  allnames <- gb_get_metadata(adm_lvl = "ADM0")
+  nm <- unique(allnames$boundaryName)
+  expect_silent(nm2 <- rgbnd_dev_country2iso(nm))
+  isos <- unique(allnames$boundaryISO)
+  expect_silent(isos2 <- rgbnd_dev_country2iso(isos))
+  expect_identical(length(nm), length(isos2))
+  expect_identical(length(nm), length(nm2))
+})
+
+test_that("Test mixed countries", {
+  expect_silent(cnt <- rgbnd_dev_country2iso(c("Germany", "USA")))
+  expect_identical(cnt, c("DEU", "USA"))
 })

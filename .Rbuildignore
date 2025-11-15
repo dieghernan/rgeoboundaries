@@ -26,3 +26,4 @@
 ^rgeoboundaries.*\.tgz$
 ^[.]?air[.]toml$
 ^\.vscode$
+^dev$

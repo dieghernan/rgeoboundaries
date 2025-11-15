@@ -77,3 +77,36 @@ test_that("Delete cache", {
 test_that("Deprecations", {
   expect_snapshot(p <- gb_get_cache(create = TRUE))
 })
+
+test_that("Downloaded data are cached", {
+  skip_on_cran()
+  skip_if_offline()
+
+  expect_silent(current <- gb_get_cache())
+
+  # Set a temp cache dir
+
+  testdir <- expect_silent(gb_set_cache(
+    file.path(tempdir(), "download_test"),
+    quiet = TRUE
+  ))
+
+  expect_identical(gb_list_cache(full_path = TRUE), character(0))
+  gb_clear_cache()
+  expect_length(gb_list_cache(), 0)
+  p <- gb_get(country = "Andorra")
+  expect_length(gb_list_cache(), 1)
+
+  # Clear cache and restore
+  expect_message(gb_clear_cache(clear_config = FALSE, quiet = FALSE))
+
+  # Cache dir should be deleted now
+  expect_false(dir.exists(testdir))
+
+  # Restore cache
+  expect_message(gb_set_cache(current, quiet = FALSE))
+  expect_silent(gb_set_cache(current, quiet = TRUE))
+  expect_equal(current, Sys.getenv("RGEOBOUNDARIES_CACHE_DIR"))
+  expect_equal(current, gb_get_cache())
+  expect_true(dir.exists(current))
+})
