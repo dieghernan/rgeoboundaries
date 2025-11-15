@@ -44,9 +44,11 @@ Cache handling has been fully reviewed:
 - By default, the cache directory is located under
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).  
   You can change it using:
-  - Temporary cache (single R session): `gb_set_cache(path)`
+  - Temporary cache (single R session): `gb_set_cache(path)`.
   - Persistent cache across R sessions:
-    `gb_set_cache(path, install = TRUE)`
+    `gb_set_cache(path, install = TRUE)`.
+  - Specific files, use the `path` argument in the corresponding
+    function e.g. `gb_get(..., path = path)`.
 
 Redesigned cache-management functions:
 
@@ -77,9 +79,9 @@ Redesigned cache-management functions:
 
 - `inst/CITATION` (using
   [`bibentry()`](https://rdrr.io/r/utils/bibentry.html) from
-  <https://doi.org/10.1371/journal.pone.0231866>)
-- `inst/COPYRIGHTS`
-- `inst/REFERENCES.bib`
+  <https://doi.org/10.1371/journal.pone.0231866>).
+- `inst/COPYRIGHTS`.
+- `inst/REFERENCES.bib`.
 
 #### Project infrastructure and clean-up
 

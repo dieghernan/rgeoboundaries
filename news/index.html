@@ -61,10 +61,9 @@
 <p>Cache handling has been fully reviewed:</p>
 <ul><li>By default, the cache directory is located under <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>.<br>
 You can change it using:
-<ul><li>Temporary cache (single R session): <code>gb_set_cache(path)</code>
-</li>
-<li>Persistent cache across R sessions: <code>gb_set_cache(path, install = TRUE)</code>
-</li>
+<ul><li>Temporary cache (single R session): <code>gb_set_cache(path)</code>.</li>
+<li>Persistent cache across R sessions: <code>gb_set_cache(path, install = TRUE)</code>.</li>
+<li>Specific files, use the <code>path</code> argument in the corresponding function e.g. <code>gb_get(..., path = path)</code>.</li>
 </ul></li>
 </ul><p>Redesigned cache-management functions:</p>
 <ul><li>
@@ -94,9 +93,11 @@ You can change it using:
 <div class="section level4">
 <h4 id="new-files-added-development-version">New files added<a class="anchor" aria-label="anchor" href="#new-files-added-development-version"></a></h4>
 <ul><li>
-<code>inst/CITATION</code> (using <code><a href="https://rdrr.io/r/utils/bibentry.html" class="external-link">bibentry()</a></code> from <a href="https://doi.org/10.1371/journal.pone.0231866" class="external-link uri">https://doi.org/10.1371/journal.pone.0231866</a>)</li>
-<li><code>inst/COPYRIGHTS</code></li>
-<li><code>inst/REFERENCES.bib</code></li>
+<code>inst/CITATION</code> (using <code><a href="https://rdrr.io/r/utils/bibentry.html" class="external-link">bibentry()</a></code> from <a href="https://doi.org/10.1371/journal.pone.0231866" class="external-link uri">https://doi.org/10.1371/journal.pone.0231866</a>).</li>
+<li>
+<code>inst/COPYRIGHTS</code>.</li>
+<li>
+<code>inst/REFERENCES.bib</code>.</li>
 </ul></div>
 <div class="section level4">
 <h4 id="project-infrastructure-and-clean-up-development-version">Project infrastructure and clean-up<a class="anchor" aria-label="anchor" href="#project-infrastructure-and-clean-up-development-version"></a></h4>
