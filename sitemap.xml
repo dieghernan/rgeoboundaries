@@ -6,10 +6,13 @@
 <url><loc>/LICENSE-text.html</loc></url>
 <url><loc>/LICENSE.html</loc></url>
 <url><loc>/news/index.html</loc></url>
+<url><loc>/reference/deprecated.html</loc></url>
 <url><loc>/reference/gb_cache.html</loc></url>
-<url><loc>/reference/gb_max_adm_lvl.html</loc></url>
-<url><loc>/reference/gb_metadata.html</loc></url>
-<url><loc>/reference/geoboundaries.html</loc></url>
+<url><loc>/reference/gb_get.html</loc></url>
+<url><loc>/reference/gb_get_adm.html</loc></url>
+<url><loc>/reference/gb_get_max_adm_lvl.html</loc></url>
+<url><loc>/reference/gb_get_metadata.html</loc></url>
+<url><loc>/reference/gb_get_world.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/rgeoboundaries-package.html</loc></url>
 </urlset>

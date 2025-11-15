@@ -49,12 +49,38 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="rgeoboundaries-development-version">rgeoboundaries (development version)<a class="anchor" aria-label="anchor" href="#rgeoboundaries-development-version"></a></h2>
-<ul><li>Review of cache management:
-<ul><li>By default the cache directory is under <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>. You can change it:
-<ul><li>Temporary cache (single <strong>R</strong> session): <code>gb_set_cache(path)</code>.</li>
-<li>Persistent cache across <strong>R</strong> sessions: <code>gb_set_cache(path, install = TRUE)</code>.</li>
+<div class="section level3">
+<h3 id="breaking-changes-development-version">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<p>The API has been completely revised to provide clearer function names and improve internal maintainability. Most old functions <a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link">have been deprecated</a> will issue a warning when used, providing guidance on the appropriate replacement. Internally, calls to deprecated functions are redirected to their corresponding replacements.</p>
+<p>Additionally, the former <a href="https://design.tidyverse.org/def-magical.html" class="external-link">magical default</a> <code>country = NULL</code> argument (which returned the global composite dataset) has been deprecated. It has been replaced with a dedicated function: <code><a href="../reference/gb_get_world.html">gb_get_world()</a></code>.</p>
+<p>Renamed functions:</p>
+<ul><li>
+<code><a href="../reference/deprecated.html">geoboundaries()</a></code> -&gt; <code><a href="../reference/gb_get.html">gb_get()</a></code> and <code><a href="../reference/gb_get_world.html">gb_get_world()</a></code>. The latter retrieves the composite global dataset, and per-country calls can be generated on the fly from this dataset.</li>
+<li>
+<code>gb_adm*</code> family -&gt; <code>gb_get_adm*</code> family.</li>
+<li>
+<code><a href="../reference/deprecated.html">gb_metadata()</a></code> -&gt; <code><a href="../reference/gb_get_metadata.html">gb_get_metadata()</a></code>.</li>
+<li>
+<code><a href="../reference/deprecated.html">gb_max_adm_lvl()</a></code> -&gt; <code><a href="../reference/gb_get_max_adm_lvl.html">gb_get_max_adm_lvl()</a></code>.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-changes-development-version">Other changes<a class="anchor" aria-label="anchor" href="#other-changes-development-version"></a></h3>
+<div class="section level4">
+<h4 id="internals-development-version">Internals<a class="anchor" aria-label="anchor" href="#internals-development-version"></a></h4>
+<ul><li>Download logic is now implemented using <strong>httr2</strong>.</li>
+<li>Internal informational messages are generated using <strong>cli</strong>.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="cache-management-development-version">Cache management<a class="anchor" aria-label="anchor" href="#cache-management-development-version"></a></h4>
+<p>Cache handling has been fully reviewed:</p>
+<ul><li>By default, the cache directory is located under <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>.<br>
+You can change it using:
+<ul><li>Temporary cache (single R session): <code>gb_set_cache(path)</code>
+</li>
+<li>Persistent cache across R sessions: <code>gb_set_cache(path, install = TRUE)</code>
+</li>
 </ul></li>
-<li>Redesigned cache management functions:
+</ul><p>Redesigned cache-management functions:</p>
 <ul><li>
 <code><a href="../reference/gb_cache.html">gb_set_cache()</a></code>: configure where files are stored.</li>
 <li>
@@ -65,36 +91,42 @@
 <code><a href="../reference/gb_cache.html">gb_clear_cache()</a></code>: remove all cached files (optionally removing the installed config).</li>
 <li>
 <code><a href="../reference/gb_cache.html">gb_delete_from_cache()</a></code>: remove one or more specific cached files.</li>
-</ul></li>
-</ul></li>
-<li>Review and improve package testing and coverage.</li>
-<li>Improved package metadata:
-<ul><li>Updated <code>DESCRIPTION</code>.
-<ul><li>New maintainer: Diego Hernangomez (<a href="https://github.com/dieghernan/" class="external-link uri">https://github.com/dieghernan/</a>).</li>
-<li>Added William and Mary geoLab as copyright holder.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="testing-and-internals-development-version">Testing and internals<a class="anchor" aria-label="anchor" href="#testing-and-internals-development-version"></a></h4>
+<ul><li>Improved package tests and coverage.</li>
+<li>Added CI checks via GitHub Actions.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="package-description-development-version">Package <code>DESCRIPTION</code>
+<a class="anchor" aria-label="anchor" href="#package-description-development-version"></a></h4>
+<ul><li>New maintainer: Diego Hernangómez (<a href="https://github.com/dieghernan/" class="external-link uri">https://github.com/dieghernan/</a>).</li>
+<li>Added William &amp; Mary geoLab as copyright holder.</li>
 <li>Revised <code>Title</code> and <code>Description</code> with clearer links and citations.</li>
-</ul></li>
-<li>New files added:
+<li>Tidy dependencies.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="new-files-added-development-version">New files added<a class="anchor" aria-label="anchor" href="#new-files-added-development-version"></a></h4>
 <ul><li>
-<code>inst/CITATION</code> (<code><a href="https://rdrr.io/r/utils/bibentry.html" class="external-link">bibentry()</a></code> from <a href="https://doi.org/10.1371/journal.pone.0231866" class="external-link uri">https://doi.org/10.1371/journal.pone.0231866</a>).</li>
+<code>inst/CITATION</code> (using <code><a href="https://rdrr.io/r/utils/bibentry.html" class="external-link">bibentry()</a></code> from <a href="https://doi.org/10.1371/journal.pone.0231866" class="external-link uri">https://doi.org/10.1371/journal.pone.0231866</a>)</li>
 <li><code>inst/COPYRIGHTS</code></li>
 <li><code>inst/REFERENCES.bib</code></li>
-</ul></li>
-</ul></li>
-<li>Project infrastructure and clean-up:
-<ul><li>Added CI checks via GitHub Actions.</li>
-<li>Removed legacy files and cleaned repository layout.</li>
-<li>Redesigned logo.</li>
-</ul></li>
 </ul></div>
+<div class="section level4">
+<h4 id="project-infrastructure-and-clean-up-development-version">Project infrastructure and clean-up<a class="anchor" aria-label="anchor" href="#project-infrastructure-and-clean-up-development-version"></a></h4>
+<ul><li>Removed legacy files and reorganized repository layout.</li>
+<li>Redesigned logo.</li>
+</ul></div>
+</div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.3" id="rgeoboundaries-13">rgeoboundaries 1.3<small>2024-03-12</small><a class="anchor" aria-label="anchor" href="#rgeoboundaries-13"></a></h2>
-<ul><li>CRAN submission.</li>
-</ul></div>
+<p>CRAN submission.</p>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.2.9" id="rgeoboundaries-129">rgeoboundaries 1.2.9<small>2023-12-08</small><a class="anchor" aria-label="anchor" href="#rgeoboundaries-129"></a></h2>
-<ul><li>Initial CRAN submission.</li>
-</ul></div>
+<p>Initial CRAN submission.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
