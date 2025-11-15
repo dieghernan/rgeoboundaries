@@ -63,7 +63,7 @@
 You can change it using:
 <ul><li>Temporary cache (single R session): <code>gb_set_cache(path)</code>.</li>
 <li>Persistent cache across R sessions: <code>gb_set_cache(path, install = TRUE)</code>.</li>
-<li>Specific files, use the <code>path</code> argument in the corresponding function e.g. <code>gb_get(..., path = path)</code>.</li>
+<li>Specific files: use the <code>path</code> argument in the corresponding function e.g. <code>gb_get(..., path = path)</code>.</li>
 </ul></li>
 </ul><p>Redesigned cache-management functions:</p>
 <ul><li>
@@ -76,6 +76,12 @@ You can change it using:
 <code><a href="../reference/gb_cache.html">gb_clear_cache()</a></code>: remove all cached files (optionally removing the installed config).</li>
 <li>
 <code><a href="../reference/gb_cache.html">gb_delete_from_cache()</a></code>: remove one or more specific cached files.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="documentation-development-version">Documentation<a class="anchor" aria-label="anchor" href="#documentation-development-version"></a></h4>
+<ul><li>Review <code>README</code>.</li>
+<li>Create <strong>pkgdown</strong> site <a href="https://dieghernan.github.io/rgeoboundaries/" class="external-link uri">https://dieghernan.github.io/rgeoboundaries/</a>.</li>
+<li>Add vignette.</li>
 </ul></div>
 <div class="section level4">
 <h4 id="testing-and-internals-development-version">Testing and internals<a class="anchor" aria-label="anchor" href="#testing-and-internals-development-version"></a></h4>
@@ -98,6 +104,9 @@ You can change it using:
 <code>inst/COPYRIGHTS</code>.</li>
 <li>
 <code>inst/REFERENCES.bib</code>.</li>
+<li><code>CITATION.cff</code></li>
+<li>
+<code>codemeta.json</code> and <code>inst/schemaorg.json</code>.</li>
 </ul></div>
 <div class="section level4">
 <h4 id="project-infrastructure-and-clean-up-development-version">Project infrastructure and clean-up<a class="anchor" aria-label="anchor" href="#project-infrastructure-and-clean-up-development-version"></a></h4>

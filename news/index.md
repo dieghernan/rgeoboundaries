@@ -47,7 +47,7 @@ Cache handling has been fully reviewed:
   - Temporary cache (single R session): `gb_set_cache(path)`.
   - Persistent cache across R sessions:
     `gb_set_cache(path, install = TRUE)`.
-  - Specific files, use the `path` argument in the corresponding
+  - Specific files: use the `path` argument in the corresponding
     function e.g. `gb_get(..., path = path)`.
 
 Redesigned cache-management functions:
@@ -62,6 +62,13 @@ Redesigned cache-management functions:
   files (optionally removing the installed config).
 - [`gb_delete_from_cache()`](../reference/gb_cache.md): remove one or
   more specific cached files.
+
+#### Documentation
+
+- Review `README`.
+- Create **pkgdown** site
+  <https://dieghernan.github.io/rgeoboundaries/>.
+- Add vignette.
 
 #### Testing and internals
 
@@ -82,6 +89,8 @@ Redesigned cache-management functions:
   <https://doi.org/10.1371/journal.pone.0231866>).
 - `inst/COPYRIGHTS`.
 - `inst/REFERENCES.bib`.
+- `CITATION.cff`
+- `codemeta.json` and `inst/schemaorg.json`.
 
 #### Project infrastructure and clean-up
 
