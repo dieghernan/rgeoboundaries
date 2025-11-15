@@ -7,7 +7,7 @@
 \alias{gb_list_cache}
 \alias{gb_clear_cache}
 \alias{gb_delete_from_cache}
-\title{\pkg{rgeoboundaries}: cache utilities}
+\title{\CRANpkg{rgeoboundaries}: cache utilities}
 \usage{
 gb_set_cache(path, install = FALSE, overwrite = FALSE, quiet = FALSE)
 
@@ -42,7 +42,7 @@ files. If \code{FALSE} just the base names is provided.}
     allow the file or directory to be removed?}
 
 \item{clear_config}{logical. If \code{TRUE}, will delete the configuration
-folder of \CRANpkg{\CRANpkg{rgeoboundaries}}.}
+folder of \CRANpkg{rgeoboundaries}.}
 
 \item{file}{character. Base name of the cached file to delete.}
 }

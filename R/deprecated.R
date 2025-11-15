@@ -1,4 +1,4 @@
-#' Deprecated and renamed functions in \pkg{rgeoboundaries}
+#' Deprecated and renamed functions in \CRANpkg{rgeoboundaries}
 #'
 #' @description
 #' `r lifecycle::badge("deprecated")`

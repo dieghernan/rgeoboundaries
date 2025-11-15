@@ -1,4 +1,4 @@
-#' \pkg{rgeoboundaries}: cache utilities
+#' \CRANpkg{rgeoboundaries}: cache utilities
 #'
 #' @description
 #' Utilities to manage a local cache directory used by \CRANpkg{rgeoboundaries}
@@ -236,7 +236,7 @@ gb_list_cache <- function(full_path = FALSE) {
 #' @rdname gb_cache
 #' @inheritParams base::unlink
 #' @param clear_config logical. If `TRUE`, will delete the configuration
-#'   folder of \CRANpkg{\CRANpkg{rgeoboundaries}}.
+#'   folder of \CRANpkg{rgeoboundaries}.
 #' @export
 gb_clear_cache <- function(force = TRUE, clear_config = FALSE, quiet = FALSE) {
   verbose <- isFALSE(quiet)
