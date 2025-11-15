@@ -99,10 +99,7 @@ When set to \code{TRUE} it would force a fresh download of the source
 stored in the temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
 }
 \value{
-\itemize{
-\item With \code{metadata = FALSE}: A \code{\link[sf:sf]{sf}} object.
-\item With \code{metadata = TRUE}: A tibble.
-}
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 \href{https://www.geoboundaries.org/index.html#usage}{Attribution} is required
