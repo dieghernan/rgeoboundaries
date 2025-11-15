@@ -1,0 +1,61 @@
+# url: https://dieghernan.github.io/rgeoboundaries
+
+figures:
+  dpi: 300
+  fig.retina: 2
+
+template:
+  bootstrap: 5
+  bslib:
+    font-family-base: '"Open Sans", sans-serif'
+    font-family-code: '"Courier Prime", monospace'
+    headings-font-weight: 800
+    headings-color: "#444"
+    font-weight-normal: 300
+    primary: "#0090c5"
+    light: "#ebebeb"
+
+authors:
+  Diego Hernangómez:
+    href: https://dieghernan.github.io/
+  Ahmadou Dicko:
+    href: https://ahmadoudicko.com/
+  Rohith Reddy Mandala:
+    href: https://www.mrrwebsite.com/
+  William and Mary geoLab:
+    href: https://sites.google.com/view/wmgeolab/
+
+home:
+  title: >
+    rgeoboundaries | A Client for the 'geoBoundaries' Administrative Boundaries
+    Dataset
+  description: >
+    rgeoboundaries is a R API package that helps to retrieve data from
+    geoBounds. Several administration levels available. See Runfola, D. et al.
+    (2020) geoBoundaries: A global database of political administrative
+    boundaries. PLOS ONE 15(4): e0231866.
+    https://doi.org/10.1371/journal.pone.0231866
+
+reference:
+  - title: Boundaries
+    desc: >
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects with
+      political boundaries.
+    contents:
+      - has_concept("API functions")
+  - title: Metadata
+    desc: >
+      These functions return metadata in tibble format.
+    contents:
+      - has_concept("metadata functions")
+  - title: Cache management
+    contents:
+      - has_concept("cache utilities")
+  - title: About the package
+    contents:
+      - rgeoboundaries-package
+  - title: Deprecated functions
+    contents:
+      - deprecated
+

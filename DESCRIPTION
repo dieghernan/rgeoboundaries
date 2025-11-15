@@ -32,6 +32,7 @@ Imports:
     tools,
     utils
 Suggests:
+    spelling,
     ggplot2,
     jsonlite,
     knitr,
@@ -47,3 +48,4 @@ RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: Data Access
 X-schema.org-keywords: geoboundaries, boundaries, gis, map, geographic,
     data, spatial, dataset
+Language: en-US

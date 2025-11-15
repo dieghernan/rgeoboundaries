@@ -11,7 +11,7 @@
 \alias{gb_adm5}
 \alias{gb_metadata}
 \alias{gb_max_adm_lvl}
-\title{Deprecated and renamed functions in \pkg{rgeoboundaries} 2.0.0}
+\title{Deprecated and renamed functions in \CRANpkg{rgeoboundaries} 2.0.0}
 \usage{
 geoboundaries(
   country = NULL,
@@ -129,7 +129,7 @@ output.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-\pkg{rgeoboundaries} 2.0.0 renamed a number of functions to ensure that
+\CRANpkg{rgeoboundaries} 2.0.0 renamed a number of functions to ensure that
 every function has a \code{object_verb()} naming scheme and avoiding magical
 defaults.
 \itemize{

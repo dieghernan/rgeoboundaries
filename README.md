@@ -5,93 +5,192 @@
 
 <!-- badges: start -->
 
-[![GitLab CI Build
-Status](https://gitlab.com/dickoa/rgeoboundaries/badges/master/pipeline.svg)](https://gitlab.com/dickoa/rgeoboundaries/pipelines)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/gitlab/dickoa/rgeoboundaries?branch=master&svg=true)](https://ci.appveyor.com/project/dickoa/rgeoboundaries)
-[![Codecov Code
-Coverage](https://codecov.io/gl/dickoa/rgeoboundaries/branch/master/graph/badge.svg)](https://codecov.io/gl/dickoa/rgeoboundaries)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/rgeoboundaries)](https://cran.r-project.org/package=rgeoboundaries)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![DOI](https://img.shields.io/badge/DOI-10.1371/journal.pone.0231866-blue)](https://doi.org/10.1371/journal.pone.0231866)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <!-- badges: end -->
 
-`rgeoboundaries` is an R client for the [geoBoundaries
-API](https://www.geoboundaries.org/), providing country political
-administrative boundaries.
+[**Attribution**](https://www.geoboundaries.org/index.html#usage) **is
+required when using geoBoundaries.**
+
+## Why this package?
+
+The **rgeoboundaries** package provides an **R**-friendly interface to
+access and work with the
+[**geoBoundaries**](https://www.geoboundaries.org/) dataset (an
+open-license global database of administrative boundary polygons). Using
+this package, you can:
+
+- Programmatically retrieve administrative boundary geometries (e.g.,
+  country → region → district) from geoBoundaries
+- Use **tidyverse** / **sf** workflows in **R** to map, analyse and join
+  these boundaries with your own data
+- Work in an open-data context (geoBoundaries uses [CC
+  BY-4.0](https://creativecommons.org/licenses/by/4.0/)) / open
+  licences[^1])
+
+In short: if you work with geospatial boundaries in **R** (shape files,
+polygons, join with other data), this package simplifies the process.
 
 ## Installation
 
-You can install the development version of rgeoboundaries using the
-`remotes` package:
+You can install the developing version of **rgeoboundaries** with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_gitlab("dickoa/rgeoboundaries")
-remotes::install_github("wmgeolab/rgeoboundaries")
+# install.packages("pak")
+pak::pak("dieghernan/rgeoboundaries")
 ```
 
-## Access administrative boundaries using rgeoboundaries
+## Example usage
 
-This is a basic example which shows you how get Mali and Senegal
-boundaries and plot it
+### Single country
+
+``` r
+library(rgeoboundaries)
+
+sri_lanka_adm1 <- gb_get_adm1("Sri Lanka")
+sri_lanka_adm2 <- gb_get_adm2("Sri Lanka")
+sri_lanka_adm3 <- gb_get_adm3("Sri Lanka")
+
+library(sf)
+library(dplyr)
+
+library(ggplot2)
+
+ggplot(sri_lanka_adm3) +
+  geom_sf(fill = "#DFDFDF", color = "white") +
+  geom_sf(data = sri_lanka_adm2, fill = NA, color = "#F0B323") +
+  geom_sf(data = sri_lanka_adm1, fill = NA, color = "black") +
+  labs(caption = "Source: www.geoboundaries.org") +
+  theme_void()
+```
+
+<img src="man/figures/README-simple_plot-1.png" alt="Map of all administration levels for Sri Lanka" width="100%" />
+
+### World dataset
+
+See how the map of the logo can be created:
 
 ``` r
 library(rgeoboundaries)
 library(sf)
-mli_sen <- gb_adm0(c("mali", "senegal"), type = "sscgs")
-plot(st_geometry(mli_sen))
+library(dplyr)
+library(ggplot2)
+
+
+world <- gb_get_world(adm_lvl = 1)
+
+# Template: Sea as background
+bbox_template <- st_bbox(world)
+
+sea <- c(-179.9, -89, 179.9, 89)
+names(sea) <- names(bbox_template)
+class(sea) <- class(bbox_template)
+
+sea_poly <- sea |>
+  st_as_sfc() |>
+  st_set_crs(st_crs(world)) |>
+  st_segmentize(dfMaxLength = 50000)
+
+sea_line <- sea_poly |> st_cast("LINESTRING")
+ggplot(sea_poly) +
+  geom_sf(fill = "#bee0ff") +
+  geom_sf(data = world, fill = "#f0b323", color = "white", linewidth = 0.1) +
+  geom_sf(data = sea_line, color = "black") +
+  coord_sf(expand = TRUE, crs = "+proj=robin") +
+  theme_void()
 ```
 
-<img src="man/figures/README-plot-1.png" width="100%" />
+<div class="figure">
 
-We can also get the first administrative division of all countries in
-the world and use ISO3 code too
+<img src="man/figures/README-world-1.png" alt="Map on the rgeoboundaries logo" width="100%" />
+<p class="caption">
 
-``` r
-egy <- gb_adm1("EGY")
-plot(st_geometry(egy),
-     col = rgb(red = 1, green = 0, blue = 0, alpha = 0.5),
-     axes = TRUE, graticule = TRUE)
-```
+Map on the rgeoboundaries logo
+</p>
 
-<img src="man/figures/README-plot_egy-1.png" width="100%" />
+</div>
 
-In order to access the global administrative zones, you just need to
-skip the country argument (i.e set it to `NULL`) or specify
-`type = "CGAZ"`.
+## Documentation & Resources
 
-``` r
-world <- gb_adm1()
-world_lambert <- st_transform(world, "+proj=laea +x_0=0 +y_0=0 +lon_0=0 +lat_0=0")
-par(bty = "n")
-plot(st_geometry(world_lambert),
-     col = "#E39d57",
-     graticule = TRUE, lwd = 0.3)
-```
+- Visit the **pkgdown** site for full documentation:
+  <https://dieghernan.github.io/rgeoboundaries/>
+- Explore the geoBoundaries homepage: <https://www.geoboundaries.org/>
+- Read the original paper describing the geoBoundaries dataset ([Runfola
+  et al. 2020](#ref-geoboundaries)).
 
-<img src="man/figures/README-plot_world-1.png" width="100%" />
+## License
 
-Finally, metadata for each country and administrative level are also
-available.
+This package is released under the [CC
+BY-4.0](https://creativecommons.org/licenses/by/4.0/) license. Note that
+the boundary data being accessed (via geoBoundaries) also uses open
+licences; please check the specific dataset metadata for licensing
+details.
 
-``` r
-knitr::kable(gb_metadata(c("mali", "senegal"), "adm1"))
-```
+## Acknowledgements
 
-|  | boundaryID | boundaryName | boundaryISO | boundaryYearRepresented | boundaryType | boundaryCanonical | boundarySource | boundaryLicense | licenseDetail | licenseSource | boundarySourceURL | sourceDataUpdateDate | buildDate | Continent | UNSDG-region | UNSDG-subregion | worldBankIncomeGroup | admUnitCount | meanVertices | minVertices | maxVertices | meanPerimeterLengthKM | minPerimeterLengthKM | maxPerimeterLengthKM | meanAreaSqKM | minAreaSqKM | maxAreaSqKM | staticDownloadLink | gjDownloadURL | tjDownloadURL | imagePreview | simplifiedGeometryGeoJSON |
-|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| 2 | MLI-ADM1-92416918 | Mali | MLI | 2021 | ADM1 | Region or Capital District | DNCT - Direction Nationale des Collectivités Territoriales, United Nations Office for the Coordination of Humanitarian Affairs, Mali | Creative Commons Attribution 4.0 International (CC BY 4.0) | nan | data.humdata.org/dataset/administrative-boundaries-cod-mli | data.humdata.org/dataset/administrative-boundaries-cod-mli | Thu Jan 19 07:31:04 2023 | Dec 12, 2023 | Africa | Sub-Saharan Africa | Western Africa | Low-income Countries | 9 | 1333.0 | 342 | 3414 | 2058.908469995114 | 83.68262922173119 | 3760.358176000396 | 139367.46925829045 | 245.6744280437728 | 499273.8882641518 | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1-all.zip> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1.geojson> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1.topojson> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1-PREVIEW.png> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MLI/ADM1/geoBoundaries-MLI-ADM1_simplified.geojson> |
-| 6 | SEN-ADM1-71046170 | Senegal | SEN | 2019 | ADM1 | region | Government of Senegal, OCHA ROWCA | Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO) | nan | data.humdata.org/dataset/senegal-administrative-boundaries | data.humdata.org/dataset/senegal-administrative-boundaries | Thu Jan 19 07:31:04 2023 | Dec 12, 2023 | Africa | Sub-Saharan Africa | Western Africa | Low-income Countries | 14 | 1785.0 | 627 | 6052 | 659.6438524808731 | 166.34887893257255 | 1457.2982019784088 | 14049.370925483614 | 544.0479780089397 | 42624.70879887685 | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1-all.zip> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1.geojson> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1.topojson> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1-PREVIEW.png> | <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/SEN/ADM1/geoBoundaries-SEN-ADM1_simplified.geojson> |
+- Many thanks to the geoBoundaries team and the [William & Mary
+  geoLab](https://sites.google.com/view/wmgeolab/) for creating and
+  maintaining the dataset.
+- Thanks to the **R** package community and all contributors to this
+  package’s development.
+- If you use **rgeoboundaries** (and underlying geoBoundaries data) in
+  your research or project, a citation and acknowledgement is greatly
+  appreciated.
 
-## How to to cite
+## Citation
 
 If you are using this package in your analysis, please cite the original
-`geoBoundaries` work:
+geoBoundaries work:
 
-> Runfola D, Anderson A, Baier H, Crittenden M, Dowker E, Fuhrig S, et
-> al. (2020) geoBoundaries: A global database of political
-> administrative boundaries. PLoS ONE 15(4): e0231866.
-> <https://doi.org/10.1371/journal.pone.0231866>
+<p>
+
+Runfola D, Anderson A, Baier H, Crittenden M, Dowker E, Fuhrig S,
+Goodman S, Grimsley G, Layko R, Melville G, Mulder M, Oberman R,
+Panganiban J, Peck A, Seitz L, Shea S, Slevin H, Youngerman R, Hobbs L
+(2020). “geoBoundaries: A global database of political administrative
+boundaries.” <em>PLoS ONE</em>, <b>15</b>(4), 1-9.
+<a href="https://doi.org/10.1371/journal.pone.0231866">doi:10.1371/journal.pone.0231866</a>.
+</p>
+
+A BibTeX entry for LaTeX users:
+
+    @Article{,
+      doi = {10.1371/journal.pone.0231866},
+      author = {Daniel Runfola and Austin Anderson and Heather Baier and Matt Crittenden and Elizabeth Dowker and Sydney Fuhrig and Seth Goodman and Grace Grimsley and Rachel Layko and Graham Melville and Maddy Mulder and Rachel Oberman and Joshua Panganiban and Andrew Peck and Leigh Seitz and Sylvia Shea and Hannah Slevin and Rebecca Youngerman and Lauren Hobbs},
+      journal = {PLoS ONE},
+      publisher = {Public Library of Science},
+      title = {geoBoundaries: A global database of political administrative boundaries},
+      year = {2020},
+      month = {4},
+      volume = {15},
+      pages = {1-9},
+      number = {4},
+    }
+
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
+
+<div id="ref-geoboundaries" class="csl-entry">
+
+Runfola, Daniel, Austin Anderson, Heather Baier, Matt Crittenden,
+Elizabeth Dowker, Sydney Fuhrig, Seth Goodman, et al. 2020.
+“geoBoundaries: A Global Database of Political Administrative
+Boundaries.” *PLoS ONE* 15 (4): 1–9.
+<https://doi.org/10.1371/journal.pone.0231866>.
+
+</div>
+
+</div>
+
+[^1]: Individual data files in the geoBoundaries database are governed
+    by the license or licenses identified within the metadata for each
+    respective boundary. Users using individual boundary files from
+    geoBoundaries should additionally ensure that they are citing the
+    sources provided in the metadata for each file.

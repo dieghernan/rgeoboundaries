@@ -1,8 +1,8 @@
 #' \pkg{rgeoboundaries}: cache utilities
 #'
 #' @description
-#' Utilities to manage a local cache directory used by \pkg{rgeoboundaries} for
-#' downloaded boundary files. These helpers let you set a cache directory,
+#' Utilities to manage a local cache directory used by \CRANpkg{rgeoboundaries}
+#' for downloaded boundary files. These helpers let you set a cache directory,
 #' retrieve the active directory, list cached files and remove cached files or
 #' the whole cache.
 #'
@@ -236,7 +236,7 @@ gb_list_cache <- function(full_path = FALSE) {
 #' @rdname gb_cache
 #' @inheritParams base::unlink
 #' @param clear_config logical. If `TRUE`, will delete the configuration
-#'   folder of \pkg{\pkg{rgeoboundaries}}.
+#'   folder of \CRANpkg{\CRANpkg{rgeoboundaries}}.
 #' @export
 gb_clear_cache <- function(force = TRUE, clear_config = FALSE, quiet = FALSE) {
   verbose <- isFALSE(quiet)
@@ -299,7 +299,7 @@ gb_delete_from_cache <- function(file) {
 
 #' Creates `path`
 #'
-#' Helper function, only use for development of \pkg{rgeoboundaries}
+#' Helper function, only use for development of \CRANpkg{rgeoboundaries}
 #'
 #' @noRd
 rgbnd_dev_cachedir <- function(path = NULL) {

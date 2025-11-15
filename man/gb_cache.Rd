@@ -42,7 +42,7 @@ files. If \code{FALSE} just the base names is provided.}
     allow the file or directory to be removed?}
 
 \item{clear_config}{logical. If \code{TRUE}, will delete the configuration
-folder of \pkg{\pkg{rgeoboundaries}}.}
+folder of \CRANpkg{\CRANpkg{rgeoboundaries}}.}
 
 \item{file}{character. Base name of the cached file to delete.}
 }
@@ -58,8 +58,8 @@ effects.
 }
 }
 \description{
-Utilities to manage a local cache directory used by \pkg{rgeoboundaries} for
-downloaded boundary files. These helpers let you set a cache directory,
+Utilities to manage a local cache directory used by \CRANpkg{rgeoboundaries}
+for downloaded boundary files. These helpers let you set a cache directory,
 retrieve the active directory, list cached files and remove cached files or
 the whole cache.
 
