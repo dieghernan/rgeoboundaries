@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Get a summary of selected or all countries and their highest administrative
-#' level available in geoBounds.
+#' level available in geoBoundaries.
 #'
 #' @family metadata functions
 #'
@@ -14,7 +14,7 @@
 #' and corresponding highest administrative level.
 #'
 #' @source
-#' geoboundaries API Service <https://www.geoboundaries.org/api.html>.
+#' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 #'
 #' @export
 #'

@@ -10,7 +10,7 @@
 #' borders.
 #'
 #' @source
-#' geoboundaries API Service <https://www.geoboundaries.org/api.html>.
+#' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 #'
 #' @references
 #' Runfola, D. et al. (2020) geoBoundaries: A global database of political

@@ -78,11 +78,12 @@ test_that("Fail gracefully single", {
   skip_on_cran()
   skip_if_offline()
 
+  tmpd <- file.path(tempdir(), "testthat")
   # Mock a fake call
   url_bound <- paste0(
     "https://github.com/wmgeolab/geoBoundaries/",
     "raw/FAKE/releaseData/gbOpen/ESP/ADM0/",
-    "fakefile.geojson"
+    "fakefile.zip"
   )
 
   expect_snapshot(
@@ -92,7 +93,7 @@ test_that("Fail gracefully single", {
         subdir = "gbOpen",
         quiet = TRUE,
         overwrite = FALSE,
-        path = tempdir()
+        path = tmpd
       )
     })
   )
@@ -100,6 +101,9 @@ test_that("Fail gracefully single", {
 
   expect_s3_class(meta_sf, "tbl")
   expect_equal(nrow(meta_sf), 0)
+
+  unlink(tmpd, recursive = TRUE)
+  expect_false(dir.exists(tmpd))
 })
 
 
@@ -107,6 +111,7 @@ test_that("Fail gracefully several", {
   skip_on_cran()
   skip_if_offline()
   # Replicate internal logic
+  tmpd <- file.path(tempdir(), "testthat")
 
   sev <- gb_get_metadata(c("Andorra", "Vatican"), adm_lvl = "adm0")
   geoms <- sev$staticDownloadLink
@@ -126,7 +131,7 @@ test_that("Fail gracefully several", {
         subdir = "gbOpen",
         quiet = TRUE,
         overwrite = FALSE,
-        path = tempdir(),
+        path = tmpd,
         simplified = TRUE
       )
     })
@@ -146,7 +151,7 @@ test_that("Fail gracefully several", {
       subdir = "gbOpen",
       quiet = TRUE,
       overwrite = FALSE,
-      path = tempdir()
+      path = tmpd
     )
   })
 
@@ -155,11 +160,16 @@ test_that("Fail gracefully several", {
   expect_s3_class(meta_sf, "tbl")
   expect_s3_class(meta_sf, "sf")
   expect_equal(nrow(meta_sf), 2)
+
+  unlink(tmpd, recursive = TRUE)
+  expect_false(dir.exists(tmpd))
 })
 
 test_that("Release type", {
   skip_on_cran()
   skip_if_offline()
+
+  tmpd <- file.path(tempdir(), "testthat")
   library(dplyr)
   iso <- gb_get_metadata(release_type = "gbHumanitarian", adm_lvl = "adm0") %>%
     slice_head(n = 1) %>%
@@ -169,7 +179,8 @@ test_that("Release type", {
     iso,
     adm_lvl = 0,
     simplified = TRUE,
-    release_type = "gbHumanitarian"
+    release_type = "gbHumanitarian",
+    path = tmpd
   )
   expect_s3_class(res, "sf")
 
@@ -181,7 +192,23 @@ test_that("Release type", {
     iso,
     adm_lvl = 0,
     simplified = TRUE,
-    release_type = "gbAuthoritative"
+    release_type = "gbAuthoritative",
+    path = tmpd
   )
   expect_s3_class(res, "sf")
+
+  unlink(tmpd, recursive = TRUE)
+  expect_false(dir.exists(tmpd))
+})
+
+test_that("type of object returned is as expected", {
+  skip_on_cran()
+  skip_if_offline()
+  tmpd <- file.path(tempdir(), "testthat")
+  p <- gb_get(country = c("Andorra", "Vatican"), path = tmpd)
+  expect_s3_class(p, "sf")
+  expect_true(all(sf::st_geometry_type(p) == "MULTIPOLYGON"))
+
+  unlink(tmpd, recursive = TRUE)
+  expect_false(dir.exists(tmpd))
 })

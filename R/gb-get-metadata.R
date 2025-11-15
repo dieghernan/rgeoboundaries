@@ -71,7 +71,7 @@
 #'    simplified `geoJSON`.
 #'
 #' @source
-#' geoboundaries API Service <https://www.geoboundaries.org/api.html>.
+#' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 #'
 #' @export
 #'

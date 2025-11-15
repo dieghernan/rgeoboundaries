@@ -47,14 +47,27 @@
 #' license or licenses identified within the metadata for each respective
 #' boundary (see [gb_get_metadata()]. Users using individual boundary files
 #' from geoBoundaries should additionally ensure that they are citing the
-#' sources provided in the metadata for each file. See **Examples**
+#' sources provided in the metadata for each file. See **Examples**.
 #'
+#' The following wrappers are also available:
+#'
+#' - [gb_get_adm0()] returns the country boundary.
+#' - [gb_get_adm1()] returns first-level administration
+#'   boundaries (e.g. States in the United States).
+#' - [gb_get_adm2()] returns second-level administration
+#'   boundaries (e.g. Counties in the United States).
+#' - [gb_get_adm3()] returns third-level administration
+#'   boundaries (e.g. towns or cities in some countries).
+#' - [gb_get_adm4()] returns fourth-level administration
+#'   boundaries.
+#' - [gb_get_adm5()] returns fifth-level administration
+#'   boundaries.
 #'
 #' @return
 #' A [`sf`][sf::st_sf] object.
 #'
 #' @source
-#' geoboundaries API Service <https://www.geoboundaries.org/api.html>.
+#' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 #'
 #' @references
 #' Runfola, D. et al. (2020) geoBoundaries: A global database of political

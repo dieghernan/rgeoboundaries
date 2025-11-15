@@ -4,7 +4,7 @@
 \alias{gb_get}
 \title{Get individual country files from geoBoundaries}
 \source{
-geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
+geoBoundaries API Service \url{https://www.geoboundaries.org/api.html}.
 }
 \usage{
 gb_get(
@@ -72,7 +72,22 @@ Individual data files in the geoBoundaries database are governed by the
 license or licenses identified within the metadata for each respective
 boundary (see \code{\link[=gb_get_metadata]{gb_get_metadata()}}. Users using individual boundary files
 from geoBoundaries should additionally ensure that they are citing the
-sources provided in the metadata for each file. See \strong{Examples}
+sources provided in the metadata for each file. See \strong{Examples}.
+
+The following wrappers are also available:
+\itemize{
+\item \code{\link[=gb_get_adm0]{gb_get_adm0()}} returns the country boundary.
+\item \code{\link[=gb_get_adm1]{gb_get_adm1()}} returns first-level administration
+boundaries (e.g. States in the United States).
+\item \code{\link[=gb_get_adm2]{gb_get_adm2()}} returns second-level administration
+boundaries (e.g. Counties in the United States).
+\item \code{\link[=gb_get_adm3]{gb_get_adm3()}} returns third-level administration
+boundaries (e.g. towns or cities in some countries).
+\item \code{\link[=gb_get_adm4]{gb_get_adm4()}} returns fourth-level administration
+boundaries.
+\item \code{\link[=gb_get_adm5]{gb_get_adm5()}} returns fifth-level administration
+boundaries.
+}
 }
 \examples{
 \dontshow{if (httr2::is_online()) withAutoprint(\{ # examplesIf}
@@ -111,6 +126,7 @@ administrative boundaries. \emph{PLoS ONE} 15(4): e0231866.
 }
 \seealso{
 Other API functions: 
+\code{\link{gb_get_adm}},
 \code{\link{gb_get_world}()}
 }
 \concept{API functions}

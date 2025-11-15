@@ -11,17 +11,17 @@
     Code
       res_sf <- lapply(url_bound, function(x) {
         rgbnd_dev_shp_query(url = x, subdir = "gbOpen", quiet = TRUE, overwrite = FALSE,
-          path = tempdir())
+          path = tmpd)
       })
     Message
-      x <https://github.com/wmgeolab/geoBoundaries/raw/FAKE/releaseData/gbOpen/ESP/ADM0/fakefile.geojson> gives error 404 - Not Found
+      x <https://github.com/wmgeolab/geoBoundaries/raw/FAKE/releaseData/gbOpen/ESP/ADM0/fakefile.zip> gives error 404 - Not Found
 
 # Fail gracefully several
 
     Code
       res_sf <- lapply(url_bound, function(x) {
         rgbnd_dev_shp_query(url = x, subdir = "gbOpen", quiet = TRUE, overwrite = FALSE,
-          path = tempdir(), simplified = TRUE)
+          path = tmpd, simplified = TRUE)
       })
     Message
       x <https://github.com/wmgeolab/geoBoundaries/raw/FAKE/releaseData/gbOpen/ESP/ADM0/fakefile.zip> gives error 404 - Not Found

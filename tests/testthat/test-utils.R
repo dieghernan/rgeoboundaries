@@ -33,7 +33,15 @@ test_that("Assert admin levels", {
     assert_adm_lvl("ALL", dict = "all"),
     "ALL"
   )
+
+  # Test integers
+  vec_integers <- vapply(0:5, assert_adm_lvl, FUN.VALUE = character(1))
+  expect_identical(
+    vec_integers,
+    paste0("ADM", 0:5)
+  )
 })
+
 test_that("Utils names", {
   skip_on_cran()
 

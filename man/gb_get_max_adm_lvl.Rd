@@ -4,7 +4,7 @@
 \alias{gb_get_max_adm_lvl}
 \title{Get the highest administrative level available for a given country}
 \source{
-geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
+geoBoundaries API Service \url{https://www.geoboundaries.org/api.html}.
 }
 \usage{
 gb_get_max_adm_lvl(
@@ -35,7 +35,7 @@ and corresponding highest administrative level.
 }
 \description{
 Get a summary of selected or all countries and their highest administrative
-level available in geoBounds.
+level available in geoBoundaries.
 }
 \examples{
 \dontshow{if (httr2::is_online()) withAutoprint(\{ # examplesIf}

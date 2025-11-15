@@ -2,10 +2,81 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
+\alias{geoboundaries}
+\alias{gb_adm0}
+\alias{gb_adm1}
+\alias{gb_adm2}
+\alias{gb_adm3}
+\alias{gb_adm4}
+\alias{gb_adm5}
 \alias{gb_metadata}
 \alias{gb_max_adm_lvl}
 \title{Deprecated and renamed functions in \pkg{rgeoboundaries} 2.0.0}
 \usage{
+geoboundaries(
+  country = NULL,
+  adm_lvl = "adm0",
+  type = "unsimplified",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+)
+
+gb_adm0(
+  country = NULL,
+  type = "unsimplified",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+)
+
+gb_adm1(
+  country = NULL,
+  type = "unsimplified",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+)
+
+gb_adm2(
+  country = NULL,
+  type = "unsimplified",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+)
+
+gb_adm3(
+  country = NULL,
+  type = "unsimplified",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+)
+
+gb_adm4(
+  country = NULL,
+  type = "unsimplified",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+)
+
+gb_adm5(
+  country = NULL,
+  type = "unsimplified",
+  release_type = c("gbOpen", "gbHumanitarian", "gbAuthoritative"),
+  quiet = TRUE,
+  overwrite = FALSE,
+  version = deprecated()
+)
+
 gb_metadata(
   country = NULL,
   adm_lvl = "all",
@@ -28,6 +99,9 @@ available boundaries) or the ADM level (\code{"adm0"} is the country boundary,
 second level and so on. Upper case version (\code{"ADM1"}) and the number of
 the level (\verb{1, 2, 3, 4, 5}) and also accepted.}
 
+\item{type}{character. One of \code{"simplified"} and \code{"unsimplified"}. Other
+values would be assumed as \code{"unsimplified"}.}
+
 \item{release_type}{One of \code{"gbOpen"}, \code{"gbHumanitarian"},
 \code{"gbAuthoritative"}. For most users, we suggest using \code{"gbOpen"}
 (the default), as it is CC-BY 4.0 compliant and can be used for most
@@ -39,6 +113,14 @@ purposes so long as attribution is provided:
 \href{https://salb.un.org/en}{UN SALB}, and cannot  be used for commercial
 purposes, but are verified through in-country processes.
 }}
+
+\item{quiet}{logical. If \code{TRUE} suppresses informational messages.}
+
+\item{overwrite}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.zip} file.}
+
+\item{version}{Deprecated argument.}
 }
 \value{
 These functions are re-directed to their replacement, providing the same
@@ -51,8 +133,10 @@ output.
 every function has a \code{object_verb()} naming scheme and avoiding magical
 defaults.
 \itemize{
-\item \code{gb_metadata()} -> \code{\link[=gb_get_metadata]{gb_get_metadata()}}
-\item \code{gb_max_adm_lvl()} -> \code{\link[=gb_get_max_adm_lvl]{gb_get_max_adm_lvl()}}
+\item \code{geoboundaries()} -> \code{\link[=gb_get]{gb_get()}} and \code{\link[=gb_get_world]{gb_get_world()}}.
+\item \verb{gb_adm*} family -> \code{\link[=gb_get_adm]{gb_get_adm*}} family.
+\item \code{gb_metadata()} -> \code{\link[=gb_get_metadata]{gb_get_metadata()}}.
+\item \code{gb_max_adm_lvl()} -> \code{\link[=gb_get_max_adm_lvl]{gb_get_max_adm_lvl()}}.
 }
 
 These functions are likely to be removed in the future.

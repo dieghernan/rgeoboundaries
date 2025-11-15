@@ -4,7 +4,7 @@
 \alias{gb_get_world}
 \title{Get global composites data (CGAZ) from geoBoundaries}
 \source{
-geoboundaries API Service \url{https://www.geoboundaries.org/api.html}.
+geoBoundaries API Service \url{https://www.geoboundaries.org/api.html}.
 }
 \usage{
 gb_get_world(
@@ -82,6 +82,7 @@ administrative boundaries. \emph{PLoS ONE} 15(4): e0231866.
 }
 \seealso{
 Other API functions: 
-\code{\link{gb_get}()}
+\code{\link{gb_get}()},
+\code{\link{gb_get_adm}}
 }
 \concept{API functions}
