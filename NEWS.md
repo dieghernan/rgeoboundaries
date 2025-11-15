@@ -50,6 +50,12 @@ Redesigned cache-management functions:
     installed config).
 -   `gb_delete_from_cache()`: remove one or more specific cached files.
 
+### Documentation
+
+-   Review `README`.
+-   Create **pkgdown** site <https://dieghernan.github.io/rgeoboundaries/>.
+-   Add vignette.
+
 ### Testing and internals
 
 -   Improved package tests and coverage.
@@ -68,6 +74,8 @@ Redesigned cache-management functions:
     <https://doi.org/10.1371/journal.pone.0231866>).
 -   `inst/COPYRIGHTS`.
 -   `inst/REFERENCES.bib`.
+-   `CITATION.cff`
+-   `codemeta.json` and `inst/schemaorg.json`.
 
 ### Project infrastructure and clean-up
 
