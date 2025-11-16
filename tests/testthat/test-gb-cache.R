@@ -17,7 +17,7 @@ test_that("Test cache", {
   expect_false(dir.exists(testdir))
 
   # Reset just for testing all cases
-  testdir <- file.path(tempdir(), "geobounds", "testthat")
+  testdir <- file.path(tempdir(), "rgeoboundaries", "testthat")
   expect_message(gb_set_cache(testdir))
 
   expect_true(dir.exists(testdir))

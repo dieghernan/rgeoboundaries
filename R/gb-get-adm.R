@@ -27,9 +27,7 @@
 #' @name gb_get_adm
 #'
 #' @return
-#'
-#' - With `metadata = FALSE`: A [`sf`][sf::st_sf] object.
-#' - With `metadata = TRUE`: A tibble.
+#' A [`sf`][sf::st_sf] object.
 #'
 #' @source
 #' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.

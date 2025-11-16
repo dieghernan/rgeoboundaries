@@ -27,3 +27,4 @@
 ^[.]?air[.]toml$
 ^\.vscode$
 ^dev$
+^vignettes/rgeoboundaries\.Rmd\.orig$

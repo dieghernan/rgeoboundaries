@@ -7,7 +7,7 @@
 \alias{gb_list_cache}
 \alias{gb_clear_cache}
 \alias{gb_delete_from_cache}
-\title{\pkg{rgeoboundaries}: cache utilities}
+\title{\CRANpkg{rgeoboundaries}: cache utilities}
 \usage{
 gb_set_cache(path, install = FALSE, overwrite = FALSE, quiet = FALSE)
 
@@ -36,13 +36,13 @@ existing installed cache path. Defaults to \code{FALSE}.}
 \item{create}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}.}
 
 \item{full_path}{logical, if \code{TRUE} returns the full path all the cached
-files. If \code{FALSE} just the base names is provided.}
+files. If \code{FALSE} just path relative to the cache directory is provided.}
 
 \item{force}{logical.  Should permissions be changed (if possible) to
     allow the file or directory to be removed?}
 
 \item{clear_config}{logical. If \code{TRUE}, will delete the configuration
-folder of \pkg{\pkg{rgeoboundaries}}.}
+folder of \CRANpkg{rgeoboundaries}.}
 
 \item{file}{character. Base name of the cached file to delete.}
 }
@@ -58,8 +58,8 @@ effects.
 }
 }
 \description{
-Utilities to manage a local cache directory used by \pkg{rgeoboundaries} for
-downloaded boundary files. These helpers let you set a cache directory,
+Utilities to manage a local cache directory used by \CRANpkg{rgeoboundaries}
+for downloaded boundary files. These helpers let you set a cache directory,
 retrieve the active directory, list cached files and remove cached files or
 the whole cache.
 

@@ -1,9 +1,9 @@
-#' Deprecated and renamed functions in \pkg{rgeoboundaries} 2.0.0
+#' Deprecated and renamed functions in \CRANpkg{rgeoboundaries}
 #'
 #' @description
 #' `r lifecycle::badge("deprecated")`
 #'
-#' \pkg{rgeoboundaries} 2.0.0 renamed a number of functions to ensure that
+#' \CRANpkg{rgeoboundaries} 2.0.0 renamed a number of functions to ensure that
 #' every function has a `object_verb()` naming scheme and avoiding magical
 #' defaults.
 #'

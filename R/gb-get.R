@@ -33,9 +33,8 @@
 #'    [UN SALB](https://salb.un.org/en), and cannot  be used for commercial
 #'    purposes, but are verified through in-country processes.
 #' @param quiet logical. If `TRUE` suppresses informational messages.
-#' @param overwrite A logical whether to update cache. Default is `FALSE`.
-#'  When set to `TRUE` it would force a fresh download of the source
-#'  `.zip` file.
+#' @param overwrite logical. When set to `TRUE` it would force a fresh
+#'    download of the source `.zip` file.
 #' @param path A path to a cache directory. If not set (the default
 #'   `NULL`), the data would be stored in the default cache directory (see
 #'   [gb_set_cache()]). If no cache directory has been set, files would be

@@ -89,9 +89,8 @@ purposes, but are verified through in-country processes.
 
 \item{quiet}{logical. If \code{TRUE} suppresses informational messages.}
 
-\item{overwrite}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.zip} file.}
+\item{overwrite}{logical. When set to \code{TRUE} it would force a fresh
+download of the source \code{.zip} file.}
 
 \item{path}{A path to a cache directory. If not set (the default
 \code{NULL}), the data would be stored in the default cache directory (see
@@ -99,10 +98,7 @@ When set to \code{TRUE} it would force a fresh download of the source
 stored in the temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
 }
 \value{
-\itemize{
-\item With \code{metadata = FALSE}: A \code{\link[sf:sf]{sf}} object.
-\item With \code{metadata = TRUE}: A tibble.
-}
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 \href{https://www.geoboundaries.org/index.html#usage}{Attribution} is required
