@@ -21,9 +21,9 @@ template:
 
 navbar:
   structure:
-    right: [search, github, gb]
+    right: [search, github, geoBoundaries, lightswitch]
   components:
-    twitter:
+    geoBoundaries:
       icon: fa-earth-americas
       href: https://www.geoboundaries.org/
       aria-label: geoBoundaries
