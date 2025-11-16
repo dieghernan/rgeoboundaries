@@ -3,4 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   rgeoboundaries: rgeoboundaries.html
-last_built: 2025-11-16T21:43Z
+  articles/x1_gbOpen: x1_gbOpen.html
+  articles/x2_gbHumanitarian: x2_gbHumanitarian.html
+  articles/x3_gbAuthoritative: x3_gbAuthoritative.html
+last_built: 2025-11-16T21:55Z

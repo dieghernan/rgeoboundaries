@@ -149,6 +149,16 @@ A BibTeX entry for LaTeX users:
 }
 ```
 
+## Legal
+
+With respect to works on or made available through download from the
+this website, we make no representations or warranties–express, implied,
+or statutory–as to the validity, accuracy, completeness, or fitness for
+a particular purpose; nor represent that use of such works would not
+infringe privately owned rights; nor assume any liability resulting from
+use of such works; and shall in no way be liable for any costs,
+expenses, claims, or demands arising out of use of such works.
+
 ## References
 
 Runfola, Daniel, Austin Anderson, Heather Baier, Matt Crittenden,
@@ -196,7 +206,7 @@ These functions return metadata in tibble format.
   [`gb_list_cache()`](gb_cache.md) [`gb_clear_cache()`](gb_cache.md)
   [`gb_delete_from_cache()`](gb_cache.md) :
 
-  [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries):
+  [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries)
   cache utilities
 
 ## About the package
@@ -223,3 +233,6 @@ These functions return metadata in tibble format.
 
 - [rgeoboundaries: A Client for the geoBoundaries Administrative
   Boundaries Dataset](rgeoboundaries.md):
+- [gbOpen coverage and metadata](x1_gbOpen.md):
+- [gbHumanitarian coverage and metadata](x2_gbHumanitarian.md):
+- [gbAuthoritative coverage and metadata](x3_gbAuthoritative.md):

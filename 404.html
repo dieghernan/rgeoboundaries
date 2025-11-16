@@ -20,8 +20,10 @@
 <!-- fonts --><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet">
-<!-- styles ---><style>
-  .navbar .container {font-weight: 800}
+<!-- styles --><style>
+  .navbar .container {
+    font-weight: 800;
+  }
 </style>
 </head>
 <body>
@@ -43,6 +45,14 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="articles/rgeoboundaries.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/x1_gbOpen.html">gbOpen coverage and metadata</a></li>
+    <li><a class="dropdown-item" href="articles/x2_gbHumanitarian.html">gbHumanitarian coverage and metadata</a></li>
+    <li><a class="dropdown-item" href="articles/x3_gbAuthoritative.html">gbAuthoritative coverage and metadata</a></li>
+  </ul>
+</li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
@@ -50,6 +60,7 @@
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/wmgeolab/rgeoboundaries/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://www.geoboundaries.org/" aria-label="geoBoundaries"><span class="fa fa-earth-americas"></span></a></li>
       </ul>
 </div>
 

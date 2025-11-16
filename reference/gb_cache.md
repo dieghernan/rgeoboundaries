@@ -1,4 +1,4 @@
-# [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries): cache utilities
+# [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries) cache utilities
 
 Utilities to manage a local cache directory used by
 [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries) for
@@ -137,7 +137,7 @@ gb_set_cache(ex, quiet = TRUE)
 
 newcache <- gb_get_cache()
 newcache
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpspbWma/example/cache"
+#> [1] "/tmp/RtmpnWbsG3/example/cache"
 
 # Write files to path
 cat(1:10000L, file = file.path(newcache, "a.txt"))
@@ -150,21 +150,21 @@ gb_list_cache()
 
 # Delete one file
 gb_delete_from_cache("a.txt")
-#> ✔ File C:\Users\RUNNER~1\AppData\Local\Temp\RtmpspbWma/example/cache/a.txt deleted.
+#> ✔ File /tmp/RtmpnWbsG3/example/cache/a.txt deleted.
 
 gb_list_cache()
 #> [1] "b.txt" "c.txt"
 
 # Delete all
 gb_clear_cache(quiet = FALSE)
-#> ! rgeoboundaries data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpspbWma/example/cache
+#> ! rgeoboundaries data deleted: /tmp/RtmpnWbsG3/example/cache
 
 gb_list_cache()
 #> character(0)
 
 # Restore initial cache
 gb_set_cache(my_cache)
-#> ✔ rgeoboundaries cache directory is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpspbWma/rgeoboundaries.
+#> ✔ rgeoboundaries cache directory is /tmp/RtmpnWbsG3/rgeoboundaries.
 #> ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gb_get_cache())
 #> [1] TRUE
