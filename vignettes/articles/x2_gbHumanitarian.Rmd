@@ -1,0 +1,83 @@
+---
+title: "gbHumanitarian coverage and metadata"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  tidy = "styler",
+  dev = "ragg_png",
+  dpi = 300,
+  out.width = "100%"
+)
+
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+
+src <- "gbHumanitarian"
+```
+
+## `r src` coverage
+
+```{r ghuman-coverage, echo=FALSE, crop=TRUE, fig.alt="World coverage"}
+library(rgeoboundaries)
+library(ggplot2)
+library(dplyr)
+
+world <- gb_get_world()
+max_lvl <- gb_get_max_adm_lvl(release_type = src)
+
+unq <- max_lvl$maxBoundaryType %>%
+  sort() %>%
+  unique()
+p <- world |>
+  mutate(boundaryISO = shapeGroup) |>
+  left_join(max_lvl) |>
+  mutate(max_lvl = factor(maxBoundaryType,
+    levels = 0:5
+  ))
+
+pal <- c("#0e221b", "#0f4a38", "#0b6e4f", "#719384", "#b9975a", "#936e28")
+
+pal_end <- pal[unq + 1]
+ggplot(p) +
+  geom_sf(fill = "#e5e5e5", color = "#e5e5e5") +
+  geom_sf(aes(fill = max_lvl), color = "transparent") +
+  scale_fill_manual(values = pal_end, na.translate = FALSE, drop = TRUE) +
+  guides(fill = guide_legend(direction = "horizontal", nrow = 1)) +
+  coord_sf(expand = TRUE, crs = "+proj=robin") +
+  theme_void() +
+  theme(
+    text = element_text(family = "sans", face = "bold"),
+    legend.position = "bottom",
+    legend.title.position = "top",
+    legend.title = element_text(size = rel(0.75), face = "plain"),
+    legend.text = element_text(size = rel(1)),
+    legend.text.position = "right",
+    legend.key.height = unit(1, "line"),
+    legend.key.width = unit(1, "line")
+  ) +
+  labs(
+    fill = "Administrative Divisions (ADMs)",
+    title = "max. ADM. available"
+  )
+```
+
+## `r src` metadata
+
+```{r metadata, echo=FALSE}
+meta <- gb_get_metadata(release_type = src)
+
+library(reactable)
+reactable::reactable(meta,
+  filterable = TRUE,
+  defaultColDef = colDef(minWidth = 200),
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  paginationType = "jump",
+  defaultPageSize = 5,
+  elementId = src
+)
+```
