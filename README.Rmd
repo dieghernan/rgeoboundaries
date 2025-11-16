@@ -125,8 +125,10 @@ sea_poly <- sea |>
 sea_line <- sea_poly |> st_cast("LINESTRING")
 ggplot(sea_poly) +
   geom_sf(fill = "#bee0ff") +
-  geom_sf(data = world, fill = "#f0b323", color = "white", 
-  linewidth = 0.1) +
+  geom_sf(
+    data = world, fill = "#f0b323", color = "white",
+    linewidth = 0.1
+  ) +
   geom_sf(data = sea_line, color = "black") +
   coord_sf(expand = TRUE, crs = "+proj=robin") +
   theme_void()

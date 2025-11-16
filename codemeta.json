@@ -13,7 +13,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.2 (2025-10-31)",
+  "runtimePlatform": "R version 4.5.2 (2025-10-31 ucrt)",
   "author": [
     {
       "@type": "Person",
@@ -240,7 +240,7 @@
   },
   "applicationCategory": "DataAccess",
   "keywords": ["geoboundaries", "boundaries", "gis", "map", "geographic", "data", "spatial", "dataset"],
-  "fileSize": "717.819KB",
+  "fileSize": "383.085KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
