@@ -9,11 +9,16 @@ template:
   bslib:
     font-family-base: '"Open Sans", sans-serif'
     font-family-code: '"Courier Prime", monospace'
+    font-weight-bold: 800
+    font-weight-bolder: 800
     headings-font-weight: 800
     headings-color: "#444"
+    navbar-light-brand-color: "#696969"
+    nav-link-color: "#696969"
     font-weight-normal: 300
     primary: "#0090c5"
     light: "#ebebeb"
+
 
 authors:
   Diego Hernangómez:
