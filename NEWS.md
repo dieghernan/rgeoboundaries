@@ -30,6 +30,12 @@ Renamed functions:
 -   Download logic is now implemented using **httr2**.
 -   Internal informational messages are generated using **cli**.
 
+### Documentation
+
+-   Review `README`.
+-   Create **pkgdown** site <https://dieghernan.github.io/rgeoboundaries/>.
+-   Add vignette.
+
 ### Cache management
 
 Cache handling has been fully reviewed:
@@ -37,9 +43,10 @@ Cache handling has been fully reviewed:
 -   By default, the cache directory is located under `base::tempdir()`.\
     You can change it using:
     -   Temporary cache (single R session): `gb_set_cache(path)`.
-    -   Persistent cache across R sessions: `gb_set_cache(path, install = TRUE)`.
-    - Specific files: use the `path` argument in the corresponding function 
-      e.g. `gb_get(..., path = path)`.
+    -   Persistent cache across R sessions:
+        `gb_set_cache(path, install = TRUE)`.
+    -   Specific files: use the `path` argument in the corresponding function
+        e.g. `gb_get(..., path = path)`.
 
 Redesigned cache-management functions:
 
@@ -49,12 +56,6 @@ Redesigned cache-management functions:
 -   `gb_clear_cache()`: remove all cached files (optionally removing the
     installed config).
 -   `gb_delete_from_cache()`: remove one or more specific cached files.
-
-### Documentation
-
--   Review `README`.
--   Create **pkgdown** site <https://dieghernan.github.io/rgeoboundaries/>.
--   Add vignette.
 
 ### Testing and internals
 
@@ -84,8 +85,8 @@ Redesigned cache-management functions:
 
 # rgeoboundaries 1.3
 
-CRAN submission.
+-   CRAN submission.
 
 # rgeoboundaries 1.2.9
 
-Initial CRAN submission.
+-   Initial CRAN submission.

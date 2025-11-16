@@ -116,9 +116,8 @@ purposes, but are verified through in-country processes.
 
 \item{quiet}{logical. If \code{TRUE} suppresses informational messages.}
 
-\item{overwrite}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.zip} file.}
+\item{overwrite}{logical. When set to \code{TRUE} it would force a fresh
+download of the source \code{.zip} file.}
 
 \item{version}{Deprecated argument.}
 }

@@ -36,7 +36,7 @@ existing installed cache path. Defaults to \code{FALSE}.}
 \item{create}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}.}
 
 \item{full_path}{logical, if \code{TRUE} returns the full path all the cached
-files. If \code{FALSE} just the base names is provided.}
+files. If \code{FALSE} just path relative to the cache directory is provided.}
 
 \item{force}{logical.  Should permissions be changed (if possible) to
     allow the file or directory to be removed?}

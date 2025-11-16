@@ -226,10 +226,10 @@ gb_get_cache <- function(create = deprecated()) {
 
 #' @rdname gb_cache
 #' @param full_path logical, if `TRUE` returns the full path all the cached
-#'    files. If `FALSE` just the base names is provided.
+#'    files. If `FALSE` just path relative to the cache directory is provided.
 #' @export
 gb_list_cache <- function(full_path = FALSE) {
-  list.files(gb_get_cache(), full.names = full_path)
+  list.files(gb_get_cache(), full.names = full_path, recursive = TRUE)
 }
 
 
