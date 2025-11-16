@@ -7,7 +7,7 @@
 \alias{gb_list_cache}
 \alias{gb_clear_cache}
 \alias{gb_delete_from_cache}
-\title{\CRANpkg{rgeoboundaries}: cache utilities}
+\title{\CRANpkg{rgeoboundaries} cache utilities}
 \usage{
 gb_set_cache(path, install = FALSE, overwrite = FALSE, quiet = FALSE)
 

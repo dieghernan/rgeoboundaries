@@ -170,6 +170,16 @@ A BibTeX entry for LaTeX users:
       number = {4},
     }
 
+## Legal
+
+With respect to works on or made available through download from the
+this website, we make no representations or warranties—express, implied,
+or statutory—as to the validity, accuracy, completeness, or fitness for
+a particular purpose; nor represent that use of such works would not
+infringe privately owned rights; nor assume any liability resulting from
+use of such works; and shall in no way be liable for any costs, expenses,
+claims, or demands arising out of use of such works.
+
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent"

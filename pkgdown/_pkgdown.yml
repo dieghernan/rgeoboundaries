@@ -19,6 +19,14 @@ template:
     primary: "#0090c5"
     light: "#ebebeb"
 
+navbar:
+  structure:
+    right: [search, github, gb]
+  components:
+    twitter:
+      icon: fa-earth-americas
+      href: https://www.geoboundaries.org/
+      aria-label: geoBoundaries
 
 authors:
   Diego Hernangómez:
