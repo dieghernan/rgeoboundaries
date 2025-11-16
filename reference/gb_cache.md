@@ -137,7 +137,7 @@ gb_set_cache(ex, quiet = TRUE)
 
 newcache <- gb_get_cache()
 newcache
-#> [1] "/tmp/RtmpFCx1Dm/example/cache"
+#> [1] "/tmp/Rtmp84mmDW/example/cache"
 
 # Write files to path
 cat(1:10000L, file = file.path(newcache, "a.txt"))
@@ -150,21 +150,21 @@ gb_list_cache()
 
 # Delete one file
 gb_delete_from_cache("a.txt")
-#> ✔ File /tmp/RtmpFCx1Dm/example/cache/a.txt deleted.
+#> ✔ File /tmp/Rtmp84mmDW/example/cache/a.txt deleted.
 
 gb_list_cache()
 #> [1] "b.txt" "c.txt"
 
 # Delete all
 gb_clear_cache(quiet = FALSE)
-#> ! rgeoboundaries data deleted: /tmp/RtmpFCx1Dm/example/cache
+#> ! rgeoboundaries data deleted: /tmp/Rtmp84mmDW/example/cache
 
 gb_list_cache()
 #> character(0)
 
 # Restore initial cache
 gb_set_cache(my_cache)
-#> ✔ rgeoboundaries cache directory is /tmp/RtmpFCx1Dm/rgeoboundaries.
+#> ✔ rgeoboundaries cache directory is /tmp/Rtmp84mmDW/rgeoboundaries.
 #> ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gb_get_cache())
 #> [1] TRUE
