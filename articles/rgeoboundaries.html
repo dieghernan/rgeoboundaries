@@ -42,7 +42,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item"><a class="nav-link" href="../articles/rgeoboundaries.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/rgeoboundaries.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
@@ -226,25 +226,25 @@ version. For example:</p>
 <span><span class="va">current</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gb_cache.html">gb_get_cache</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">current</span></span>
-<span><span class="co">#&gt; [1] "/tmp/Rtmp4cOeN9"</span></span>
+<span><span class="co">#&gt; [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmp4S1Qww"</span></span>
 <span></span>
 <span><span class="co"># Change to new</span></span>
 <span><span class="va">newdir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/geoboundvignette"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/gb_cache.html">gb_set_cache</a></span><span class="op">(</span><span class="va">newdir</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ rgeoboundaries cache directory is '/tmp/Rtmp4cOeN9//geoboundvignette'.</span></span>
+<span><span class="co">#&gt; ✔ rgeoboundaries cache directory is 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4S1Qww//geoboundvignette'.</span></span>
 <span><span class="co">#&gt; ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.</span></span>
 <span></span>
 <span><span class="co"># Download</span></span>
 <span><span class="va">example</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gb_get_adm.html">gb_get_adm0</a></span><span class="op">(</span><span class="st">"Vatican City"</span>, quiet <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Downloading file from &lt;https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/VAT/ADM0/geoBoundaries-VAT-ADM0-all.zip&gt;</span></span>
-<span><span class="co">#&gt; → Cache dir is '/tmp/Rtmp4cOeN9//geoboundvignette/gbOpen'</span></span>
+<span><span class="co">#&gt; → Cache dir is 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4S1Qww//geoboundvignette/gbOpen'</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/gb_cache.html">gb_list_cache</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "gbOpen/geoBoundaries-VAT-ADM0-all.zip"</span></span>
 <span></span>
 <span><span class="co"># Restore cache dir</span></span>
 <span><span class="fu"><a href="../reference/gb_cache.html">gb_set_cache</a></span><span class="op">(</span><span class="va">current</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ rgeoboundaries cache directory is '/tmp/Rtmp4cOeN9'.</span></span>
+<span><span class="co">#&gt; ✔ rgeoboundaries cache directory is 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4S1Qww'.</span></span>
 <span><span class="co">#&gt; ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.</span></span>
 <span></span>
 <span><span class="va">current</span> <span class="op">==</span> <span class="fu"><a href="../reference/gb_cache.html">gb_get_cache</a></span><span class="op">(</span><span class="op">)</span></span>
