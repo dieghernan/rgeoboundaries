@@ -113,7 +113,6 @@ ggplot(sea_poly) +
 
 <img src="man/figures/README-world-1.png" alt="Map on the rgeoboundaries logo" width="100%" />
 <p class="caption">
-
 Map on the rgeoboundaries logo
 </p>
 
@@ -173,12 +172,12 @@ A BibTeX entry for LaTeX users:
 ## Legal
 
 With respect to works on or made available through download from the
-this website, we make no representations or warranties—express, implied,
-or statutory—as to the validity, accuracy, completeness, or fitness for
+this website, we make no representations or warranties–express, implied,
+or statutory–as to the validity, accuracy, completeness, or fitness for
 a particular purpose; nor represent that use of such works would not
 infringe privately owned rights; nor assume any liability resulting from
-use of such works; and shall in no way be liable for any costs, expenses,
-claims, or demands arising out of use of such works.
+use of such works; and shall in no way be liable for any costs,
+expenses, claims, or demands arising out of use of such works.
 
 ## References
 
