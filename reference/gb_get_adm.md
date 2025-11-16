@@ -120,8 +120,8 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 
 - overwrite:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.zip` file.
+  logical. When set to `TRUE` it would force a fresh download of the
+  source `.zip` file.
 
 - path:
 
@@ -133,10 +133,7 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 
 ## Value
 
-- With `metadata = FALSE`: A
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-
-- With `metadata = TRUE`: A tibble.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 

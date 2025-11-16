@@ -66,7 +66,7 @@ gb_delete_from_cache(file)
 - full_path:
 
   logical, if `TRUE` returns the full path all the cached files. If
-  `FALSE` just the base names is provided.
+  `FALSE` just path relative to the cache directory is provided.
 
 - force:
 
@@ -137,7 +137,7 @@ gb_set_cache(ex, quiet = TRUE)
 
 newcache <- gb_get_cache()
 newcache
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpiQgA6H/example/cache"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpimZnAr/example/cache"
 
 # Write files to path
 cat(1:10000L, file = file.path(newcache, "a.txt"))
@@ -150,21 +150,21 @@ gb_list_cache()
 
 # Delete one file
 gb_delete_from_cache("a.txt")
-#> ✔ File C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiQgA6H/example/cache/a.txt deleted.
+#> ✔ File C:\Users\RUNNER~1\AppData\Local\Temp\RtmpimZnAr/example/cache/a.txt deleted.
 
 gb_list_cache()
 #> [1] "b.txt" "c.txt"
 
 # Delete all
 gb_clear_cache(quiet = FALSE)
-#> ! rgeoboundaries data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiQgA6H/example/cache
+#> ! rgeoboundaries data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpimZnAr/example/cache
 
 gb_list_cache()
 #> character(0)
 
 # Restore initial cache
 gb_set_cache(my_cache)
-#> ✔ rgeoboundaries cache directory is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiQgA6H/rgeoboundaries.
+#> ✔ rgeoboundaries cache directory is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpimZnAr/rgeoboundaries.
 #> ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gb_get_cache())
 #> [1] TRUE

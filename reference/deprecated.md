@@ -139,8 +139,8 @@ gb_max_adm_lvl(
 
 - overwrite:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.zip` file.
+  logical. When set to `TRUE` it would force a fresh download of the
+  source `.zip` file.
 
 - version:
 

@@ -37,6 +37,13 @@ Renamed functions:
 - Download logic is now implemented using **httr2**.
 - Internal informational messages are generated using **cli**.
 
+#### Documentation
+
+- Review `README`.
+- Create **pkgdown** site
+  <https://dieghernan.github.io/rgeoboundaries/>.
+- Add vignette.
+
 #### Cache management
 
 Cache handling has been fully reviewed:
@@ -62,13 +69,6 @@ Redesigned cache-management functions:
   files (optionally removing the installed config).
 - [`gb_delete_from_cache()`](../reference/gb_cache.md): remove one or
   more specific cached files.
-
-#### Documentation
-
-- Review `README`.
-- Create **pkgdown** site
-  <https://dieghernan.github.io/rgeoboundaries/>.
-- Add vignette.
 
 #### Testing and internals
 
@@ -101,10 +101,10 @@ Redesigned cache-management functions:
 
 CRAN release: 2024-03-12
 
-CRAN submission.
+- CRAN submission.
 
 ## rgeoboundaries 1.2.9
 
 CRAN release: 2023-12-08
 
-Initial CRAN submission.
+- Initial CRAN submission.

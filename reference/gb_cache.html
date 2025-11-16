@@ -43,7 +43,8 @@ gb_delete_from_cache(): remove one or more specific cached files.
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/rgeoboundaries.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -56,7 +57,7 @@ gb_delete_from_cache(): remove one or more specific cached files.
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1><a href="https://CRAN.R-project.org/package=rgeoboundaries" class="external-link"><span class="pkg">rgeoboundaries</span></a>: cache utilities</h1>
-      <small class="dont-index">Source: <a href="https://github.com/wmgeolab/rgeoboundaries/blob/package-doc/R/gb-cache.R" class="external-link"><code>R/gb-cache.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/wmgeolab/rgeoboundaries/blob/master/R/gb-cache.R" class="external-link"><code>R/gb-cache.R</code></a></small>
       <div class="d-none name"><code>gb_cache.Rd</code></div>
     </div>
 
@@ -118,7 +119,7 @@ existing installed cache path. Defaults to <code>FALSE</code>.</p></dd>
 
 <dt id="arg-full-path">full_path<a class="anchor" aria-label="anchor" href="#arg-full-path"></a></dt>
 <dd><p>logical, if <code>TRUE</code> returns the full path all the cached
-files. If <code>FALSE</code> just the base names is provided.</p></dd>
+files. If <code>FALSE</code> just path relative to the cache directory is provided.</p></dd>
 
 
 <dt id="arg-force">force<a class="anchor" aria-label="anchor" href="#arg-force"></a></dt>
@@ -186,7 +187,7 @@ corresponding function. See <code><a href="gb_get.html">gb_get()</a></code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">newcache</span> <span class="op">&lt;-</span> <span class="fu">gb_get_cache</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">newcache</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpiQgA6H/example/cache"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpimZnAr/example/cache"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write files to path</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10000L</span>, file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">newcache</span>, <span class="st">"a.txt"</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -199,21 +200,21 @@ corresponding function. See <code><a href="gb_get.html">gb_get()</a></code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Delete one file</span></span></span>
 <span class="r-in"><span><span class="fu">gb_delete_from_cache</span><span class="op">(</span><span class="st">"a.txt"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiQgA6H/example/cache/a.txt</span> deleted.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpimZnAr/example/cache/a.txt</span> deleted.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gb_list_cache</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "b.txt" "c.txt"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Delete all</span></span></span>
 <span class="r-in"><span><span class="fu">gb_clear_cache</span><span class="op">(</span>quiet <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> <span style="color: #0000BB;">rgeoboundaries</span> data deleted: <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiQgA6H/example/cache</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> <span style="color: #0000BB;">rgeoboundaries</span> data deleted: <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpimZnAr/example/cache</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gb_list_cache</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Restore initial cache</span></span></span>
 <span class="r-in"><span><span class="fu">gb_set_cache</span><span class="op">(</span><span class="va">my_cache</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">rgeoboundaries</span> cache directory is <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiQgA6H/rgeoboundaries</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">rgeoboundaries</span> cache directory is <span style="color: #0000BB;">C:\Users\RUNNER~1\AppData\Local\Temp\RtmpimZnAr/rgeoboundaries</span>.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> To install your `path` for use in future sessions run this function with `install = TRUE`.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">my_cache</span>, <span class="fu">gb_get_cache</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
