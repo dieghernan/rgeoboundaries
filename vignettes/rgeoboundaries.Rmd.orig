@@ -166,7 +166,7 @@ current <- gb_get_cache()
 current
 
 # Change to new
-newdir <- file.path(tempdir(), "/geoboundvignette")
+newdir <- file.path(tempdir(), "geobound_vignette")
 gb_set_cache(newdir)
 
 # Download
