@@ -40,7 +40,7 @@ Suggests:
     tibble
 VignetteBuilder: 
     knitr
-Config/Needs/website: pkgdown, ragg, styler, reactable
+Config/Needs/website: pkgdown, ragg, styler, reactable, lwgeom
 Config/testthat/edition: 3
 Copyright: Attribution required. See file COPYRIGHTS for specific
     provisions.
