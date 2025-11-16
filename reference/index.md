@@ -29,7 +29,7 @@ These functions return metadata in tibble format.
   [`gb_list_cache()`](gb_cache.md) [`gb_clear_cache()`](gb_cache.md)
   [`gb_delete_from_cache()`](gb_cache.md) :
 
-  [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries)
+  [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries):
   cache utilities
 
 ## About the package
