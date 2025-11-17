@@ -42,8 +42,8 @@ pal <- c("#0e221b", "#0f4a38", "#0b6e4f", "#719384", "#b9975a", "#936e28")
 pal_end <- pal
 names(pal_end) <- levels(p$max_lvl)
 ggplot(p) +
-  geom_sf(fill = "#e5e5e5", color = "#e5e5e5", show.legend = TRUE) +
-  geom_sf(aes(fill = max_lvl), color = "transparent") +
+  geom_sf(fill = "#e5e5e5", color = "#e5e5e5") +
+  geom_sf(aes(fill = max_lvl), color = "transparent", show.legend = TRUE) +
   scale_fill_manual(values = pal_end, na.translate = FALSE, drop = FALSE) +
   guides(fill = guide_legend(direction = "horizontal", nrow = 1)) +
   coord_sf(expand = TRUE, crs = "+proj=robin") +
