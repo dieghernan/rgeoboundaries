@@ -40,16 +40,17 @@ p <- world |>
 
 pal <- c("#0e221b", "#0f4a38", "#0b6e4f", "#719384", "#b9975a", "#936e28")
 
-pal_end <- pal[unq + 1]
+pal_end <- pal
+names(pal_end) <- levels(p$max_lvl)
 ggplot(p) +
   geom_sf(fill = "#e5e5e5", color = "#e5e5e5") +
-  geom_sf(aes(fill = max_lvl), color = "transparent") +
-  scale_fill_manual(values = pal_end, na.translate = FALSE, drop = TRUE) +
+  geom_sf(aes(fill = max_lvl), color = "transparent", show.legend = TRUE) +
+  scale_fill_manual(values = pal_end, na.translate = FALSE, drop = FALSE) +
   guides(fill = guide_legend(direction = "horizontal", nrow = 1)) +
   coord_sf(expand = TRUE, crs = "+proj=robin") +
   theme_void() +
   theme(
-    plot.background = element_rect(fill = "white"),
+    plot.background = element_rect(fill = "white", color = NA),
     text = element_text(family = "sans", face = "bold"),
     legend.position = "bottom",
     legend.title.position = "top",
@@ -60,8 +61,7 @@ ggplot(p) +
     legend.key.width = unit(1, "line")
   ) +
   labs(
-    fill = "Administrative Divisions (ADMs)",
-    title = "max. ADM. available"
+    fill = "Administrative Divisions (ADMs)"
   )
 ```
 
@@ -69,15 +69,48 @@ ggplot(p) +
 
 ```{r metadata, echo=FALSE}
 meta <- gb_get_metadata(release_type = src)
+meta$staticDownloadLink <- paste0(
+  '<a href="', meta$staticDownloadLink,
+  '" class="external-link"><i class="fa-solid fa-download"></i></a>'
+)
+
+meta$gjDownloadURL <- paste0(
+  '<a href="', meta$gjDownloadURL,
+  '" class="external-link"><i class="fa-solid fa-download"></i></a>'
+)
+
+meta$tjDownloadURL <- paste0(
+  '<a href="', meta$tjDownloadURL,
+  '" class="external-link"><i class="fa-solid fa-download"></i></a>'
+)
+
+meta$simplifiedGeometryGeoJSON <- paste0(
+  '<a href="', meta$simplifiedGeometryGeoJSON,
+  '" class="external-link"><i class="fa-solid fa-download"></i></a>'
+)
+
+meta$imagePreview <- paste0(
+  '<img src="', meta$imagePreview,
+  '" alt="Map preview" class="img-thumbnail mx-auto d-block">'
+)
+
 
 library(reactable)
 reactable::reactable(meta,
   filterable = TRUE,
   defaultColDef = colDef(minWidth = 200),
+  columns = list(
+    staticDownloadLink = colDef(html = TRUE, align = "center"),
+    gjDownloadURL = colDef(html = TRUE, align = "center"),
+    tjDownloadURL = colDef(html = TRUE, align = "center"),
+    simplifiedGeometryGeoJSON = colDef(html = TRUE, align = "center"),
+    imagePreview = colDef(html = TRUE, align = "center")
+  ),
   searchable = TRUE,
   showPageSizeOptions = TRUE,
   paginationType = "jump",
   defaultPageSize = 5,
+  pageSizeOptions = c(5, 10, 25, 50, 100),
   elementId = src
 )
 ```
