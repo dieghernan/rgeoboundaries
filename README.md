@@ -103,7 +103,10 @@ sea_poly <- sea |>
 sea_line <- sea_poly |> st_cast("LINESTRING")
 ggplot(sea_poly) +
   geom_sf(fill = "#bee0ff") +
-  geom_sf(data = world, fill = "#f0b323", color = "white", linewidth = 0.1) +
+  geom_sf(
+    data = world, fill = "#f0b323", color = "white",
+    linewidth = 0.1
+  ) +
   geom_sf(data = sea_line, color = "black") +
   coord_sf(expand = TRUE, crs = "+proj=robin") +
   theme_void()
@@ -129,9 +132,9 @@ Map on the rgeoboundaries logo
 
 ## License
 
-This package is released under the [CC
-BY-4.0](https://creativecommons.org/licenses/by/4.0/) license. Note that
-the boundary data being accessed (via geoBoundaries) also uses open
+This package is released under the
+[MIT](https://opensource.org/license/mit) license. Note that the
+boundary data being accessed (via geoBoundaries) also uses open
 licences; please check the specific dataset metadata for licensing
 details.
 
@@ -169,6 +172,16 @@ A BibTeX entry for LaTeX users:
       pages = {1-9},
       number = {4},
     }
+
+## Legal
+
+With respect to works on or made available through download from the
+this website, we make no representations or warranties -express,
+implied, or statutory- as to the validity, accuracy, completeness, or
+fitness for a particular purpose; nor represent that use of such works
+would not infringe privately owned rights; nor assume any liability
+resulting from use of such works; and shall in no way be liable for any
+costs, expenses, claims, or demands arising out of use of such works.
 
 ## References
 

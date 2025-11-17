@@ -9,11 +9,31 @@ template:
   bslib:
     font-family-base: '"Open Sans", sans-serif'
     font-family-code: '"Courier Prime", monospace'
-    headings-font-weight: 800
-    headings-color: "#444"
     font-weight-normal: 300
+    font-weight-bold: 600
+    font-weight-bolder: 600
+    headings-font-weight: 800
+    body-color: "#696969"
+    code-bg: "#e6ebed40"
+    headings-color: "#444"
+    navbar-light-brand-color: "#696969"
     primary: "#0090c5"
     light: "#ebebeb"
+    warning: "#f0b323"
+  includes:
+    in_header: >
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+navbar:
+  structure:
+    right: [search, github, geoBoundaries, lightswitch]
+  components:
+    geoBoundaries:
+      icon: fa-earth-americas
+      href: https://www.geoboundaries.org/
+      aria-label: geoBoundaries
 
 authors:
   Diego Hernangómez:

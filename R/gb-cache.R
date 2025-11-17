@@ -1,4 +1,4 @@
-#' \CRANpkg{rgeoboundaries}: cache utilities
+#' \CRANpkg{rgeoboundaries} cache utilities
 #'
 #' @description
 #' Utilities to manage a local cache directory used by \CRANpkg{rgeoboundaries}

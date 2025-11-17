@@ -4,7 +4,7 @@ library(rgeoboundaries)
 library(sf)
 library(tidyverse)
 
-all2 <- geoboundaries(adm_lvl = 1)
+all2 <- gb_get_world(adm_lvl = 1)
 
 # Sea
 bbox_temp <- st_bbox(all2)

@@ -28,3 +28,4 @@
 ^\.vscode$
 ^dev$
 ^vignettes/rgeoboundaries\.Rmd\.orig$
+^vignettes/articles$

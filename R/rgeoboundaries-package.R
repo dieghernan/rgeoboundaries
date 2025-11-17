@@ -2,7 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom lifecycle deprecated deprecate_warn is_present
+#' @importFrom lifecycle deprecated
 #' @importFrom utils unzip
 ## usethis namespace: end
 NULL
