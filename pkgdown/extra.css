@@ -1,4 +1,14 @@
 /* ---Extra typography--- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #444;
+	font-weight: 800;
+}
+
 b,
 strong,
 dt {
@@ -48,7 +58,6 @@ main img {
 	margin-left: .5rem;
 	margin-right: .5rem;
 }
-
 
 #navbar .dropdown-menu .dropdown-item:hover,
 #navbar .dropdown-menu .dropdown-item:focus {
