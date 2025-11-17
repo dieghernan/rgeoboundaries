@@ -116,6 +116,7 @@ ggplot(sea_poly) +
 
 <img src="man/figures/README-world-1.png" alt="Map on the rgeoboundaries logo" width="100%" />
 <p class="caption">
+
 Map on the rgeoboundaries logo
 </p>
 
