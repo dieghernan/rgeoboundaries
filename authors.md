@@ -21,7 +21,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/wmgeolab/rgeoboundaries/blob/improve-pkgdown/inst/CITATION)
+[`inst/CITATION`](https://github.com/wmgeolab/rgeoboundaries/blob/main/inst/CITATION)
 
 Runfola D, Anderson A, Baier H, Crittenden M, Dowker E, Fuhrig S,
 Goodman S, Grimsley G, Layko R, Melville G, Mulder M, Oberman R,
