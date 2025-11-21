@@ -1,10 +1,10 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
+<url><loc>/articles/gbauthoritative.html</loc></url>
+<url><loc>/articles/gbhumanitarian.html</loc></url>
+<url><loc>/articles/gbopen.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/articles/rgeoboundaries.html</loc></url>
-<url><loc>/articles/x1_gbOpen.html</loc></url>
-<url><loc>/articles/x2_gbHumanitarian.html</loc></url>
-<url><loc>/articles/x3_gbAuthoritative.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/CONTRIBUTING.html</loc></url>
 <url><loc>/index.html</loc></url>

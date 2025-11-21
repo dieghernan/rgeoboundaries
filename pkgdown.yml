@@ -2,8 +2,8 @@ pandoc: 3.1.11
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
+  articles/gbauthoritative: gbauthoritative.html
+  articles/gbhumanitarian: gbhumanitarian.html
+  articles/gbopen: gbopen.html
   rgeoboundaries: rgeoboundaries.html
-  articles/x1_gbOpen: x1_gbOpen.html
-  articles/x2_gbHumanitarian: x2_gbHumanitarian.html
-  articles/x3_gbAuthoritative: x3_gbAuthoritative.html
-last_built: 2025-11-21T20:43Z
+last_built: 2025-11-21T22:49Z

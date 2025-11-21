@@ -2,6 +2,6 @@
 
 ## gbOpen coverage
 
-![World coverage](x1_gbOpen_files/figure-html/map-coverage-1.png)
+![World coverage](gbopen_files/figure-html/map-coverage-1.png)
 
 ## gbOpen metadata
