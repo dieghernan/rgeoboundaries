@@ -1,6 +1,6 @@
 # Get metadata of individual country files from geoBoundaries
 
-This function returns metadadata of the [geoBoundaries
+This function returns metadata of the [geoBoundaries
 API](https://www.geoboundaries.org/api.html).
 
 ## Usage
@@ -51,8 +51,11 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 ## Value
 
 A tibble with class
-[`tbl_df`](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with columns:
+[`tbl_df`](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+
+## Details
+
+The result is a tibble with the following columns:
 
 - `boundaryID`: The ID for this layer, which is a combination of the ISO
   code, the boundary type, and a unique identifier for the boundary
