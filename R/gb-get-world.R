@@ -9,20 +9,12 @@
 #' level, clipped to international boundaries, with gaps filled between
 #' borders.
 #'
-#' @source
-#' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
-#'
-#' @references
-#' Runfola, D. et al. (2020) geoBoundaries: A global database of political
-#' administrative boundaries. *PLoS ONE* 15(4): e0231866.
-#' \doi{10.1371/journal.pone.0231866}.
 #'
 #' @family API functions
 #'
-#' @return
-#' A [`sf`][sf::st_sf] object.
-#'
 #' @inheritParams gb_get
+#'
+#' @inherit gb_get
 #'
 #' @param adm_lvl Type of boundary Accepted values are administrative
 #'   levels 0, 1 and 2 (`"adm0"` is the country boundary,

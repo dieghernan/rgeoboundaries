@@ -79,3 +79,11 @@ reference:
     contents:
       - deprecated
 
+articles:
+- title: geoBoundaries coverage
+  navbar: geoBoundaries coverage
+  contents:
+  - articles/gbopen
+  - articles/gbhumanitarian
+  - articles/gbauthoritative
+

@@ -8,6 +8,7 @@
 #' @family metadata functions
 #'
 #' @inheritParams gb_get
+#' @inherit gb_get source
 #'
 #' @return
 #' A tibble with class [`tbl_df`][tibble::tbl_df-class].
@@ -73,8 +74,6 @@
 #' - `simplifiedGeometryGeoJSON`: The static download link for the
 #'    simplified `geoJSON`.
 #'
-#' @source
-#' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 #'
 #' @export
 #'
