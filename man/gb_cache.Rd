@@ -76,10 +76,11 @@ installed config).
 }
 \details{
 By default, when no cache \code{path} is set the package uses a folder inside
-\code{\link[base:tempfile]{base::tempdir()}} (so files are temporary and are removed when the R session
-ends). To persist a cache across \strong{R} sessions, use
-\code{gb_set_cache(path, install = TRUE)} which writes the chosen path to a small
-configuration file under \code{tools::R_user_dir("rgeoboundaries", "config")}.
+\code{\link[base:tempfile]{base::tempdir()}} (so files are temporary and are removed when the \strong{R}
+session ends). To persist a cache across \strong{R} sessions, use
+\code{gb_set_cache(path, install = TRUE)} which writes the chosen path to a
+small configuration file under
+\code{tools::R_user_dir("rgeoboundaries", "config")}.
 }
 \section{Caching strategies}{
 

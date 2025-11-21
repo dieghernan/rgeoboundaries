@@ -2,7 +2,7 @@
 #'
 #' @description
 #'
-#' This function returns metadadata of the
+#' This function returns metadata of the
 #' [geoBoundaries API](https://www.geoboundaries.org/api.html).
 #'
 #' @family metadata functions
@@ -10,7 +10,10 @@
 #' @inheritParams gb_get
 #'
 #' @return
-#' A tibble with class [`tbl_df`][tibble::tbl_df-class] with columns:
+#' A tibble with class [`tbl_df`][tibble::tbl_df-class].
+#'
+#' @details
+#' The result is a tibble with the following columns:
 #'
 #' - `boundaryID`: The ID for this layer, which is a combination of the ISO
 #'    code, the boundary type, and a unique identifier for the boundary

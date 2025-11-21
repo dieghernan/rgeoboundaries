@@ -18,10 +18,11 @@
 #' @family cache utilities
 #' @details
 #' By default, when no cache `path` is set the package uses a folder inside
-#' [base::tempdir()] (so files are temporary and are removed when the R session
-#' ends). To persist a cache across **R** sessions, use
-#' `gb_set_cache(path, install = TRUE)` which writes the chosen path to a small
-#' configuration file under `tools::R_user_dir("rgeoboundaries", "config")`.
+#' [base::tempdir()] (so files are temporary and are removed when the **R**
+#' session ends). To persist a cache across **R** sessions, use
+#' `gb_set_cache(path, install = TRUE)` which writes the chosen path to a
+#' small configuration file under
+#' `tools::R_user_dir("rgeoboundaries", "config")`.
 #'
 #' @section Caching strategies:
 #'
