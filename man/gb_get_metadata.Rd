@@ -37,7 +37,14 @@ purposes, but are verified through in-country processes.
 }}
 }
 \value{
-A tibble with class \code{\link[tibble:tbl_df-class]{tbl_df}} with columns:
+A tibble with class \code{\link[tibble:tbl_df-class]{tbl_df}}.
+}
+\description{
+This function returns metadata of the
+\href{https://www.geoboundaries.org/api.html}{geoBoundaries API}.
+}
+\details{
+The result is a tibble with the following columns:
 \itemize{
 \item \code{boundaryID}: The ID for this layer, which is a combination of the ISO
 code, the boundary type, and a unique identifier for the boundary
@@ -97,10 +104,6 @@ containing all boundary information.
 \item \code{simplifiedGeometryGeoJSON}: The static download link for the
 simplified \code{geoJSON}.
 }
-}
-\description{
-This function returns metadadata of the
-\href{https://www.geoboundaries.org/api.html}{geoBoundaries API}.
 }
 \examples{
 \dontshow{if (httr2::is_online()) withAutoprint(\{ # examplesIf}
