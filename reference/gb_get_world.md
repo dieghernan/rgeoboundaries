@@ -1,11 +1,11 @@
-# Get global composites data (CGAZ) from geoBoundaries
+# Retrieve global composite data (CGAZ) from geoBoundaries
 
 [Attribution](https://www.geoboundaries.org/index.html#usage) is
 required for all uses of this dataset.
 
-This function returns a global composite of the required administration
-level, clipped to international boundaries, with gaps filled between
-borders.
+This function returns a global composite for the requested
+administrative level, clipped to international boundaries, with gaps
+filled between adjacent borders.
 
 ## Usage
 
@@ -27,52 +27,53 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 
 - country:
 
-  A character vector of country codes. It could be either `"all"` (that
-  would return the data for all countries), a vector of country names or
-  ISO3 country codes. See also
+  Character vector of country identifiers. This can be `"all"` (to
+  return data for all countries), a vector of country names, or ISO3
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - adm_lvl:
 
-  Type of boundary Accepted values are administrative levels 0, 1 and 2
-  (`"adm0"` is the country boundary, `"adm1"` is the first level of sub
-  national boundaries, `"adm2"` is the second level and so on. Upper
-  case version (`"ADM1"`) and the number of the level (`0, 1, 2`) and
-  also accepted.
+  Type of boundary. Accepted values are administrative levels 0, 1,
+  and 2. `"adm0"` corresponds to national boundaries, `"adm1"` to
+  first‑level subnational boundaries, and `"adm2"` to second‑level
+  boundaries. Uppercase variants (e.g., `"ADM1"`) and numeric values
+  (`0`, `1`, `2`) are also accepted.
 
 - quiet:
 
-  logical. If `TRUE` suppresses informational messages.
+  logical. If `TRUE`, suppress informational messages.
 
 - overwrite:
 
-  logical. When set to `TRUE` it would force a fresh download of the
-  source `.zip` file.
+  logical. If `TRUE`, force a fresh download of the source `.zip` file,
+  even if it is already cached.
 
 - path:
 
-  A path to a cache directory. If not set (the default `NULL`), the data
-  would be stored in the default cache directory (see
-  [`gb_set_cache()`](gb_cache.md)). If no cache directory has been set,
-  files would be stored in the temporary directory (see
+  Character. Path to a cache directory. If `NULL` (the default), data
+  are stored in the default cache directory (see
+  [`gb_set_cache()`](gb_cache.md)). If no cache directory has been
+  configured, files are stored in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+containing the requested boundaries.
 
 ## Details
 
 Comprehensive Global Administrative Zones (CGAZ) is a set of global
-composites for administrative boundaries. There are two important
-distinctions between our global product and individual country
-downloads.
+composite administrative boundary products. There are two key
+differences between these global composites and individual country
+downloads:
 
-- Extensive simplification is performed to ensure that file sizes are
-  small enough to be used in most traditional desktop software.
+- Boundaries undergo extensive simplification to ensure file sizes
+  remain manageable for typical desktop software.
 
-- Disputed areas are removed and replaced with polygons following US
-  Department of State definitions.
+- Disputed areas are removed and replaced with polygons defined
+  according to U.S. Department of State guidelines.
 
 ## References
 

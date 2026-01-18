@@ -1,7 +1,7 @@
-# Get the highest administrative level available for a given country
+# Retrieve the highest available administrative level for a country
 
-Get a summary of selected or all countries and their highest
-administrative level available in geoBoundaries.
+Generate a summary of selected countries—or all countries—and the
+highest administrative level available in the geoBoundaries dataset.
 
 ## Usage
 
@@ -20,30 +20,31 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 
 - country:
 
-  A character vector of country codes. It could be either `"all"` (that
-  would return the data for all countries), a vector of country names or
-  ISO3 country codes. See also
+  Character vector of country identifiers. This can be `"all"` (to
+  return data for all countries), a vector of country names, or ISO3
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - release_type:
 
-  One of `"gbOpen"`, `"gbHumanitarian"`, `"gbAuthoritative"`. For most
-  users, we suggest using `"gbOpen"` (the default), as it is CC-BY 4.0
-  compliant and can be used for most purposes so long as attribution is
-  provided:
+  One of `"gbOpen"`, `"gbHumanitarian"`, or `"gbAuthoritative"`. For
+  most users, `"gbOpen"` (the default) is recommended, as it is CC-BY
+  4.0 compliant and suitable for most purposes provided proper
+  attribution is given:
 
   - `"gbHumanitarian"` files are mirrored from [UN
-    OCHA](https://www.unocha.org/), but may have less open licensure.
+    OCHA](https://www.unocha.org/) and may have more restrictive
+    licensing.
 
-  - `"gbAuthoritative"` files are mirrored from [UN
-    SALB](https://salb.un.org/en), and cannot be used for commercial
-    purposes, but are verified through in-country processes.
+  - `"gbAuthoritative"` files are mirrored from UN SALB and cannot be
+    used for commercial purposes, but are verified through in-country
+    processes.
 
 ## Value
 
-A tibble with class
-[`tbl_df`](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with the country names and corresponding highest administrative level.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+containing country names and their corresponding highest available
+administrative level.
 
 ## See also
 
@@ -56,7 +57,7 @@ all <- gb_get_max_adm_lvl()
 library(dplyr)
 
 # Countries with only 1 level available
-all %>%
+all |>
   filter(maxBoundaryType == 1)
 #> # A tibble: 21 × 2
 #>    boundaryISO maxBoundaryType
@@ -74,7 +75,7 @@ all %>%
 #> # ℹ 11 more rows
 
 # Countries with level 4 available
-all %>%
+all |>
   filter(maxBoundaryType == 4)
 #> # A tibble: 18 × 2
 #>    boundaryISO maxBoundaryType

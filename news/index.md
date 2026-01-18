@@ -5,11 +5,11 @@
 ### Breaking changes
 
 The API has been completely revised to provide clearer function names
-and improve internal maintainability. Most old functions [have been
-deprecated](https://lifecycle.r-lib.org/articles/stages.html#deprecated)
-will issue a warning when used, providing guidance on the appropriate
-replacement. Internally, calls to deprecated functions are redirected to
-their corresponding replacements.
+and improve internal maintainability. Most old functions have been
+[deprecated](https://lifecycle.r-lib.org/articles/stages.html#deprecated)
+and will issue a warning when used, providing guidance on the
+appropriate replacement. Internally, calls to deprecated functions are
+redirected to their corresponding replacements.
 
 Additionally, the former [magical
 default](https://design.tidyverse.org/def-magical.html) `country = NULL`
@@ -24,7 +24,8 @@ Renamed functions:
   [`gb_get_world()`](../reference/gb_get_world.md). The latter retrieves
   the composite global dataset, and per-country calls can be generated
   on the fly from this dataset.
-- `gb_adm*` family -\> `gb_get_adm*` family.
+- [`?gb_adm`](../reference/deprecated.md) family -\>
+  [`?gb_get_adm`](../reference/gb_get_adm.md) family.
 - [`gb_metadata()`](../reference/deprecated.md) -\>
   [`gb_get_metadata()`](../reference/gb_get_metadata.md).
 - [`gb_max_adm_lvl()`](../reference/deprecated.md) -\>
@@ -39,7 +40,7 @@ Renamed functions:
 
 #### Documentation
 
-- Review `README`.
+- Reviewed `README` files.
 - Create **pkgdown** site
   <https://dieghernan.github.io/rgeoboundaries/>.
 - Add vignette.

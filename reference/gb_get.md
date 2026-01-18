@@ -1,13 +1,14 @@
-# Get individual country files from geoBoundaries
+# Get individual country boundary files from geoBoundaries
 
 [Attribution](https://www.geoboundaries.org/index.html#usage) is
 required for all uses of this dataset.
 
-This function returns data of individual countries "as they would
-represent themselves", with no special identification of disputed areas.
+This function returns boundary data for individual countries *as they
+represent themselves*, without any special identification of disputed
+areas.
 
-If you would prefer data that explicitly includes disputed areas, please
-use [`gb_get_world()`](gb_get_world.md).
+If you require data that explicitly includes disputed areas, use
+[`gb_get_world()`](gb_get_world.md) instead.
 
 ## Usage
 
@@ -31,85 +32,88 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 
 - country:
 
-  A character vector of country codes. It could be either `"all"` (that
-  would return the data for all countries), a vector of country names or
-  ISO3 country codes. See also
+  Character vector of country identifiers. This can be `"all"` (to
+  return data for all countries), a vector of country names, or ISO3
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - adm_lvl:
 
-  Type of boundary Accepted values are `"all"` (all available
-  boundaries) or the ADM level (`"adm0"` is the country boundary,
-  `"adm1"` is the first level of sub national boundaries, `"adm2"` is
-  the second level and so on. Upper case version (`"ADM1"`) and the
-  number of the level (`1, 2, 3, 4, 5`) and also accepted.
+  Type of boundary to retrieve. Accepted values are `"all"` (all
+  available administrative levels) or a specific ADM level. `"adm0"`
+  corresponds to country boundaries, `"adm1"` to first-level subnational
+  boundaries, `"adm2"` to second-level boundaries, and so on. Uppercase
+  variants (e.g. `"ADM1"`) and numeric values (`0`, `1`, `2`, `3`, `4`,
+  `5`) are also accepted.
 
 - simplified:
 
-  logical. Return the simplified boundary or not. The default `FALSE`
-  would use the premier geoBoundaries release.
+  logical. If `TRUE`, return simplified boundaries. If `FALSE` (the
+  default), use the premier geoBoundaries release.
 
 - release_type:
 
-  One of `"gbOpen"`, `"gbHumanitarian"`, `"gbAuthoritative"`. For most
-  users, we suggest using `"gbOpen"` (the default), as it is CC-BY 4.0
-  compliant and can be used for most purposes so long as attribution is
-  provided:
+  One of `"gbOpen"`, `"gbHumanitarian"`, or `"gbAuthoritative"`. For
+  most users, `"gbOpen"` (the default) is recommended, as it is CC-BY
+  4.0 compliant and suitable for most purposes provided proper
+  attribution is given:
 
   - `"gbHumanitarian"` files are mirrored from [UN
-    OCHA](https://www.unocha.org/), but may have less open licensure.
+    OCHA](https://www.unocha.org/) and may have more restrictive
+    licensing.
 
-  - `"gbAuthoritative"` files are mirrored from [UN
-    SALB](https://salb.un.org/en), and cannot be used for commercial
-    purposes, but are verified through in-country processes.
+  - `"gbAuthoritative"` files are mirrored from UN SALB and cannot be
+    used for commercial purposes, but are verified through in-country
+    processes.
 
 - quiet:
 
-  logical. If `TRUE` suppresses informational messages.
+  logical. If `TRUE`, suppress informational messages.
 
 - overwrite:
 
-  logical. When set to `TRUE` it would force a fresh download of the
-  source `.zip` file.
+  logical. If `TRUE`, force a fresh download of the source `.zip` file,
+  even if it is already cached.
 
 - path:
 
-  A path to a cache directory. If not set (the default `NULL`), the data
-  would be stored in the default cache directory (see
-  [`gb_set_cache()`](gb_cache.md)). If no cache directory has been set,
-  files would be stored in the temporary directory (see
+  Character. Path to a cache directory. If `NULL` (the default), data
+  are stored in the default cache directory (see
+  [`gb_set_cache()`](gb_cache.md)). If no cache directory has been
+  configured, files are stored in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+containing the requested boundaries.
 
 ## Details
 
-Individual data files in the geoBoundaries database are governed by the
-license or licenses identified within the metadata for each respective
-boundary (see [`gb_get_metadata()`](gb_get_metadata.md). Users using
-individual boundary files from geoBoundaries should additionally ensure
-that they are citing the sources provided in the metadata for each file.
-See **Examples**.
+Individual boundary files in the geoBoundaries database are governed by
+the license or licenses specified in their associated metadata (see
+[`gb_get_metadata()`](gb_get_metadata.md)). Users working with
+individual boundary files should ensure that they comply with these
+licenses and cite the original data sources listed in the metadata. See
+**Examples**.
 
-The following wrappers are also available:
+The following convenience wrappers are also available:
 
-- [`gb_get_adm0()`](gb_get_adm.md) returns the country boundary.
+- [`gb_get_adm0()`](gb_get_adm.md) returns country boundaries.
 
-- [`gb_get_adm1()`](gb_get_adm.md) returns first-level administration
-  boundaries (e.g. States in the United States).
+- [`gb_get_adm1()`](gb_get_adm.md) returns first-level administrative
+  boundaries (e.g. states in the United States).
 
-- [`gb_get_adm2()`](gb_get_adm.md) returns second-level administration
-  boundaries (e.g. Counties in the United States).
+- [`gb_get_adm2()`](gb_get_adm.md) returns second-level administrative
+  boundaries (e.g. counties in the United States).
 
-- [`gb_get_adm3()`](gb_get_adm.md) returns third-level administration
-  boundaries (e.g. towns or cities in some countries).
+- [`gb_get_adm3()`](gb_get_adm.md) returns third-level administrative
+  boundaries (e.g. municipalities in some countries).
 
-- [`gb_get_adm4()`](gb_get_adm.md) returns fourth-level administration
+- [`gb_get_adm4()`](gb_get_adm.md) returns fourth-level administrative
   boundaries.
 
-- [`gb_get_adm5()`](gb_get_adm.md) returns fifth-level administration
+- [`gb_get_adm5()`](gb_get_adm.md) returns fifth-level administrative
   boundaries.
 
 ## References
@@ -128,7 +132,7 @@ Other API functions: [`gb_get_adm`](gb_get_adm.md),
 
 ``` r
 # \donttest{
-# Map level 2 in Sri Lanka
+# Level 2 administrative boundaries in Sri Lanka
 sri_lanka <- gb_get(
   "Sri Lanka",
   adm_lvl = 2,
@@ -163,7 +167,7 @@ ggplot(sri_lanka) +
 
 # }
 
-# Metadata
+# Inspect metadata and licensing
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'
@@ -176,9 +180,8 @@ library(dplyr)
 gb_get_metadata(
   "Sri Lanka",
   adm_lvl = 2
-) %>%
-  # Check individual license
-  select(boundaryISO, boundaryType, licenseDetail, licenseSource) %>%
+) |>
+  select(boundaryISO, boundaryType, licenseDetail, licenseSource) |>
   glimpse()
 #> Rows: 1
 #> Columns: 4

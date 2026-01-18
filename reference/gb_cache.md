@@ -1,24 +1,24 @@
 # [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries) cache utilities
 
-Utilities to manage a local cache directory used by
-[rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries) for
-downloaded boundary files. These helpers let you set a cache directory,
-retrieve the active directory, list cached files and remove cached files
-or the whole cache.
+Utilities to manage the local cache directory used by
+[rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries) to
+store downloaded boundary files. These helpers allow you to set a cache
+directory, retrieve the active directory, list cached files, and remove
+cached files or the entire cache.
 
-The primary functions are:
+The main functions are:
 
-- `gb_set_cache()`: configure where files will be stored (temporary by
-  default).
+- `gb_set_cache()`: Configure where cached files are stored (temporary
+  by default).
 
-- `gb_get_cache()`: get the active cache directory path.
+- `gb_get_cache()`: Retrieve the active cache directory path.
 
-- `gb_list_cache()`: list files present in the cache.
+- `gb_list_cache()`: List files currently stored in the cache.
 
-- `gb_clear_cache()`: remove all cached files (and optionally the
-  installed config).
+- `gb_clear_cache()`: Remove all cached files (and optionally the
+  installed cache configuration).
 
-- `gb_delete_from_cache()`: remove one or more specific cached files.
+- `gb_delete_from_cache()`: Remove one or more specific cached files.
 
 ## Usage
 
@@ -38,17 +38,17 @@ gb_delete_from_cache(file)
 
 - path:
 
-  character. Path to the directory to use as cache. If omitted or empty,
-  a temporary directory inside
+  character. Path to the directory to use as the cache. If omitted or
+  empty, a temporary directory inside
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) is used.
 
 - install:
 
-  logical. If `TRUE`, write the chosen path to the package configuration
-  directory so it is used in future sessions. Defaults to `FALSE`. If
-  path is omitted or is the
-  [`tempdir()`](https://rdrr.io/r/base/tempfile.html), install is forced
-  to `FALSE`.
+  logical. If `TRUE`, write the selected path to the package
+  configuration directory so it is reused in future sessions. Defaults
+  to `FALSE`. If `path` is omitted or refers to
+  [`tempdir()`](https://rdrr.io/r/base/tempfile.html), `install` is
+  forced to `FALSE`.
 
 - overwrite:
 
@@ -57,7 +57,7 @@ gb_delete_from_cache(file)
 
 - quiet:
 
-  logical. If `TRUE` suppresses informational messages.
+  logical. If `TRUE`, suppress informational messages.
 
 - create:
 
@@ -65,8 +65,8 @@ gb_delete_from_cache(file)
 
 - full_path:
 
-  logical, if `TRUE` returns the full path all the cached files. If
-  `FALSE` just path relative to the cache directory is provided.
+  logical. If `TRUE`, return full file paths to cached files. If
+  `FALSE`, return paths relative to the cache directory.
 
 - force:
 
@@ -75,7 +75,8 @@ gb_delete_from_cache(file)
 
 - clear_config:
 
-  logical. If `TRUE`, will delete the configuration folder of
+  logical. If `TRUE`, also delete the installed cache configuration
+  directory of
   [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries).
 
 - file:
@@ -84,40 +85,45 @@ gb_delete_from_cache(file)
 
 ## Value
 
-- `gb_set_cache()`: (invisibly) returns the cache directory path
+- `gb_set_cache()`: Invisibly returns the cache directory path
   (character) that was set.
 
-- `gb_get_cache()`: returns the active cache directory path (character).
+- `gb_get_cache()`: Returns the active cache directory path (character).
 
-- `gb_list_cache()`: returns a character vector with cached file names
-  or full paths depending on the `full_path` argument.
+- `gb_list_cache()`: Returns a character vector of cached file names or
+  full paths, depending on the `full_path` argument.
 
 - `gb_clear_cache()` and `gb_delete_from_cache()`: Called for their side
   effects.
 
 ## Details
 
-By default, when no cache `path` is set the package uses a folder inside
-[`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (so files are
-temporary and are removed when the **R** session ends). To persist a
-cache across **R** sessions, use `gb_set_cache(path, install = TRUE)`
-which writes the chosen path to a small configuration file under
-`tools::R_user_dir("rgeoboundaries", "config")`.
+By default, when no cache `path` is set, the package uses a directory
+inside [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html). Files
+stored there are temporary and are removed when the **R** session ends.
+
+To persist a cache across **R** sessions, use
+`gb_set_cache(path, install = TRUE)`. This writes the selected path to a
+small configuration file under
+`tools::R_user_dir("rgeoboundaries", "config")`, which is read
+automatically in future sessions.
 
 ## Caching strategies
 
 - For occasional use, rely on the default
   [`tempdir()`](https://rdrr.io/r/base/tempfile.html)-based cache (no
-  install).
+  installation required).
 
-- Modify the cache for a single session setting `gb_set_cache(path)`.
+- To change the cache location for a single session, use
+  `gb_set_cache(path)`.
 
 - For reproducible workflows, install a persistent cache with
-  `gb_set_cache(path, install = TRUE)` that would be kept across **R**
+  `gb_set_cache(path, install = TRUE)`, which is reused across **R**
   sessions.
 
-- For caching specific files, use the `path` argument in the
-  corresponding function. See [`gb_get()`](gb_get.md).
+- To cache files in a custom location on a per-call basis, use the
+  `path` argument of the corresponding function (see
+  [`gb_get()`](gb_get.md)).
 
 ## See also
 
@@ -127,45 +133,44 @@ which writes the chosen path to a small configuration file under
 ## Examples
 
 ``` r
-# Caution! This may modify your current state
+# Caution: this example may modify your current cache state
 
 # \dontrun{
 my_cache <- gb_get_cache()
-# Set an example cache
+
+# Set an example cache directory
 ex <- file.path(tempdir(), "example", "cache")
 gb_set_cache(ex, quiet = TRUE)
 
 newcache <- gb_get_cache()
 newcache
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpkBpNsN/example/cache"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpknrTsy/example/cache"
 
-# Write files to path
+# Write example files to the cache
 cat(1:10000L, file = file.path(newcache, "a.txt"))
 cat(1:10000L, file = file.path(newcache, "b.txt"))
 cat(1:10000L, file = file.path(newcache, "c.txt"))
 
-# List cache
+# List cached files
 gb_list_cache()
 #> [1] "a.txt" "b.txt" "c.txt"
 
 # Delete one file
 gb_delete_from_cache("a.txt")
-#> ✔ File C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkBpNsN/example/cache/a.txt deleted.
-
+#> ✔ File C:\Users\RUNNER~1\AppData\Local\Temp\RtmpknrTsy/example/cache/a.txt deleted.
 gb_list_cache()
 #> [1] "b.txt" "c.txt"
 
-# Delete all
+# Delete all cached files
 gb_clear_cache(quiet = FALSE)
-#> ! rgeoboundaries data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkBpNsN/example/cache
-
+#> ! rgeoboundaries cache data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpknrTsy/example/cache
 gb_list_cache()
 #> character(0)
 
-# Restore initial cache
+# Restore the initial cache
 gb_set_cache(my_cache)
-#> ✔ rgeoboundaries cache directory is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkBpNsN/rgeoboundaries.
-#> ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.
+#> ✔ rgeoboundaries cache directory set to C:\Users\RUNNER~1\AppData\Local\Temp\RtmpknrTsy/rgeoboundaries.
+#> ℹ To reuse this `path` in future sessions, run this function with `install = TRUE`.
 identical(my_cache, gb_get_cache())
 #> [1] TRUE
 # }

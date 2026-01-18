@@ -1,4 +1,4 @@
-# Get metadata of individual country files from geoBoundaries
+# Retrieve metadata of individual country files from geoBoundaries
 
 This function returns metadata of the [geoBoundaries
 API](https://www.geoboundaries.org/api.html).
@@ -21,41 +21,44 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 
 - country:
 
-  A character vector of country codes. It could be either `"all"` (that
-  would return the data for all countries), a vector of country names or
-  ISO3 country codes. See also
+  Character vector of country identifiers. This can be `"all"` (to
+  return data for all countries), a vector of country names, or ISO3
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - adm_lvl:
 
-  Type of boundary Accepted values are `"all"` (all available
-  boundaries) or the ADM level (`"adm0"` is the country boundary,
-  `"adm1"` is the first level of sub national boundaries, `"adm2"` is
-  the second level and so on. Upper case version (`"ADM1"`) and the
-  number of the level (`1, 2, 3, 4, 5`) and also accepted.
+  Type of boundary to retrieve. Accepted values are `"all"` (all
+  available administrative levels) or a specific ADM level. `"adm0"`
+  corresponds to country boundaries, `"adm1"` to first-level subnational
+  boundaries, `"adm2"` to second-level boundaries, and so on. Uppercase
+  variants (e.g. `"ADM1"`) and numeric values (`0`, `1`, `2`, `3`, `4`,
+  `5`) are also accepted.
 
 - release_type:
 
-  One of `"gbOpen"`, `"gbHumanitarian"`, `"gbAuthoritative"`. For most
-  users, we suggest using `"gbOpen"` (the default), as it is CC-BY 4.0
-  compliant and can be used for most purposes so long as attribution is
-  provided:
+  One of `"gbOpen"`, `"gbHumanitarian"`, or `"gbAuthoritative"`. For
+  most users, `"gbOpen"` (the default) is recommended, as it is CC-BY
+  4.0 compliant and suitable for most purposes provided proper
+  attribution is given:
 
   - `"gbHumanitarian"` files are mirrored from [UN
-    OCHA](https://www.unocha.org/), but may have less open licensure.
+    OCHA](https://www.unocha.org/) and may have more restrictive
+    licensing.
 
-  - `"gbAuthoritative"` files are mirrored from [UN
-    SALB](https://salb.un.org/en), and cannot be used for commercial
-    purposes, but are verified through in-country processes.
+  - `"gbAuthoritative"` files are mirrored from UN SALB and cannot be
+    used for commercial purposes, but are verified through in-country
+    processes.
 
 ## Value
 
-A tibble with class
-[`tbl_df`](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## Details
 
-The result is a tibble with the following columns:
+The result is a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the following columns:
 
 - `boundaryID`: The ID for this layer, which is a combination of the ISO
   code, the boundary type, and a unique identifier for the boundary
@@ -151,6 +154,11 @@ The result is a tibble with the following columns:
 
 ## See also
 
+[`gb_get()`](gb_get.md)
+
+Other metadata functions:
+[`gb_get_max_adm_lvl()`](gb_get_max_adm_lvl.md)
+
 Other metadata functions:
 [`gb_get_max_adm_lvl()`](gb_get_max_adm_lvl.md)
 
@@ -161,7 +169,7 @@ Other metadata functions:
 
 library(dplyr)
 
-gb_get_metadata(adm_lvl = "ADM4") %>%
+gb_get_metadata(adm_lvl = "ADM4") |>
   glimpse()
 #> Rows: 21
 #> Columns: 32

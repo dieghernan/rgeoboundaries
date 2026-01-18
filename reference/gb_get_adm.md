@@ -1,28 +1,29 @@
-# Get country files from geoBoundaries for a given administration level
+# Retrieve geoBoundaries country files for a specified administrative level
 
 [Attribution](https://www.geoboundaries.org/index.html#usage) is
 required for all uses of this dataset.
 
-These functions are wrappers of [`gb_get()`](gb_get.md) for extracting
-any given administration level:
+These functions are convenience wrappers around [`gb_get()`](gb_get.md)
+for retrieving boundaries at different administrative levels:
 
-- `gb_get_adm0()` returns the country boundary.
+- `gb_get_adm0()` returns national boundaries.
 
-- `gb_get_adm1()` returns first-level administration boundaries (e.g.
-  States in the United States).
+- `gb_get_adm1()` returns first‑level administrative boundaries (e.g.,
+  states in the United States).
 
-- `gb_get_adm2()` returns second-level administration boundaries (e.g.
-  Counties in the United States).
+- `gb_get_adm2()` returns second‑level administrative boundaries (e.g.,
+  counties in the United States).
 
-- `gb_get_adm3()` returns third-level administration boundaries (e.g.
+- `gb_get_adm3()` returns third‑level administrative boundaries (e.g.,
   towns or cities in some countries).
 
-- `gb_get_adm4()` returns fourth-level administration boundaries.
+- `gb_get_adm4()` returns fourth‑level administrative boundaries.
 
-- `gb_get_adm5()` returns fifth-level administration boundaries.
+- `gb_get_adm5()` returns fifth‑level administrative boundaries.
 
-Note that not all countries have the same number of levels. Check
-[gb_get_max_adm_lvl](gb_get_max_adm_lvl.md).
+Note that administrative hierarchies vary by country. Use
+[gb_get_max_adm_lvl](gb_get_max_adm_lvl.md) to check the maximum
+available level.
 
 ## Usage
 
@@ -90,58 +91,61 @@ geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
 
 - country:
 
-  A character vector of country codes. It could be either `"all"` (that
-  would return the data for all countries), a vector of country names or
-  ISO3 country codes. See also
+  Character vector of country identifiers. This can be `"all"` (to
+  return data for all countries), a vector of country names, or ISO3
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - simplified:
 
-  logical. Return the simplified boundary or not. The default `FALSE`
-  would use the premier geoBoundaries release.
+  logical. If `TRUE`, return simplified boundaries. If `FALSE` (the
+  default), use the premier geoBoundaries release.
 
 - release_type:
 
-  One of `"gbOpen"`, `"gbHumanitarian"`, `"gbAuthoritative"`. For most
-  users, we suggest using `"gbOpen"` (the default), as it is CC-BY 4.0
-  compliant and can be used for most purposes so long as attribution is
-  provided:
+  One of `"gbOpen"`, `"gbHumanitarian"`, or `"gbAuthoritative"`. For
+  most users, `"gbOpen"` (the default) is recommended, as it is CC-BY
+  4.0 compliant and suitable for most purposes provided proper
+  attribution is given:
 
   - `"gbHumanitarian"` files are mirrored from [UN
-    OCHA](https://www.unocha.org/), but may have less open licensure.
+    OCHA](https://www.unocha.org/) and may have more restrictive
+    licensing.
 
-  - `"gbAuthoritative"` files are mirrored from [UN
-    SALB](https://salb.un.org/en), and cannot be used for commercial
-    purposes, but are verified through in-country processes.
+  - `"gbAuthoritative"` files are mirrored from UN SALB and cannot be
+    used for commercial purposes, but are verified through in-country
+    processes.
 
 - quiet:
 
-  logical. If `TRUE` suppresses informational messages.
+  logical. If `TRUE`, suppress informational messages.
 
 - overwrite:
 
-  logical. When set to `TRUE` it would force a fresh download of the
-  source `.zip` file.
+  logical. If `TRUE`, force a fresh download of the source `.zip` file,
+  even if it is already cached.
 
 - path:
 
-  A path to a cache directory. If not set (the default `NULL`), the data
-  would be stored in the default cache directory (see
-  [`gb_set_cache()`](gb_cache.md)). If no cache directory has been set,
-  files would be stored in the temporary directory (see
+  Character. Path to a cache directory. If `NULL` (the default), data
+  are stored in the default cache directory (see
+  [`gb_set_cache()`](gb_cache.md)). If no cache directory has been
+  configured, files are stored in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+containing the requested boundaries.
 
 ## Details
 
-Individual data files in the geoBoundaries database are governed by the
-license or licenses identified within the metadata for each respective
-boundary (see [`gb_get_metadata()`](gb_get_metadata.md). Users using
-individual boundary files from geoBoundaries should additionally ensure
-that they are citing the sources provided in the metadata for each file.
+Individual boundary files in the geoBoundaries database are governed by
+the license or licenses specified in their associated metadata (see
+[`gb_get_metadata()`](gb_get_metadata.md)). Users working with
+individual boundary files should ensure that they comply with these
+licenses and cite the original data sources listed in the metadata. See
+**Examples**.
 
 ## References
 

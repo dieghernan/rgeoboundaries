@@ -19,7 +19,7 @@ this package, you can:
   BY-4.0](https://creativecommons.org/licenses/by/4.0/)) / open
   licences[¹](#fn1))
 
-In short: if you work with geospatial boundaries in **R** (shape files,
+In short: if you work with geospatial boundaries in **R** (shapefiles,
 polygons, join with other data), this package simplifies the process.
 
 ## Installation
@@ -154,13 +154,13 @@ A BibTeX entry for LaTeX users:
 
 ## Legal
 
-With respect to works on or made available through download from the
-this website, we make no representations or warranties -express,
-implied, or statutory- as to the validity, accuracy, completeness, or
-fitness for a particular purpose; nor represent that use of such works
-would not infringe privately owned rights; nor assume any liability
-resulting from use of such works; and shall in no way be liable for any
-costs, expenses, claims, or demands arising out of use of such works.
+With respect to works on or made available through download from this
+website, we make no representations or warranties - express, implied, or
+statutory - as to the validity, accuracy, completeness, or fitness for a
+particular purpose; nor represent that use of such works would not
+infringe privately owned rights; nor assume any liability resulting from
+use of such works; and shall in no way be liable for any costs,
+expenses, claims, or demands arising out of use of such works.
 
 ## References
 

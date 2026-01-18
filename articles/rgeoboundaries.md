@@ -98,10 +98,10 @@ identified within the metadata for each respective boundary.
 gb_get_metadata(c("India", "Pakistan"), adm_lvl = "ADM0") %>%
   select(boundaryName, boundaryLicense, boundarySource)
 #> # A tibble: 2 × 3
-#>   boundaryName boundaryLicense                                     boundarySource
-#>   <chr>        <chr>                                               <chr>         
-#> 1 India        CC0 1.0 Universal (CC0 1.0) Public Domain Dedicati… geoBoundaries…
-#> 2 Pakistan     Open Data Commons Open Database License 1.0         OpenStreetMap…
+#>   boundaryName boundaryLicense                                      boundarySource             
+#>   <chr>        <chr>                                                <chr>                      
+#> 1 India        CC0 1.0 Universal (CC0 1.0) Public Domain Dedication geoBoundaries, Wikimedia C…
+#> 2 Pakistan     Open Data Commons Open Database License 1.0          OpenStreetMap, Wambacher
 ```
 
 ### Composite files
@@ -150,26 +150,25 @@ version. For example:
 current <- gb_get_cache()
 
 current
-#> [1] "C:\\Users\\diego\\AppData\\Local\\Temp\\Rtmp2vFXwZ"
+#> [1] "C:\\Users\\diego\\AppData\\Local\\Temp\\RtmpMJDU6C"
 
 # Change to new
 newdir <- file.path(tempdir(), "geobound_vignette")
 gb_set_cache(newdir)
-#> ✔ rgeoboundaries cache directory is 'C:\Users\diego\AppData\Local\Temp\Rtmp2vFXwZ/geobound_vignette'.
-#> ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.
+#> ✔ rgeoboundaries cache directory set to 'C:\Users\diego\AppData\Local\Temp\RtmpMJDU6C/geobound_vignette'.
+#> ℹ To reuse this `path` in future sessions, run this function with `install = TRUE`.
 
 # Download
 example <- gb_get_adm0("Vatican City", quiet = FALSE)
-#> ℹ Downloading file from <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/VAT/ADM0/geoBoundaries-VAT-ADM0-all.zip>
-#> → Cache dir is 'C:\Users\diego\AppData\Local\Temp\Rtmp2vFXwZ/geobound_vignette/gbOpen'
+#> ✔ File 'C:\Users\diego\AppData\Local\Temp\RtmpMJDU6C/geobound_vignette/gbOpen/geoBoundaries-VAT-ADM0-all.zip' already cached
 
 gb_list_cache()
 #> [1] "gbOpen/geoBoundaries-VAT-ADM0-all.zip"
 
 # Restore cache dir
 gb_set_cache(current)
-#> ✔ rgeoboundaries cache directory is 'C:\Users\diego\AppData\Local\Temp\Rtmp2vFXwZ'.
-#> ℹ To install your `path` for use in future sessions run this function with `install = TRUE`.
+#> ✔ rgeoboundaries cache directory set to 'C:\Users\diego\AppData\Local\Temp\RtmpMJDU6C'.
+#> ℹ To reuse this `path` in future sessions, run this function with `install = TRUE`.
 
 current == gb_get_cache()
 #> [1] TRUE
@@ -200,10 +199,10 @@ latam_meta <- gb_get_metadata(adm_lvl = "ADM0") %>%
   glimpse()
 #> Rows: 47
 #> Columns: 4
-#> $ boundaryISO          <chr> "ABW", "AIA", "ARG", "ATG", "BES", "BHS", "BLM", "…
-#> $ boundaryName         <chr> "Aruba", "Anguilla", "Argentina", "Antigua and Bar…
-#> $ Continent            <chr> "Latin America and the Caribbean", "Latin America …
-#> $ worldBankIncomeGroup <chr> "High-income Countries", "No income group availabl…
+#> $ boundaryISO          <chr> "ABW", "AIA", "ARG", "ATG", "BES", "BHS", "BLM", "BLZ", "BOL", "…
+#> $ boundaryName         <chr> "Aruba", "Anguilla", "Argentina", "Antigua and Barbuda", "Bonair…
+#> $ Continent            <chr> "Latin America and the Caribbean", "Latin America and the Caribb…
+#> $ worldBankIncomeGroup <chr> "High-income Countries", "No income group available", "High-inco…
 
 # Adjust factors
 latam_meta$income_factor <- factor(latam_meta$worldBankIncomeGroup,
@@ -247,7 +246,7 @@ World Bank Income Group: Latin America and the Caribbean
 The **rgeoboundaries** package makes it easy to fetch, manage and
 visualize administrative boundary data worldwide in a reproducible and
 efficient way. Whether you’re doing mapping, spatial analysis, survey
-integration or geospatial modelling, it gives you a high-quality
+integration, or geospatial modelling, it gives you a high-quality
 boundary dataset with minimal overhead.
 
 ## References

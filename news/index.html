@@ -45,13 +45,13 @@
 <h2 class="pkg-version" data-toc-text="development version" id="rgeoboundaries-development-version">rgeoboundaries (development version)<a class="anchor" aria-label="anchor" href="#rgeoboundaries-development-version"></a></h2>
 <div class="section level3">
 <h3 id="breaking-changes-development-version">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
-<p>The API has been completely revised to provide clearer function names and improve internal maintainability. Most old functions <a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link">have been deprecated</a> will issue a warning when used, providing guidance on the appropriate replacement. Internally, calls to deprecated functions are redirected to their corresponding replacements.</p>
+<p>The API has been completely revised to provide clearer function names and improve internal maintainability. Most old functions have been <a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link">deprecated</a> and will issue a warning when used, providing guidance on the appropriate replacement. Internally, calls to deprecated functions are redirected to their corresponding replacements.</p>
 <p>Additionally, the former <a href="https://design.tidyverse.org/def-magical.html" class="external-link">magical default</a> <code>country = NULL</code> argument (which returned the global composite dataset) has been deprecated. It has been replaced with a dedicated function: <code><a href="../reference/gb_get_world.html">gb_get_world()</a></code>.</p>
 <p>Renamed functions:</p>
 <ul><li>
 <code><a href="../reference/deprecated.html">geoboundaries()</a></code> -&gt; <code><a href="../reference/gb_get.html">gb_get()</a></code> and <code><a href="../reference/gb_get_world.html">gb_get_world()</a></code>. The latter retrieves the composite global dataset, and per-country calls can be generated on the fly from this dataset.</li>
 <li>
-<code>gb_adm*</code> family -&gt; <code>gb_get_adm*</code> family.</li>
+<code><a href="../reference/deprecated.html">?gb_adm</a></code> family -&gt; <code><a href="../reference/gb_get_adm.html">?gb_get_adm</a></code> family.</li>
 <li>
 <code><a href="../reference/deprecated.html">gb_metadata()</a></code> -&gt; <code><a href="../reference/gb_get_metadata.html">gb_get_metadata()</a></code>.</li>
 <li>
@@ -66,7 +66,7 @@
 </ul></div>
 <div class="section level4">
 <h4 id="documentation-development-version">Documentation<a class="anchor" aria-label="anchor" href="#documentation-development-version"></a></h4>
-<ul><li>Review <code>README</code>.</li>
+<ul><li>Reviewed <code>README</code> files.</li>
 <li>Create <strong>pkgdown</strong> site <a href="https://dieghernan.github.io/rgeoboundaries/" class="external-link uri">https://dieghernan.github.io/rgeoboundaries/</a>.</li>
 <li>Add vignette.</li>
 </ul></div>
