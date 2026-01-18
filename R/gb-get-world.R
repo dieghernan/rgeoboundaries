@@ -1,38 +1,36 @@
-#' Get global composites data (CGAZ) from geoBoundaries
+#' Retrieve global composite data (CGAZ) from geoBoundaries
 #'
 #' @description
-#'
 #' [Attribution](https://www.geoboundaries.org/index.html#usage) is required
 #' for all uses of this dataset.
 #'
-#' This function returns a global composite of the required administration
+#' This function returns a global composite for the requested administrative
 #' level, clipped to international boundaries, with gaps filled between
-#' borders.
-#'
+#' adjacent borders.
 #'
 #' @family API functions
 #'
 #' @inheritParams gb_get
-#'
+#' @encoding UTF-8
 #' @inherit gb_get
 #'
-#' @param adm_lvl Type of boundary Accepted values are administrative
-#'   levels 0, 1 and 2 (`"adm0"` is the country boundary,
-#'   `"adm1"` is the first level of sub national boundaries, `"adm2"` is the
-#'   second level and so on. Upper case version (`"ADM1"`) and the number of
-#'   the level (`0, 1, 2`) and also accepted.
+#' @param adm_lvl Type of boundary. Accepted values are administrative
+#'   levels 0, 1, and 2. `"adm0"` corresponds to national boundaries,
+#'   `"adm1"` to first‑level subnational boundaries, and `"adm2"` to
+#'   second‑level boundaries. Uppercase variants (e.g., `"ADM1"`) and
+#'   numeric values (`0`, `1`, `2`) are also accepted.
 #'
 #' @export
 #'
 #' @details
 #' Comprehensive Global Administrative Zones (CGAZ) is a set of global
-#' composites for administrative boundaries. There are two important
-#' distinctions between our global product and individual country downloads.
+#' composite administrative boundary products. There are two key differences
+#' between these global composites and individual country downloads:
 #'
-#' - Extensive simplification is performed to ensure that file sizes are
-#'   small enough to be used in most traditional desktop software.
-#' - Disputed areas are removed and replaced with polygons following US
-#'   Department of State definitions.
+#' - Boundaries undergo extensive simplification to ensure file sizes remain
+#'   manageable for typical desktop software.
+#' - Disputed areas are removed and replaced with polygons defined according
+#'   to U.S. Department of State guidelines.
 #'
 #' @examplesIf httr2::is_online()
 #'

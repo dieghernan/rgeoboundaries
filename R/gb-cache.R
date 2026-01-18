@@ -1,98 +1,102 @@
 #' \CRANpkg{rgeoboundaries} cache utilities
 #'
 #' @description
-#' Utilities to manage a local cache directory used by \CRANpkg{rgeoboundaries}
-#' for downloaded boundary files. These helpers let you set a cache directory,
-#' retrieve the active directory, list cached files and remove cached files or
-#' the whole cache.
+#' Utilities to manage the local cache directory used by
+#' \CRANpkg{rgeoboundaries} to store downloaded boundary files. These helpers
+#' allow you to set a cache directory, retrieve the active directory, list
+#' cached files, and remove cached files or the entire cache.
 #'
-#' The primary functions are:
-#' - `gb_set_cache()`: configure where files will be stored (temporary by
-#'    default).
-#' - `gb_get_cache()`: get the active cache directory path.
-#' - `gb_list_cache()`: list files present in the cache.
-#' - `gb_clear_cache()`: remove all cached files (and optionally the
-#'    installed config).
-#' - `gb_delete_from_cache()`: remove one or more specific cached files.
+#' The main functions are:
+#'
+#' - `gb_set_cache()`: Configure where cached files are stored (temporary by
+#'   default).
+#' - `gb_get_cache()`: Retrieve the active cache directory path.
+#' - `gb_list_cache()`: List files currently stored in the cache.
+#' - `gb_clear_cache()`: Remove all cached files (and optionally the installed
+#'   cache configuration).
+#' - `gb_delete_from_cache()`: Remove one or more specific cached files.
 #'
 #' @family cache utilities
+#' @encoding UTF-8
+#'
 #' @details
-#' By default, when no cache `path` is set the package uses a folder inside
-#' [base::tempdir()] (so files are temporary and are removed when the **R**
-#' session ends). To persist a cache across **R** sessions, use
-#' `gb_set_cache(path, install = TRUE)` which writes the chosen path to a
+#' By default, when no cache `path` is set, the package uses a directory inside
+#' [base::tempdir()]. Files stored there are temporary and are removed when the
+#' **R** session ends.
+#'
+#' To persist a cache across **R** sessions, use
+#' `gb_set_cache(path, install = TRUE)`. This writes the selected path to a
 #' small configuration file under
-#' `tools::R_user_dir("rgeoboundaries", "config")`.
+#' `tools::R_user_dir("rgeoboundaries", "config")`, which is read automatically
+#' in future sessions.
 #'
 #' @section Caching strategies:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
-#'   install).
-#' - Modify the cache for a single session setting
+#'   installation required).
+#' - To change the cache location for a single session, use
 #'   `gb_set_cache(path)`.
 #' - For reproducible workflows, install a persistent cache with
-#'   `gb_set_cache(path, install = TRUE)` that would be kept across **R**
+#'   `gb_set_cache(path, install = TRUE)`, which is reused across **R**
 #'   sessions.
-#' - For caching specific files, use the `path` argument in the
-#'   corresponding function. See [gb_get()].
+#' - To cache files in a custom location on a per-call basis, use the `path`
+#'   argument of the corresponding function (see [gb_get()]).
 #'
 #' @rdname gb_cache
 #' @name gb_cache
 #'
-#' @param path character. Path to the directory to use as cache. If omitted or
-#'   empty, a temporary directory inside [base::tempdir()] is used.
-#' @param install logical. If `TRUE`, write the chosen path to the package
-#'   configuration directory so it is used in future sessions. Defaults to
-#'   `FALSE`. If path is omitted or is the [tempdir()], install is forced to
-#'   `FALSE`.
+#' @param path character. Path to the directory to use as the cache. If omitted
+#'   or empty, a temporary directory inside [base::tempdir()] is used.
+#' @param install logical. If `TRUE`, write the selected path to the package
+#'   configuration directory so it is reused in future sessions. Defaults to
+#'   `FALSE`. If `path` is omitted or refers to [tempdir()], `install` is forced
+#'   to `FALSE`.
 #' @param overwrite logical. If `TRUE` and `install = TRUE`, overwrite any
 #'   existing installed cache path. Defaults to `FALSE`.
 #' @inheritParams gb_get
 #'
 #' @return
-#' - `gb_set_cache()`: (invisibly) returns the cache directory path (character)
-#'    that was set.
-#' - `gb_get_cache()`: returns the active cache directory path (character).
-#' - `gb_list_cache()`: returns a character vector with cached file names or
-#'    full paths depending on the `full_path` argument.
+#' - `gb_set_cache()`: Invisibly returns the cache directory path (character)
+#'   that was set.
+#' - `gb_get_cache()`: Returns the active cache directory path (character).
+#' - `gb_list_cache()`: Returns a character vector of cached file names or full
+#'   paths, depending on the `full_path` argument.
 #' - `gb_clear_cache()` and `gb_delete_from_cache()`: Called for their side
-#'    effects.
+#'   effects.
 #'
 #' @seealso
 #' [tools::R_user_dir()], [base::tempdir()]
 #'
 #' @examples
-#'
-#' # Caution! This may modify your current state
+#' # Caution: this example may modify your current cache state
 #'
 #' \dontrun{
 #' my_cache <- gb_get_cache()
-#' # Set an example cache
+#'
+#' # Set an example cache directory
 #' ex <- file.path(tempdir(), "example", "cache")
 #' gb_set_cache(ex, quiet = TRUE)
 #'
 #' newcache <- gb_get_cache()
 #' newcache
 #'
-#' # Write files to path
+#' # Write example files to the cache
 #' cat(1:10000L, file = file.path(newcache, "a.txt"))
 #' cat(1:10000L, file = file.path(newcache, "b.txt"))
 #' cat(1:10000L, file = file.path(newcache, "c.txt"))
 #'
-#' # List cache
+#' # List cached files
 #' gb_list_cache()
 #'
 #' # Delete one file
 #' gb_delete_from_cache("a.txt")
-#'
 #' gb_list_cache()
 #'
-#' # Delete all
+#' # Delete all cached files
 #' gb_clear_cache(quiet = FALSE)
-#'
 #' gb_list_cache()
 #'
-#' # Restore initial cache
+#' # Restore the initial cache
 #' gb_set_cache(my_cache)
 #' identical(my_cache, gb_get_cache())
 #' }
@@ -111,11 +115,11 @@ gb_set_cache <- function(
       cli::cli_alert_info(
         c(
           "Using a temporary cache directory. ",
-          "Set {.arg path} to a value for store permanently"
+          "Set {.arg path} to store files permanently."
         )
       )
     }
-    # Create a folder on tempdir
+    # Create a folder in tempdir
     path <- file.path(tempdir(), "rgeoboundaries")
     is_temp <- TRUE
     install <- FALSE
@@ -129,38 +133,35 @@ gb_set_cache <- function(
   # Expand
   path <- path.expand(path)
 
-  # Create cache dir if it doesn't exists
+  # Create cache directory if it does not exist
   if (!dir.exists(path)) {
     dir.create(path, recursive = TRUE)
   }
 
   if (verbose) {
     cli::cli_alert_success(
-      "{.pkg rgeoboundaries} cache directory is {.path {path}}."
+      "{.pkg rgeoboundaries} cache directory set to {.path {path}}."
     )
   }
 
-  # Install path on environ var.
+  # Install path in configuration
   # nocov start
-
   if (install) {
     config_dir <- tools::R_user_dir("rgeoboundaries", "config")
-    # Create cache dir if not presente
+
     if (!dir.exists(config_dir)) {
       dir.create(config_dir, recursive = TRUE)
     }
 
     rgeoboundaries_file <- file.path(config_dir, "RGEOBOUNDARIES_PATH")
 
-    if (!file.exists(rgeoboundaries_file) || overwrite == TRUE) {
-      # Create file if it doesn't exist
+    if (!file.exists(rgeoboundaries_file) || overwrite) {
       writeLines(path, con = rgeoboundaries_file)
     } else {
       cli::cli_abort(
         paste0(
           "An installed cache directory already exists. ",
-          "You can overwrite it with ",
-          "the argument {.arg overwrite = TRUE}"
+          "Use {.arg overwrite = TRUE} to replace it."
         )
       )
     }
@@ -169,7 +170,7 @@ gb_set_cache <- function(
     if (verbose && !is_temp) {
       cli::cli_alert_info(
         paste0(
-          "To install your {.arg path} for use in future sessions ",
+          "To reuse this {.arg path} in future sessions, ",
           "run this function with {.arg install = TRUE}."
         )
       )
@@ -190,7 +191,8 @@ gb_get_cache <- function(create = deprecated()) {
       what = "gb_get_cache(create)"
     )
   }
-  # Try from getenv
+
+  # Try environment variable
   getvar <- Sys.getenv("RGEOBOUNDARIES_CACHE_DIR")
 
   if (is.null(getvar) || is.na(getvar) || getvar == "") {
@@ -210,13 +212,11 @@ gb_get_cache <- function(create = deprecated()) {
         return(cache_dir)
       }
 
-      # 3. Return from cached path
       Sys.setenv(RGEOBOUNDARIES_CACHE_DIR = cached_path)
       cached_path
       # nocov end
     } else {
       # 4. Default cache location
-
       cache_dir <- gb_set_cache(overwrite = TRUE, quiet = TRUE)
       cache_dir
     }
@@ -226,18 +226,17 @@ gb_get_cache <- function(create = deprecated()) {
 }
 
 #' @rdname gb_cache
-#' @param full_path logical, if `TRUE` returns the full path all the cached
-#'    files. If `FALSE` just path relative to the cache directory is provided.
+#' @param full_path logical. If `TRUE`, return full file paths to cached files.
+#'   If `FALSE`, return paths relative to the cache directory.
 #' @export
 gb_list_cache <- function(full_path = FALSE) {
   list.files(gb_get_cache(), full.names = full_path, recursive = TRUE)
 }
 
-
 #' @rdname gb_cache
 #' @inheritParams base::unlink
-#' @param clear_config logical. If `TRUE`, will delete the configuration
-#'   folder of \CRANpkg{rgeoboundaries}.
+#' @param clear_config logical. If `TRUE`, also delete the installed cache
+#'   configuration directory of \CRANpkg{rgeoboundaries}.
 #' @export
 gb_clear_cache <- function(force = TRUE, clear_config = FALSE, quiet = FALSE) {
   verbose <- isFALSE(quiet)
@@ -250,7 +249,7 @@ gb_clear_cache <- function(force = TRUE, clear_config = FALSE, quiet = FALSE) {
     unlink(config_dir, recursive = TRUE, force = force)
 
     if (verbose) {
-      cli::cli_alert_warning("{.pkg rgeoboundaries} installed cache deleted")
+      cli::cli_alert_warning("{.pkg rgeoboundaries} installed cache deleted.")
     }
     Sys.setenv(RGEOBOUNDARIES_CACHE_DIR = "")
   }
@@ -260,7 +259,7 @@ gb_clear_cache <- function(force = TRUE, clear_config = FALSE, quiet = FALSE) {
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
       cli::cli_alert_warning(
-        "{.pkg rgeoboundaries} data deleted: {.file {data_dir}}"
+        "{.pkg rgeoboundaries} cache data deleted: {.file {data_dir}}"
       )
     }
   }
@@ -268,7 +267,6 @@ gb_clear_cache <- function(force = TRUE, clear_config = FALSE, quiet = FALSE) {
   # Reset cache dir
   invisible()
 }
-
 
 #' @rdname gb_cache
 #' @param file character. Base name of the cached file to delete.
@@ -297,10 +295,10 @@ gb_delete_from_cache <- function(file) {
   invisible()
 }
 
-
-#' Creates `path`
+#' Creates a cache directory at `path`
 #'
-#' Helper function, only use for development of \CRANpkg{rgeoboundaries}
+#' Helper function intended for development and internal use in
+#' \CRANpkg{rgeoboundaries}.
 #'
 #' @noRd
 rgbnd_dev_cachedir <- function(path = NULL) {
@@ -310,7 +308,7 @@ rgbnd_dev_cachedir <- function(path = NULL) {
   }
 
   # Create cache dir if needed
-  if (isFALSE(dir.exists(path))) {
+  if (!dir.exists(path)) {
     dir.create(path, recursive = TRUE)
   }
   path

@@ -29,3 +29,4 @@
 ^dev$
 ^vignettes/rgeoboundaries\.Rmd\.orig$
 ^vignettes/articles$
+^jarl\.toml$

@@ -1,18 +1,18 @@
-#' Get the highest administrative level available for a given country
+#' Retrieve the highest available administrative level for a country
 #'
 #' @description
-#' Get a summary of selected or all countries and their highest administrative
-#' level available in geoBoundaries.
+#' Generate a summary of selected countries—or all countries—and the highest
+#' administrative level available in the geoBoundaries dataset.
 #'
 #' @family metadata functions
 #'
 #' @inheritParams gb_get_metadata
 #' @inherit gb_get_metadata source
+#' @encoding UTF-8
 #'
 #' @return
-#'
-#' A tibble with class [`tbl_df`][tibble::tbl_df-class]  with the country names
-#' and corresponding highest administrative level.
+#' A [tibble][tibble::tbl_df] containing country names and their corresponding
+#' highest available administrative level.
 #'
 #' @export
 #'
@@ -22,11 +22,11 @@
 #' library(dplyr)
 #'
 #' # Countries with only 1 level available
-#' all %>%
+#' all |>
 #'   filter(maxBoundaryType == 1)
 #'
 #' # Countries with level 4 available
-#' all %>%
+#' all |>
 #'   filter(maxBoundaryType == 4)
 #'
 gb_get_max_adm_lvl <- function(

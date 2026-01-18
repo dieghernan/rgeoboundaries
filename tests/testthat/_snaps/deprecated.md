@@ -61,7 +61,7 @@
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get()` or `gb_get_world()` instead.
     Message
-      i Redirecting to `gb_get_world()`.
+      i Redirecting to `rgeoboundaries::gb_get_world()`.
 
 ---
 
@@ -72,8 +72,8 @@
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get()` or `gb_get_world()` instead.
     Message
-      ! `type = "cgaz"` not needed. Just use `gb_get()` or `gb_get_adm*()` without `country`.
-      i Redirecting to `gb_get_world()`.
+      ! `type = "cgaz"` not needed. Just use `rgeoboundaries::gb_get()` or `rgeoboundaries::gb_get_adm()` without `country`.
+      i Redirecting to `rgeoboundaries::gb_get_world()`.
 
 # gb_adm: single country
 
@@ -159,7 +159,7 @@
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get()` or `gb_get_world()` instead.
     Message
-      i Redirecting to `gb_get_world()`.
+      i Redirecting to `rgeoboundaries::gb_get_world()`.
 
 ---
 
@@ -173,8 +173,8 @@
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get()` or `gb_get_world()` instead.
     Message
-      ! `type = "cgaz"` not needed. Just use `gb_get()` or `gb_get_adm*()` without `country`.
-      i Redirecting to `gb_get_world()`.
+      ! `type = "cgaz"` not needed. Just use `rgeoboundaries::gb_get()` or `rgeoboundaries::gb_get_adm()` without `country`.
+      i Redirecting to `rgeoboundaries::gb_get_world()`.
 
 ---
 
@@ -188,9 +188,9 @@
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get()` or `gb_get_world()` instead.
     Message
-      i Redirecting to `gb_get_world()`.
+      i Redirecting to `rgeoboundaries::gb_get_world()`.
     Condition
       Error in `assert_adm_lvl()`:
-      ! Not a valid `adm_lvl` level code ("3").
+      ! Invalid `adm_lvl` code ("3").
       Accepted values are "adm0", "adm1", "adm2", "0", "1", and "2".
 

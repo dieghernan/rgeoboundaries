@@ -1,69 +1,67 @@
-#' Get individual country files from geoBoundaries
+#' Get individual country boundary files from geoBoundaries
 #'
 #' @description
+#' [Attribution](https://www.geoboundaries.org/index.html#usage) is required for
+#' all uses of this dataset.
 #'
-#' [Attribution](https://www.geoboundaries.org/index.html#usage) is required
-#' for all uses of this dataset.
+#' This function returns boundary data for individual countries *as they
+#' represent themselves*, without any special identification of disputed areas.
 #'
-#' This function returns data of individual countries "as they would represent
-#' themselves", with no special identification of disputed areas.
-#'
-#' If you would prefer data that explicitly includes disputed areas, please use
-#' [gb_get_world()].
+#' If you require data that explicitly includes disputed areas, use
+#' [gb_get_world()] instead.
 #'
 #' @export
+#' @encoding UTF-8
 #'
-#' @param country A character vector of country codes. It could be either
-#'   `"all"` (that would return the data for all countries), a vector of country
-#'   names or ISO3 country codes. See also [countrycode::countrycode()].
-#' @param adm_lvl Type of boundary Accepted values are `"all"` (all
-#'   available boundaries) or the ADM level (`"adm0"` is the country boundary,
-#'   `"adm1"` is the first level of sub national boundaries, `"adm2"` is the
-#'   second level and so on. Upper case version (`"ADM1"`) and the number of
-#'   the level (`1, 2, 3, 4, 5`) and also accepted.
-#' @param simplified logical. Return the simplified boundary or not. The default
-#'   `FALSE` would use the premier geoBoundaries release.
-#' @param release_type One of `"gbOpen"`, `"gbHumanitarian"`,
-#'   `"gbAuthoritative"`. For most users, we suggest using `"gbOpen"`
-#'   (the default), as it is CC-BY 4.0 compliant and can be used for most
-#'   purposes so long as attribution is provided:
-#'  - `"gbHumanitarian"` files are mirrored from
-#'    [UN OCHA](https://www.unocha.org/), but may have less open licensure.
-#'  - `"gbAuthoritative"` files are mirrored from
-#'    [UN SALB](https://salb.un.org/en), and cannot  be used for commercial
-#'    purposes, but are verified through in-country processes.
-#' @param quiet logical. If `TRUE` suppresses informational messages.
-#' @param overwrite logical. When set to `TRUE` it would force a fresh
-#'    download of the source `.zip` file.
-#' @param path A path to a cache directory. If not set (the default
-#'   `NULL`), the data would be stored in the default cache directory (see
-#'   [gb_set_cache()]). If no cache directory has been set, files would be
-#'   stored in the temporary directory (see [base::tempdir()]).
+#' @param country Character vector of country identifiers. This can be `"all"`
+#'   (to return data for all countries), a vector of country names, or ISO3
+#'   country codes. See also [countrycode::countrycode()].
+#' @param adm_lvl Type of boundary to retrieve. Accepted values are `"all"` (all
+#'   available administrative levels) or a specific ADM level. `"adm0"`
+#'   corresponds to country boundaries, `"adm1"` to first-level subnational
+#'   boundaries, `"adm2"` to second-level boundaries, and so on. Uppercase
+#'   variants (e.g. `"ADM1"`) and numeric values (`0`, `1`, `2`, `3`, `4`, `5`)
+#'   are also accepted.
+#' @param simplified logical. If `TRUE`, return simplified boundaries. If
+#'   `FALSE` (the default), use the premier geoBoundaries release.
+#' @param release_type One of `"gbOpen"`, `"gbHumanitarian"`, or
+#'   `"gbAuthoritative"`. For most users, `"gbOpen"` (the default) is
+#'   recommended, as it is CC-BY 4.0 compliant and suitable for most purposes
+#'   provided proper attribution is given:
+#'   - `"gbHumanitarian"` files are mirrored from
+#'     [UN OCHA](https://www.unocha.org/) and may have more restrictive
+#'     licensing.
+#'   - `"gbAuthoritative"` files are mirrored from UN SALB and cannot be used
+#'     for commercial purposes, but are verified through in-country processes.
+#' @param quiet logical. If `TRUE`, suppress informational messages.
+#' @param overwrite logical. If `TRUE`, force a fresh download of the source
+#'   `.zip` file, even if it is already cached.
+#' @param path Character. Path to a cache directory. If `NULL` (the default),
+#'   data are stored in the default cache directory (see [gb_set_cache()]). If
+#'   no cache directory has been configured, files are stored in a temporary
+#'   directory (see [base::tempdir()]).
 #'
 #' @details
+#' Individual boundary files in the geoBoundaries database are governed by the
+#' license or licenses specified in their associated metadata (see
+#' [gb_get_metadata()]). Users working with individual boundary files should
+#' ensure that they comply with these licenses and cite the original data
+#' sources listed in the metadata. See **Examples**.
 #'
-#' Individual data files in the geoBoundaries database are governed by the
-#' license or licenses identified within the metadata for each respective
-#' boundary (see [gb_get_metadata()]. Users using individual boundary files
-#' from geoBoundaries should additionally ensure that they are citing the
-#' sources provided in the metadata for each file. See **Examples**.
+#' The following convenience wrappers are also available:
 #'
-#' The following wrappers are also available:
-#'
-#' - [gb_get_adm0()] returns the country boundary.
-#' - [gb_get_adm1()] returns first-level administration
-#'   boundaries (e.g. States in the United States).
-#' - [gb_get_adm2()] returns second-level administration
-#'   boundaries (e.g. Counties in the United States).
-#' - [gb_get_adm3()] returns third-level administration
-#'   boundaries (e.g. towns or cities in some countries).
-#' - [gb_get_adm4()] returns fourth-level administration
-#'   boundaries.
-#' - [gb_get_adm5()] returns fifth-level administration
-#'   boundaries.
+#' - [gb_get_adm0()] returns country boundaries.
+#' - [gb_get_adm1()] returns first-level administrative boundaries
+#'   (e.g. states in the United States).
+#' - [gb_get_adm2()] returns second-level administrative boundaries
+#'   (e.g. counties in the United States).
+#' - [gb_get_adm3()] returns third-level administrative boundaries
+#'   (e.g. municipalities in some countries).
+#' - [gb_get_adm4()] returns fourth-level administrative boundaries.
+#' - [gb_get_adm5()] returns fifth-level administrative boundaries.
 #'
 #' @return
-#' A [`sf`][sf::st_sf] object.
+#' An [`sf`][sf::st_sf] object containing the requested boundaries.
 #'
 #' @source
 #' geoBoundaries API Service <https://www.geoboundaries.org/api.html>.
@@ -75,11 +73,10 @@
 #'
 #' @family API functions
 #'
-#'
 #' @examplesIf httr2::is_online()
 #'
 #' \donttest{
-#' # Map level 2 in Sri Lanka
+#' # Level 2 administrative boundaries in Sri Lanka
 #' sri_lanka <- gb_get(
 #'   "Sri Lanka",
 #'   adm_lvl = 2,
@@ -94,14 +91,13 @@
 #'   labs(caption = "Source: www.geoboundaries.org")
 #' }
 #'
-#' # Metadata
+#' # Inspect metadata and licensing
 #' library(dplyr)
 #' gb_get_metadata(
 #'   "Sri Lanka",
 #'   adm_lvl = 2
-#' ) %>%
-#'   # Check individual license
-#'   select(boundaryISO, boundaryType, licenseDetail, licenseSource) %>%
+#' ) |>
+#'   select(boundaryISO, boundaryType, licenseDetail, licenseSource) |>
 #'   glimpse()
 #'
 gb_get <- function(
@@ -170,7 +166,7 @@ rgbnd_dev_shp_query <- function(
 
   # Create destfile and clean
   file_local <- file.path(path, filename)
-  file_local <- gsub("//", "/", file_local)
+  file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
   fileoncache <- file.exists(file_local)
 
@@ -210,7 +206,6 @@ rgbnd_dev_shp_query <- function(
         ),
         collapse = " - "
       )
-
       # nolint end
       cli::cli_alert_danger("{.url {url}} gives error {err}")
 
@@ -223,14 +218,14 @@ rgbnd_dev_shp_query <- function(
   shp_zip <- shp_zip$Name
   shp_zip <- shp_zip[grepl("shp$", shp_zip)]
   if (simplified) {
-    shp_end <- shp_zip[grepl("simplified", shp_zip)]
+    shp_end <- shp_zip[grepl("simplified", shp_zip, fixed = TRUE)]
   } else {
-    shp_end <- shp_zip[!grepl("simplified", shp_zip)]
+    shp_end <- shp_zip[!grepl("simplified", shp_zip, fixed = TRUE)]
   }
 
-  # Read with vszip
+  # Read with vsizip
   shp_read <- file.path("/vsizip/", file_local, shp_end)
-  shp_read <- gsub("//", "/", shp_read)
+  shp_read <- gsub("//", "/", shp_read, fixed = TRUE)
   outsf <- sf::read_sf(shp_read)
 
   if (subdir == "CGAZ" && !("ALL" %in% cgaz_country)) {

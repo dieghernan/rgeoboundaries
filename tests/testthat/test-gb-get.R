@@ -171,8 +171,8 @@ test_that("Release type", {
 
   tmpd <- file.path(tempdir(), "testthat")
   library(dplyr)
-  iso <- gb_get_metadata(release_type = "gbHumanitarian", adm_lvl = "adm0") %>%
-    slice_head(n = 1) %>%
+  iso <- gb_get_metadata(release_type = "gbHumanitarian", adm_lvl = "adm0") |>
+    slice_head(n = 1) |>
     pull(boundaryISO)
 
   res <- gb_get(
@@ -184,8 +184,8 @@ test_that("Release type", {
   )
   expect_s3_class(res, "sf")
 
-  iso <- gb_get_metadata(release_type = "gbAuthoritative", adm_lvl = "adm0") %>%
-    slice_head(n = 1) %>%
+  iso <- gb_get_metadata(release_type = "gbAuthoritative", adm_lvl = "adm0") |>
+    slice_head(n = 1) |>
     pull(boundaryISO)
 
   res <- gb_get(

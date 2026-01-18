@@ -152,7 +152,7 @@ repeated downloads for the same country/level will use the cached version. For
 example:
 
 ```{r include = FALSE}
-# Internal to not mess the vignette
+# Internal: Do not modify for vignette purposes
 
 getcache <- gb_get_cache()
 
@@ -245,7 +245,7 @@ ggplot(latam_sf) +
 
 The **rgeoboundaries** package makes it easy to fetch, manage and visualize
 administrative boundary data worldwide in a reproducible and efficient way.
-Whether you're doing mapping, spatial analysis, survey integration or geospatial
+Whether you're doing mapping, spatial analysis, survey integration, or geospatial
 modelling, it gives you a high-quality boundary dataset with minimal overhead.
 
 ## References

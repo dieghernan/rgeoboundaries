@@ -3,30 +3,34 @@
 #' @description
 #' `r lifecycle::badge("deprecated")`
 #'
-#' \CRANpkg{rgeoboundaries} 2.0.0 renamed a number of functions to ensure that
-#' every function has a `object_verb()` naming scheme and avoiding magical
-#' defaults.
+#' Version 2.0.0 of \CRANpkg{rgeoboundaries} renamed a number of functions to
+#' ensure that all exported functions follow an `object_verb()` naming scheme
+#' and to avoid magical defaults.
 #'
-#' - `geoboundaries()` -> [gb_get()] and [gb_get_world()].
-#' - `gb_adm*` family -> [`gb_get_adm*`][gb_get_adm] family.
-#' - `gb_metadata()` -> [gb_get_metadata()].
-#' - `gb_max_adm_lvl()` -> [gb_get_max_adm_lvl()].
+#' The following changes were introduced:
 #'
-#' These functions are likely to be removed in the future.
+#' - `geoboundaries()` → [gb_get()] and [gb_get_world()].
+#' - The `gb_adm` family → the [`gb_get_adm`][gb_get_adm] family.
+#' - `gb_metadata()` → [gb_get_metadata()].
+#' - `gb_max_adm_lvl()` → [gb_get_max_adm_lvl()].
 #'
-#' @rdname deprecated
+#' These deprecated functions will be removed in a future release.
+#'
 #' @name deprecated
+#' @rdname deprecated
 #' @keywords internal
 #' @family deprecated
 #' @inheritParams gb_get
-#' @param type character. One of `"simplified"` and `"unsimplified"`. Other
-#'   values would be assumed as `"unsimplified"`.
+#' @encoding UTF-8
+#'
+#' @param type Character. One of `"simplified"` or `"unsimplified"`. Any other
+#'   value is treated as `"unsimplified"`.
 #' @param version Deprecated argument.
 #' @export
 #'
 #' @returns
-#' These functions are re-directed to their replacement, providing the same
-#' output.
+#' The call is forwarded to the corresponding replacement function and returns
+#' the same output.
 #'
 #' @references
 #'
@@ -39,7 +43,7 @@
 #' The tidyverse team. *The Tidyverse Style Guide*,
 #' <https://style.tidyverse.org/>. Accessed 14 Nov. 2025.
 #'
-#' Wickham, Hadley. “Tidy Design Principles.” *Tidyverse.org*, 2025,
+#' Wickham, Hadley. "Tidy Design Principles." *Tidyverse.org*, 2025,
 #' <https://design.tidyverse.org/>. Accessed 14 Nov. 2025.
 #'
 #' @examplesIf httr2::is_online()
@@ -67,7 +71,8 @@ geoboundaries <- function(
     cli::cli_alert_warning(
       c(
         "{.arg type = \"cgaz\"} not needed. ",
-        "Just use {.fun gb_get} or {.fun gb_get_adm*} without {.arg country}."
+        "Just use {.fun rgeoboundaries::gb_get} or ",
+        "{.fun rgeoboundaries::gb_get_adm} without {.arg country}."
       )
     )
     country <- NULL
@@ -76,7 +81,7 @@ geoboundaries <- function(
   release_type <- match.arg(release_type)
 
   if (is.null(country)) {
-    cli::cli_alert_info("Redirecting to {.fun gb_get_world}.")
+    cli::cli_alert_info("Redirecting to {.fun rgeoboundaries::gb_get_world}.")
     res <- gb_get_world(
       country = "all",
       adm_lvl = adm_lvl,
@@ -97,6 +102,7 @@ geoboundaries <- function(
 }
 
 #' @rdname deprecated
+#' @aliases gb_adm
 #' @export
 gb_adm0 <- function(
   country = NULL,

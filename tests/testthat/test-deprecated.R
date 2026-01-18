@@ -95,16 +95,16 @@ test_that("gb_adm: single country", {
   # Get country with all levels
   db <- gb_get_metadata(country = "ALL", adm_lvl = "ALL")
 
-  cnt <- db %>%
-    group_by(boundaryISO) %>%
-    mutate(n = n()) %>%
+  cnt <- db |>
+    group_by(boundaryISO) |>
+    mutate(n = n()) |>
     # Countries with all levels
-    filter(n == 6) %>%
-    ungroup() %>%
-    filter(boundaryType == "ADM5") %>%
-    mutate(total = admUnitCount * meanVertices) %>%
+    filter(n == 6) |>
+    ungroup() |>
+    filter(boundaryType == "ADM5") |>
+    mutate(total = admUnitCount * meanVertices) |>
     # Minimum vertices
-    slice_min(order_by = total, n = 1) %>%
+    slice_min(order_by = total, n = 1) |>
     pull(boundaryISO)
 
   # Check 0

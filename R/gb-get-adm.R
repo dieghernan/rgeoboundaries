@@ -1,32 +1,30 @@
-#' Get country files from geoBoundaries for a given administration level
+#' Retrieve geoBoundaries country files for a specified administrative level
 #'
 #' @description
-#'
 #' [Attribution](https://www.geoboundaries.org/index.html#usage) is required
 #' for all uses of this dataset.
 #'
-#' These functions are wrappers of [gb_get()] for extracting any
-#' given administration level:
+#' These functions are convenience wrappers around [gb_get()] for retrieving
+#' boundaries at different administrative levels:
 #'
-#' - `gb_get_adm0()` returns the country boundary.
-#' - `gb_get_adm1()` returns first-level administration
-#'   boundaries (e.g. States in the United States).
-#' - `gb_get_adm2()` returns second-level administration
-#'   boundaries (e.g. Counties in the United States).
-#' - `gb_get_adm3()` returns third-level administration
-#'   boundaries (e.g. towns or cities in some countries).
-#' - `gb_get_adm4()` returns fourth-level administration
-#'   boundaries.
-#' - `gb_get_adm5()` returns fifth-level administration
-#'   boundaries.
+#' - `gb_get_adm0()` returns national boundaries.
+#' - `gb_get_adm1()` returns first‑level administrative boundaries
+#'   (e.g., states in the United States).
+#' - `gb_get_adm2()` returns second‑level administrative boundaries
+#'   (e.g., counties in the United States).
+#' - `gb_get_adm3()` returns third‑level administrative boundaries
+#'   (e.g., towns or cities in some countries).
+#' - `gb_get_adm4()` returns fourth‑level administrative boundaries.
+#' - `gb_get_adm5()` returns fifth‑level administrative boundaries.
 #'
-#' Note that not all countries have the same number of levels. Check
-#' [gb_get_max_adm_lvl].
+#' Note that administrative hierarchies vary by country. Use
+#' [gb_get_max_adm_lvl] to check the maximum available level.
 #'
 #' @rdname gb_get_adm
 #' @name gb_get_adm
 #'
 #' @family API functions
+#' @encoding UTF-8
 #'
 #' @inheritParams gb_get
 #' @inherit gb_get
@@ -36,12 +34,11 @@
 #' @export
 #'
 #' @details
-#'
-#' Individual data files in the geoBoundaries database are governed by the
-#' license or licenses identified within the metadata for each respective
-#' boundary (see [gb_get_metadata()]. Users using individual boundary files
-#' from geoBoundaries should additionally ensure that they are citing the
-#' sources provided in the metadata for each file.
+#' Individual boundary files in the geoBoundaries database are governed by the
+#' license or licenses specified in their associated metadata (see
+#' [gb_get_metadata()]). Users working with individual boundary files should
+#' ensure that they comply with these licenses and cite the original data
+#' sources listed in the metadata. See **Examples**.
 #'
 #' @examplesIf httr2::is_online()
 #'

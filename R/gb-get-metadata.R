@@ -1,20 +1,24 @@
-#' Get metadata of individual country files from geoBoundaries
+#' Retrieve metadata of individual country files from geoBoundaries
 #'
 #' @description
-#'
 #' This function returns metadata of the
 #' [geoBoundaries API](https://www.geoboundaries.org/api.html).
 #'
 #' @family metadata functions
+#' @return A [tibble][tibble::tbl_df].
 #'
-#' @inheritParams gb_get
 #' @inherit gb_get source
+#' @inheritParams gb_get
 #'
-#' @return
-#' A tibble with class [`tbl_df`][tibble::tbl_df-class].
+#' @family metadata functions
+#'
+#' @export
+#' @encoding UTF-8
+#'
+#' @seealso [gb_get()]
 #'
 #' @details
-#' The result is a tibble with the following columns:
+#' The result is a [tibble][tibble::tbl_df] with the following columns:
 #'
 #' - `boundaryID`: The ID for this layer, which is a combination of the ISO
 #'    code, the boundary type, and a unique identifier for the boundary
@@ -74,7 +78,6 @@
 #' - `simplifiedGeometryGeoJSON`: The static download link for the
 #'    simplified `geoJSON`.
 #'
-#'
 #' @export
 #'
 #' @examplesIf httr2::is_online()
@@ -82,7 +85,7 @@
 #'
 #' library(dplyr)
 #'
-#' gb_get_metadata(adm_lvl = "ADM4") %>%
+#' gb_get_metadata(adm_lvl = "ADM4") |>
 #'   glimpse()
 #'
 gb_get_metadata <- function(
@@ -180,7 +183,7 @@ rgbnd_dev_meta_query <- function(url) {
   for (i in iter) {
     bd <- gsub(mabb[i], mnum[i], bd)
   }
-  bd <- gsub(",", "", bd)
+  bd <- gsub(",", "", bd, fixed = TRUE)
   bdate <- as.Date(bd, "%m %d %Y")
   tb$buildDate <- bdate
 

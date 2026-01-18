@@ -3,11 +3,11 @@
 ## Breaking changes
 
 The API has been completely revised to provide clearer function names and
-improve internal maintainability. Most old functions [have been
-deprecated](https://lifecycle.r-lib.org/articles/stages.html#deprecated) will
-issue a warning when used, providing guidance on the appropriate replacement.
-Internally, calls to deprecated functions are redirected to their corresponding
-replacements.
+improve internal maintainability. Most old functions have been
+[deprecated](https://lifecycle.r-lib.org/articles/stages.html#deprecated) and
+will issue a warning when used, providing guidance on the appropriate
+replacement. Internally, calls to deprecated functions are redirected to their
+corresponding replacements.
 
 Additionally, the former [magical
 default](https://design.tidyverse.org/def-magical.html) `country = NULL`
@@ -19,7 +19,7 @@ Renamed functions:
 -   `geoboundaries()` -\> `gb_get()` and `gb_get_world()`. The latter retrieves
     the composite global dataset, and per-country calls can be generated on the
     fly from this dataset.
--   `gb_adm*` family -\> `gb_get_adm*` family.
+-   `?gb_adm` family -\> `?gb_get_adm` family.
 -   `gb_metadata()` -\> `gb_get_metadata()`.
 -   `gb_max_adm_lvl()` -\> `gb_get_max_adm_lvl()`.
 
@@ -32,7 +32,7 @@ Renamed functions:
 
 ### Documentation
 
--   Review `README`.
+-   Reviewed `README` files.
 -   Create **pkgdown** site <https://dieghernan.github.io/rgeoboundaries/>.
 -   Add vignette.
 
