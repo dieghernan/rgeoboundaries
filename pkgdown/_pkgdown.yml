@@ -29,7 +29,7 @@ template:
 
 navbar:
   structure:
-    right: [ search, github, geoBoundaries, lightswitch ]
+    right: [search, github, geoBoundaries, lightswitch]
   components:
     geoBoundaries:
       icon: fa-earth-americas
@@ -58,29 +58,29 @@ home:
     https://doi.org/10.1371/journal.pone.0231866
 
 reference:
-- title: Boundaries
-  desc: >
-    These functions return <a href="https://CRAN.R-project.org/package=sf"
-    class="external-link"><span class="pkg">sf</span></a> objects with political
-    boundaries.
-  contents:
-  - has_concept("API functions")
-- title: Metadata
-  desc: >
-    These functions return metadata in tibble format.
-  contents:
-  - has_concept("metadata functions")
-- title: Cache management
-  contents:
-  - has_concept("cache utilities")
-- title: About the package
-  contents:
-  - rgeoboundaries-package
+  - title: Boundaries
+    desc: >
+      These functions return <a href="https://CRAN.R-project.org/package=sf"
+      class="external-link"><span class="pkg">sf</span></a> objects with political
+      boundaries.
+    contents:
+      - has_concept("API functions")
+  - title: Metadata
+    desc: >
+      These functions return metadata in tibble format.
+    contents:
+      - has_concept("metadata functions")
+  - title: Cache management
+    contents:
+      - has_concept("cache utilities")
+  - title: About the package
+    contents:
+      - rgeoboundaries-package
 
 articles:
-- title: geoBoundaries coverage
-  navbar: geoBoundaries coverage
-  contents:
-  - articles/gbopen
-  - articles/gbhumanitarian
-  - articles/gbauthoritative
+  - title: geoBoundaries coverage
+    navbar: geoBoundaries coverage
+    contents:
+      - articles/gbopen
+      - articles/gbhumanitarian
+      - articles/gbauthoritative
