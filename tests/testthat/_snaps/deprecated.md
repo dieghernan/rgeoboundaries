@@ -81,7 +81,7 @@
       a <- gb_adm0(cnt, type = "simplified")
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm0()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm0()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -93,7 +93,7 @@
       a <- gb_adm1(cnt, type = "simplified")
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm1()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm1()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -105,7 +105,7 @@
       a <- gb_adm2(cnt, type = "simplified")
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm2()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm2()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -117,7 +117,7 @@
       a <- gb_adm3(cnt, type = "simplified")
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm3()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm3()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -129,7 +129,7 @@
       a <- gb_adm4(cnt, type = "simplified")
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm4()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm4()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -141,7 +141,7 @@
       a <- gb_adm5(cnt, type = "simplified")
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm5()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm5()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -153,7 +153,7 @@
       this <- gb_adm0()
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm0()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm0()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -167,7 +167,7 @@
       this3 <- gb_adm0("andorra", type = "CGAZ")
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm0()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm0()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
@@ -182,7 +182,7 @@
       gb_adm3()
     Condition
       Warning:
-      `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.
+      `gb_adm3()` was deprecated in rgeoboundaries 2.0.0.
       i Please use `gb_get_adm3()` or `gb_get_world()` instead.
       Warning:
       `geoboundaries()` was deprecated in rgeoboundaries 2.0.0.

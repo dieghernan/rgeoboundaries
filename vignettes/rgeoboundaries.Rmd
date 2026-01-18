@@ -170,24 +170,25 @@ example:
 current <- gb_get_cache()
 
 current
-#> [1] "C:\\Users\\diego\\AppData\\Local\\Temp\\RtmpMJDU6C"
+#> [1] "C:\\Users\\diego\\AppData\\Local\\Temp\\RtmpuEQr6Y"
 
 # Change to new
 newdir <- file.path(tempdir(), "geobound_vignette")
 gb_set_cache(newdir)
-#> ✔ rgeoboundaries cache directory set to 'C:\Users\diego\AppData\Local\Temp\RtmpMJDU6C/geobound_vignette'.
+#> ✔ rgeoboundaries cache directory set to 'C:\Users\diego\AppData\Local\Temp\RtmpuEQr6Y/geobound_vignette'.
 #> ℹ To reuse this `path` in future sessions, run this function with `install = TRUE`.
 
 # Download
 example <- gb_get_adm0("Vatican City", quiet = FALSE)
-#> ✔ File 'C:\Users\diego\AppData\Local\Temp\RtmpMJDU6C/geobound_vignette/gbOpen/geoBoundaries-VAT-ADM0-all.zip' already cached
+#> ℹ Downloading file from <https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/VAT/ADM0/geoBoundaries-VAT-ADM0-all.zip>
+#> → Cache dir is 'C:\Users\diego\AppData\Local\Temp\RtmpuEQr6Y/geobound_vignette/gbOpen'
 
 gb_list_cache()
 #> [1] "gbOpen/geoBoundaries-VAT-ADM0-all.zip"
 
 # Restore cache dir
 gb_set_cache(current)
-#> ✔ rgeoboundaries cache directory set to 'C:\Users\diego\AppData\Local\Temp\RtmpMJDU6C'.
+#> ✔ rgeoboundaries cache directory set to 'C:\Users\diego\AppData\Local\Temp\RtmpuEQr6Y'.
 #> ℹ To reuse this `path` in future sessions, run this function with `install = TRUE`.
 
 current == gb_get_cache()

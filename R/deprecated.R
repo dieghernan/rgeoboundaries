@@ -114,7 +114,7 @@ gb_adm0 <- function(
 ) {
   lifecycle::deprecate_warn(
     "2.0.0",
-    "geoboundaries()",
+    "gb_adm0()",
     details = "Please use `gb_get_adm0()` or `gb_get_world()` instead."
   )
 
@@ -140,7 +140,7 @@ gb_adm1 <- function(
 ) {
   lifecycle::deprecate_warn(
     "2.0.0",
-    "geoboundaries()",
+    "gb_adm1()",
     details = "Please use `gb_get_adm1()` or `gb_get_world()` instead."
   )
 
@@ -167,7 +167,7 @@ gb_adm2 <- function(
 ) {
   lifecycle::deprecate_warn(
     "2.0.0",
-    "geoboundaries()",
+    "gb_adm2()",
     details = "Please use `gb_get_adm2()` or `gb_get_world()` instead."
   )
 
@@ -194,7 +194,7 @@ gb_adm3 <- function(
 ) {
   lifecycle::deprecate_warn(
     "2.0.0",
-    "geoboundaries()",
+    "gb_adm3()",
     details = "Please use `gb_get_adm3()` or `gb_get_world()` instead."
   )
 
@@ -221,7 +221,7 @@ gb_adm4 <- function(
 ) {
   lifecycle::deprecate_warn(
     "2.0.0",
-    "geoboundaries()",
+    "gb_adm4()",
     details = "Please use `gb_get_adm4()` or `gb_get_world()` instead."
   )
 
@@ -247,7 +247,7 @@ gb_adm5 <- function(
 ) {
   lifecycle::deprecate_warn(
     "2.0.0",
-    "geoboundaries()",
+    "gb_adm5()",
     details = "Please use `gb_get_adm5()` or `gb_get_world()` instead."
   )
 
