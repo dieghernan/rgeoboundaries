@@ -220,17 +220,6 @@ These functions return metadata in tibble format.
   rgeoboundaries: A Client for the 'geoBoundaries' Administrative
   Boundaries Dataset
 
-## Deprecated functions
-
-- [`geoboundaries()`](deprecated.md) [`gb_adm0()`](deprecated.md)
-  [`gb_adm1()`](deprecated.md) [`gb_adm2()`](deprecated.md)
-  [`gb_adm3()`](deprecated.md) [`gb_adm4()`](deprecated.md)
-  [`gb_adm5()`](deprecated.md) [`gb_metadata()`](deprecated.md)
-  [`gb_max_adm_lvl()`](deprecated.md) **\[deprecated\]** :
-
-  Deprecated and renamed functions in
-  [rgeoboundaries](https://CRAN.R-project.org/package=rgeoboundaries)
-
 # Articles
 
 ### geoBoundaries coverage

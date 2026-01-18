@@ -144,7 +144,7 @@ gb_set_cache(ex, quiet = TRUE)
 
 newcache <- gb_get_cache()
 newcache
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpknrTsy/example/cache"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpiujuNa/example/cache"
 
 # Write example files to the cache
 cat(1:10000L, file = file.path(newcache, "a.txt"))
@@ -157,19 +157,19 @@ gb_list_cache()
 
 # Delete one file
 gb_delete_from_cache("a.txt")
-#> ✔ File C:\Users\RUNNER~1\AppData\Local\Temp\RtmpknrTsy/example/cache/a.txt deleted.
+#> ✔ File C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiujuNa/example/cache/a.txt deleted.
 gb_list_cache()
 #> [1] "b.txt" "c.txt"
 
 # Delete all cached files
 gb_clear_cache(quiet = FALSE)
-#> ! rgeoboundaries cache data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpknrTsy/example/cache
+#> ! rgeoboundaries cache data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiujuNa/example/cache
 gb_list_cache()
 #> character(0)
 
 # Restore the initial cache
 gb_set_cache(my_cache)
-#> ✔ rgeoboundaries cache directory set to C:\Users\RUNNER~1\AppData\Local\Temp\RtmpknrTsy/rgeoboundaries.
+#> ✔ rgeoboundaries cache directory set to C:\Users\RUNNER~1\AppData\Local\Temp\RtmpiujuNa/rgeoboundaries.
 #> ℹ To reuse this `path` in future sessions, run this function with `install = TRUE`.
 identical(my_cache, gb_get_cache())
 #> [1] TRUE
