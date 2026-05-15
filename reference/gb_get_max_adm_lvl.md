@@ -53,6 +53,7 @@ Other metadata functions: [`gb_get_metadata()`](gb_get_metadata.md)
 ## Examples
 
 ``` r
+
 all <- gb_get_max_adm_lvl()
 library(dplyr)
 

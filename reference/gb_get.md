@@ -131,6 +131,7 @@ Other API functions: [`gb_get_adm`](gb_get_adm.md),
 ## Examples
 
 ``` r
+
 # \donttest{
 # Level 2 administrative boundaries in Sri Lanka
 sri_lanka <- gb_get(

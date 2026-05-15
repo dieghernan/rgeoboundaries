@@ -17,7 +17,7 @@ this package, you can:
   these boundaries with your own data
 - Work in an open-data context (geoBoundaries uses [CC
   BY-4.0](https://creativecommons.org/licenses/by/4.0/)) / open
-  licences[¹](#fn1))
+  licences[^1])
 
 In short: if you work with geospatial boundaries in **R** (shapefiles,
 polygons, join with other data), this package simplifies the process.
@@ -27,6 +27,7 @@ polygons, join with other data), this package simplifies the process.
 You can install the developing version of **rgeoboundaries** with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("dieghernan/rgeoboundaries")
 ```
@@ -36,6 +37,7 @@ pak::pak("dieghernan/rgeoboundaries")
 ### Single country
 
 ``` r
+
 library(rgeoboundaries)
 
 sri_lanka_adm1 <- gb_get_adm1("Sri Lanka")
@@ -63,6 +65,7 @@ Lanka](reference/figures/README-simple_plot-1.png)
 See how the map of the logo can be created:
 
 ``` r
+
 library(rgeoboundaries)
 library(sf)
 library(dplyr)
@@ -170,10 +173,8 @@ Elizabeth Dowker, Sydney Fuhrig, Seth Goodman, et al. 2020.
 Boundaries.” *PLoS ONE* 15 (4): 1–9.
 <https://doi.org/10.1371/journal.pone.0231866>.
 
-------------------------------------------------------------------------
-
-1.  Individual data files in the geoBoundaries database are governed by
-    the license or licenses identified within the metadata for each
+[^1]: Individual data files in the geoBoundaries database are governed
+    by the license or licenses identified within the metadata for each
     respective boundary. Users using individual boundary files from
     geoBoundaries should additionally ensure that they are citing the
     sources provided in the metadata for each file.

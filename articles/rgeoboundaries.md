@@ -30,6 +30,7 @@ we recommend using the simplified datasets available by setting
 `simplified = TRUE`.
 
 ``` r
+
 library(rgeoboundaries)
 library(ggplot2)
 library(dplyr)
@@ -74,6 +75,7 @@ between countries. Additionally, these files do not include a special
 identification of disputed areas.
 
 ``` r
+
 india_pak <- gb_get_adm0(c("India", "Pakistan"))
 
 # Disputed area: Kashmir
@@ -96,6 +98,7 @@ Note that individual data files are governed by the license or licenses
 identified within the metadata for each respective boundary.
 
 ``` r
+
 gb_get_metadata(c("India", "Pakistan"), adm_lvl = "ADM0") %>%
   select(boundaryName, boundaryLicense, boundarySource)
 #> # A tibble: 2 × 3
@@ -123,6 +126,7 @@ downloads:
 3.  Gaps between borders have been filled.
 
 ``` r
+
 cgaz_india_pak <- gb_get_world(c("India", "Pakistan"))
 
 ggplot(cgaz_india_pak) +
@@ -147,6 +151,7 @@ repeated downloads for the same country/level will use the cached
 version. For example:
 
 ``` r
+
 # Current folder
 current <- gb_get_cache()
 
@@ -193,6 +198,7 @@ In this example we would create a choropleth map using the meta data of
 the individual files and the boundaries data of CGAZ:
 
 ``` r
+
 # Metadata
 
 latam_meta <- gb_get_metadata(adm_lvl = "ADM0") %>%
@@ -253,8 +259,7 @@ boundary dataset with minimal overhead.
 
 ## References
 
-Runfola, Daniel, Austin Anderson, Heather Baier, Matt Crittenden,
-Elizabeth Dowker, Sydney Fuhrig, Seth Goodman, et al. 2020.
+Runfola, Daniel, Austin Anderson, Heather Baier, et al. 2020.
 “geoBoundaries: A Global Database of Political Administrative
 Boundaries.” *PLoS ONE* 15 (4): 1–9.
 <https://doi.org/10.1371/journal.pone.0231866>.

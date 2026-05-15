@@ -90,6 +90,7 @@ Other API functions: [`gb_get()`](gb_get.md),
 ## Examples
 
 ``` r
+
 # This download may take some time
 # \dontrun{
 world <- gb_get_world()

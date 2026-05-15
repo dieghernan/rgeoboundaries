@@ -164,6 +164,7 @@ Other API functions: [`gb_get()`](gb_get.md),
 ## Examples
 
 ``` r
+
 # \donttest{
 lev2 <- gb_get_adm2(
   c("Italia", "Suiza", "Austria"),
