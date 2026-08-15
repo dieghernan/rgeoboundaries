@@ -106,7 +106,7 @@ gb_max_adm_lvl(
   Character vector of country identifiers. This can be `"all"` (to
   return data for all countries), a vector of country names, or ISO3
   country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - adm_lvl:
 
