@@ -170,6 +170,10 @@ lev2 <- gb_get_adm2(
   c("Italia", "Suiza", "Austria"),
   simplified = TRUE
 )
+#> Error in httr2::req_perform(q, path = file_local): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_disk()`:
+#> ! Stream error in the HTTP/2 framing layer [media.githubusercontent.com]:
+#> HTTP/2 stream 7 was not closed cleanly: PROTOCOL_ERROR (err 1)
 
 
 library(ggplot2)
@@ -181,6 +185,6 @@ ggplot(lev2) +
     subtitle = "Selected countries",
     caption = "Source: www.geoboundaries.org"
   )
-
+#> Error: object 'lev2' not found
 # }
 ```
